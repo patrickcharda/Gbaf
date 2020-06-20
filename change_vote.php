@@ -2,7 +2,7 @@
 
 include('session_start.php');
 include('connexion_bdd.php');
-include('fonctions_post.php');
+include('fonctions_posts_votes.php');
 
 if (isset($_GET['vote']) AND isset($_SESSION['id_acteur']))
 {

@@ -2,7 +2,7 @@
 include('session_start.php');
 include('connexion_bdd.php');
 include('fonctions_account.php');
-include('fonctions_post.php');
+include('fonctions_posts_votes.php');
 /*
 afficher le détail d'un acteur
 */
