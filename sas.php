@@ -68,6 +68,7 @@ if (isset($_GET['nouveaumembre']))
 		echo $alerte;
 	}
 ?>
+	<div class="sas">
 	<form action="inscription.php" method="post">
 		<h5>Formulaire d'inscription </h5>
 		<p>
@@ -123,10 +124,6 @@ if (isset($_GET['nouveaumembre']))
 			?>/>
 		</p>	
 
-
-
-
-
 		<?php
 		if (!isset($_SESSION['captcha']))
 		{
@@ -160,6 +157,7 @@ if (isset($_GET['nouveaumembre']))
 		<input type="checkbox" name="auto" id="auto" />
 	</form>
 	<p><a href="sas.php">retour à l'accueil</a></p>
+</div>
 <?php
 
 }
@@ -176,7 +174,7 @@ else
 
 
 ?>
-
+<div class="sas">
 <form action="connexion.php" method="post">
 	<h5>Connexion </h5>
 	<p><label for="pseudooumail"> Username ou email* : </label><input type="text" name="pseudooumail" id="pseudooumail"/></p>
@@ -213,6 +211,7 @@ else
 </form>
 <p><a href="mdp_oubli.php">Mot de passe oublié</a></p>
 <p><a href="sas.php?nouveaumembre=1">S'inscrire</a></p>
+</div>
 <?php
 	
 }
