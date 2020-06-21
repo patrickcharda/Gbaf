@@ -1,0 +1,12 @@
+.sas,header,footer {
+	max-width: 1000px;
+	margin: auto;
+}
+
+.sas form {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right:15px;
+	background-color: #EBE8E0;
+}
