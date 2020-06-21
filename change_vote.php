@@ -1,5 +1,4 @@
 <?php
-
 include('session_start.php');
 include('connexion_bdd.php');
 include('fonctions_posts_votes.php');

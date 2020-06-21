@@ -3,6 +3,7 @@ include('session_start.php');
 include('fonctions_account.php');
 include('connexion_bdd.php');
 supprFichiersCaptcha();
+include('header.php');
 
 //si l'utilisateur est déjà membre et qu'il est en connexion automatique (cookies), redirection à l'espace membre
 if (isset($_COOKIE['pseudooumail']) AND $_COOKIE['pseudooumail']!='' AND isset($_COOKIE['pass']) AND $_COOKIE['pass']!='')
@@ -10,14 +11,7 @@ if (isset($_COOKIE['pseudooumail']) AND $_COOKIE['pseudooumail']!='' AND isset($
 	header('Location:connexion.php');
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
-	<title>Login</title>
-</head>
-<body>
+
 
 <!--
 #si le visiteur l'a demandé on affiche le formulaire d'inscription
@@ -184,7 +178,7 @@ else
 ?>
 
 <form action="connexion.php" method="post">
-	<h5>Formulaire de connexion </h5>
+	<h5>Connexion </h5>
 	<p><label for="pseudooumail"> Username ou email* : </label><input type="text" name="pseudooumail" id="pseudooumail"/></p>
 	<p><label for="pass"> Mot de passe* : </label><input type="password" name="pass" id="pass"/></p>
 		<?php
@@ -222,7 +216,6 @@ else
 <?php
 	
 }
+include('footer.php');
 ?>
 
-</body>
-</html>

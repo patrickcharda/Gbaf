@@ -3,7 +3,7 @@ include('session_start.php');
 include('connexion_bdd.php');
 include('fonctions_account.php');
 supprFichiersCaptcha();
-
+include('header.php');
 
 
 if (isset($_GET['verif']))
@@ -67,6 +67,9 @@ if (isset($_GET['verif']))
 		<input type="submit" value="Envoyer">
 	</form>
 	<p><a href="sas.php">retour à l'accueil</a></p>
+	<?php
+	include('footer.php');
+	?>
 
 
 

@@ -1,18 +1,12 @@
 <?php
 include('session_start.php');
 include('fonctions_account.php');
+include('header.php');
 
 /* 
 si le user existe on lui affiche un formulaire avec les champs question, reponse, mot de passe
 */
 	
-if (isset($_GET['verif']))
-{
-	if (preg_match('#qr#', $_GET['verif']))
-	{
-		echo 'question-réponse à vérifier <br />';
-	}
-}
 /* VERIFICATIONS VALIDITE CHAMPS */
 
 //premières vérifications
@@ -87,7 +81,7 @@ else
 	$verif='pb';
 	header('Location:mdp_oubli.php?verif='.$verif);
 }
-
+include('footer.php');
 ?>
 
 

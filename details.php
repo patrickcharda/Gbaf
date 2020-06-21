@@ -3,6 +3,7 @@ include('session_start.php');
 include('connexion_bdd.php');
 include('fonctions_account.php');
 include('fonctions_posts_votes.php');
+include('header.php');
 /*
 afficher le détail d'un acteur
 */
@@ -68,7 +69,7 @@ if (isset($_SESSION['id_acteur']))
 			//afficher tous les commentaires et infos associées pour l'acteur choisi
 			if ($nb_posts > 0)
 			{
-				$reponse = $bdd->query('SELECT p.id p_id, p.post p_post, a.id a_id,a.prenom a_prenom, a.nom a_nom, p.date_add date_ajout FROM posts p INNER JOIN account a ON a.id=p.id_account WHERE p.id_acteur='.$id.'') or die(print_r($bdd->errorInfo()));
+				$reponse = $bdd->query('SELECT p.id p_id, p.post p_post, a.id a_id,a.prenom a_prenom, a.nom a_nom, DATE_FORMAT(p.date_add,\'%d/%m/%Y\') date_ajout FROM posts p INNER JOIN account a ON a.id=p.id_account WHERE p.id_acteur='.$id.'') or die(print_r($bdd->errorInfo()));
 				while ($data = $reponse->fetch())
 				{
 					if ($data['a_id'] == $_SESSION['id'])
@@ -77,6 +78,7 @@ if (isset($_SESSION['id_acteur']))
 						$infos_user_comment['post_id']=$data['p_id'];
 						$infos_user_comment['post_content']=$data['p_post'];
 					}
+
 					echo '<p>'.$data['a_prenom'].' '.$data['a_nom'].' '.$data['date_ajout'].'</p>';
 					echo '<p>'.$data['p_post'].'</p>';
 				}
@@ -111,6 +113,7 @@ if (isset($_SESSION['id_acteur']))
 		<?php
 	}
 }
+include('footer.php');
 ?>
 
 

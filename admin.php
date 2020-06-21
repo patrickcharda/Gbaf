@@ -3,6 +3,7 @@ include('session_start.php');
 include('connexion_bdd.php');
 include('fonctions_account.php');
 supprFichiersCaptcha(); 
+include('header.php');
 
 echo 'admin page';
 ?>
@@ -52,4 +53,7 @@ echo 'admin page';
 		<input type="submit" value="Envoyer">
 	</form>
 	<p><a href="connexion.php?deconnexion=1">retour à l'accueil</a></p>
+	<?php
+	include('footer.php');
+	?>
 

@@ -1,6 +1,7 @@
 <?php
 include('session_start.php');
 include('fonctions_account.php');
+include('header.php');
 
 /* reçoit le formulaire d'inscription et enregistre ds la bdd
 si le formulaire est ok et que le username n'est pas déjà pris (ni l'adresse mail) 
@@ -158,7 +159,7 @@ else
 	header('Location:sas.php');
 
 }
-
+include('footer.php');
 ?>
 
 

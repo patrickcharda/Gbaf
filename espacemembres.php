@@ -2,6 +2,7 @@
 include('session_start.php');
 include('connexion_bdd.php');
 include('fonctions_account.php');
+include('header.php');
 supprFichiersCaptcha();
 //verifier que session ouverte
 if (isset($_SESSION['login']))
@@ -50,5 +51,6 @@ if (isset($bdd))
 
 <p><a href="./connexion.php?deconnexion=1"> Se déconnecter </a></p>
 
-</body>
-</html>
+<?php
+include('footer.php');
+?>
