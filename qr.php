@@ -8,28 +8,31 @@ si le user existe on lui affiche un formulaire avec les champs question, reponse
 	
 if (isset($_GET['verif']))
 {
-	echo 'Veuillez vérifier le code de sécurité et l\'identifiant';
-	unset($_GET['verif']);
+	if (preg_match('#qr#', $_GET['verif']))
+	{
+		echo 'question-réponse à vérifier <br />';
+	}
 }
-
 /* VERIFICATIONS VALIDITE CHAMPS */
 
 //premières vérifications
 
-if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset($_POST['code']))
+if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset($_POST['code']) AND !is_null($_POST['code']) OR isset($_SESSION['pseudooumail']))
 {
-	
-	$verif=null;
-	// à faire en plus : ctrl des données envoyées via regex
 
+	if (isset($_POST['pseudooumail']))
+	{
+		$_SESSION['pseudooumail']=htmlspecialchars($_POST['pseudooumail']);
+	}
+	$verif=null;
 	if ($_POST['code'] != $_SESSION['code'])
 	{
 		$verif .='code';
-		unset($_SESSION['code']);
+		//unset($_SESSION['code']);
 	}
 	if (!is_null($verif))
 	{
-		header('Location:qr.php?&verif='.$verif); // s'il y a des choses à corriger on réaffiche le formulaire
+		header('Location:mdp_oubli.php?verif='.$verif); // captcha à corriger on réaffiche le formulaire
 	}
 	else
 	{
@@ -37,12 +40,12 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 		if (isset($bdd))
 		{
 			$req = $bdd->prepare('SELECT id, username, question, reponse FROM account WHERE username= ? or mail = ?') or die(print_r($bdd->errorInfo()));
-			$req->execute(array($_POST['pseudooumail'],$_POST['pseudooumail']));	
+			$req->execute(array($_SESSION['pseudooumail'],$_SESSION['pseudooumail']));	
 			$donnees = $req->fetch();
 
 			if (!empty($donnees)) // on affiche le formulaire de modification du mot de passe
 			{
-				$_SESSION['id']=$donnees['id'];
+				$_SESSION['joker']=$donnees['id'];
 				$_SESSION['question']=$donnees['question'];
 				$_SESSION['reponse']=$donnees['reponse'];
 				$req->closeCursor();
@@ -67,20 +70,22 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 			} 
 			else
 			{
-				echo 'pb de requête';
+				$verif .='login';
+				header('Location:mdp_oubli.php?verif='.$verif); // user inconnu on réaffiche le formulaire
 			}
 		}
 		else
 		{
-			echo 'pb accès bdd';
+			$verif .='bdd';
+			header('Location:mdp_oubli.php?verif='.$verif);
 		}
 	
 	}
 }
 else
 {
-	header('Location:sas.php');
-
+	$verif='pb';
+	header('Location:mdp_oubli.php?verif='.$verif);
 }
 
 ?>

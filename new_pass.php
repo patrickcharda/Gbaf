@@ -16,11 +16,11 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 	$verif=null;
 	if (!($_SESSION['question'] == $_POST['question']) OR !($_SESSION['reponse'] == $_POST['reponse']))
 	{
-		$verif .="pb";
+		$verif .="qrhs";
 	}
 	if (!is_null($verif))
 	{
-		header('Location:qr.php?&verif='.$verif); // s'il y a des choses à corriger on réaffiche le formulaire
+		header('Location:mdp_oubli.php?verif='.$verif); // s'il y a des choses à corriger on réaffiche le formulaire
 	}
 	else
 	{
@@ -31,7 +31,7 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 			$req = $bdd->prepare('UPDATE account SET passwd= :pass WHERE id= :id ') or die(print_r($bdd->errorInfo()));
 			$req->execute(array(
 					'pass'=>$pass_hache,
-					'id'=>$_SESSION['id']
+					'id'=>$_SESSION['joker']
 				));	
 			$req->closeCursor();
 			header('Location:sas.php');
@@ -44,7 +44,8 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 }
 else
 {
-	header('Location:mdp_oubli.php');
+	$verif ="qrhs";
+	header('Location:mdp_oubli.php?verif='.$verif);
 
 }
 

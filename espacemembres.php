@@ -38,7 +38,7 @@ if (isset($bdd))
 		{
 			echo '<p><img src='.$ligne['logo'].' /></p>';
 			echo '<p><h3>'.$ligne['acteur'].'</h3></p>';
-			$slug = $ligne['description'];
+			$slug = nl2br(htmlspecialchars($ligne['description']));
 			echo '<p>'.$slug.'</p>';
 			echo '<p><a href=details.php?acteur='.$ligne['id'].'>lire la suite</a></p>';
 		}

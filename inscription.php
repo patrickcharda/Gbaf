@@ -54,32 +54,33 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 		unset($_SESSION['code']);
 	}
 	//verif username
-	if (strlen($_POST['pseudooumail']) > 20 OR preg_match('#@#',$_POST['pseudooumail'])) //pas d@ ds username
+	if (strlen($_POST['pseudooumail']) > 20 OR !preg_match('#^[a-zA-Z0-9_\.-]{1,20}$#',$_POST['pseudooumail'])) //pas d@ ds username
 	{
 		$verif .='pseudo';
 	}
 	//verif nom
-	if (strlen($_POST['nom']) > 20 OR preg_match('#[0-9]#',$_POST['nom']))
+	if (strlen($_POST['nom']) > 25 OR !preg_match('#^[a-zA-Z-]{1,25}$#',$_POST['nom']))
 	{
 		$verif .='nom';
 	}
 	//verif prénom
-	if (strlen($_POST['prenom']) > 20 OR preg_match('#[0-9]#',$_POST['prenom'])) 
+	if (strlen($_POST['prenom']) > 25 OR !preg_match('#^[a-zA-Z-]{1,25}$#',$_POST['prenom'])) 
 	{
 		$verif .='prenom';
 	}
 	//verif question
-	if (strlen($_POST['question']) > 20 OR preg_match('#[0-9]#',$_POST['question']))
+	if (strlen($_POST['question']) > 30 OR !preg_match('#^[a-zA-Z -]{1,30}$#',$_POST['question']))
 	{
 		$verif .='question';
 	}
 	//verif reponse
-	if (strlen($_POST['reponse']) > 20 OR preg_match('#[0-9]#',$_POST['reponse'])) 
+	if (strlen($_POST['reponse']) > 30 OR !preg_match('#^[a-zA-Z -]{1,30}$#',$_POST['reponse'])) 
 	{
 		$verif .='reponse';
 	}
 	//verif mail
-	if (!preg_match('#^[a-zA-Z0-9]{2,20}@{1}[a-zA-Z]{2,20}\.{1}[a-z]{2,4}$#', $_POST['mail']))
+
+	if (!preg_match('#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', $_POST['mail']) OR preg_match('#\.\.|__|--|\.-|-\.|\._|_\.|-_|_-|\.@|@\.|-@|@-|_@|@_#', $_POST['mail']))
 	{
 		$verif .='mail';
 

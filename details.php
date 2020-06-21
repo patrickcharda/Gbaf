@@ -23,7 +23,7 @@ if (isset($_SESSION['id_acteur']))
 			{
 			echo '<p><img src='.$data['logo'].' /></p>';
 			echo '<p><h3>'.$data['acteur'].'</h3></p>';
-			echo '<p>'.$data['description'].'</p>';
+			echo '<p>'.nl2br(htmlspecialchars($data['description'])).'</p>';
 			}
 			$reponse->closeCursor();
 		}
