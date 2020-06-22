@@ -38,10 +38,20 @@ if (isset($bdd))
 		while ($ligne = $donnees->fetch())
 		{
 			echo '<p><img src='.$ligne['logo'].' /></p>';
-			echo '<p><h3>'.$ligne['acteur'].'</h3></p>';
-			$slug = nl2br(htmlspecialchars($ligne['description']));
-			echo '<p>'.$slug.'</p>';
-			echo '<p><a href=details.php?acteur='.$ligne['id'].'>lire la suite</a></p>';
+			echo '<p><h3>'.$ligne['acteur'].'</h3></p><p>';
+
+			$nb_de_mots_description=str_word_count($ligne['description']);
+			$tableau_de_mots=str_word_count($ligne['description'],1);
+			//print_r($tableau_de_mots);
+			$resume=null;
+
+			for ($i=0;$i<$nb_de_mots_description and $i<20;$i++)
+			{
+				$resume .= nl2br(htmlspecialchars($tableau_de_mots[$i])).' ';
+			}
+			echo $resume;
+			echo '<a href=details.php?acteur='.$ligne['id'].'>...</a>';
+			echo '<p><form method="get" action="details.php" ><input type="hidden" name="acteur" value='.$ligne['id'].' /><button type="submit">Lire la suite</button></form></p>';
 		}
 	}
 }

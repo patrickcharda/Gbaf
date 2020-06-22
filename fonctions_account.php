@@ -33,7 +33,7 @@ function createImageCaptcha($captcha,$redirection)
 	$blanc = imagecolorallocate($image, 255, 255, 255);
 	$nb_caracteres = mt_rand(2,4);
 	$_SESSION['fic_image'] = './images/'.createComplexeString(15).'.png';
-	imagestring($image, 9, 30, 30, $captcha, $blanc);
+	imagestring($image, 9, 30, 33, $captcha, $blanc);
 	if (is_writable('./images'))
 	{
 		imagepng($image,$_SESSION['fic_image']);

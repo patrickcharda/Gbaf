@@ -1,9 +1,10 @@
 <?php 
 include('session_start.php');
+include('header.php');
 include('fonctions_account.php');
 include('connexion_bdd.php');
 supprFichiersCaptcha();
-include('header.php');
+
 
 //si l'utilisateur est déjà membre et qu'il est en connexion automatique (cookies), redirection à l'espace membre
 if (isset($_COOKIE['pseudooumail']) AND $_COOKIE['pseudooumail']!='' AND isset($_COOKIE['pass']) AND $_COOKIE['pass']!='')
@@ -68,7 +69,8 @@ if (isset($_GET['nouveaumembre']))
 		echo $alerte;
 	}
 ?>
-	<div class="sas">
+<div class="inscription">
+	<div class="frm_inscription">
 	<form action="inscription.php" method="post">
 		<h5>Formulaire d'inscription </h5>
 		<p>
@@ -156,8 +158,9 @@ if (isset($_GET['nouveaumembre']))
 		<label for="auto">Connexion automatique</label>
 		<input type="checkbox" name="auto" id="auto" />
 	</form>
+	</div>
 	<p><a href="sas.php">retour à l'accueil</a></p>
-</div>
+</div><!--div class inscription-->
 <?php
 
 }
@@ -174,11 +177,12 @@ else
 
 
 ?>
-<div class="sas">
-<form action="connexion.php" method="post">
-	<h5>Connexion </h5>
-	<p><label for="pseudooumail"> Username ou email* : </label><input type="text" name="pseudooumail" id="pseudooumail"/></p>
-	<p><label for="pass"> Mot de passe* : </label><input type="password" name="pass" id="pass"/></p>
+<div class="connexion">
+	<div class="frm_connexion">
+	<form action="connexion.php" method="post">
+	<!--<h5>Connexion </h5>-->
+	<label for="pseudooumail"> Username ou email* : </label><input type="text" name="pseudooumail" id="pseudooumail"/><br />
+	<label for="pass"> Mot de passe* : </label><input type="password" name="pass" id="pass"/><br />
 		<?php
 		if (!isset($_SESSION['captcha']))
 		{
@@ -190,10 +194,11 @@ else
 		}
 		else
 		{
-			echo '<p><img src='.$_SESSION['fic_image'].' />';
+			echo '<div id="captcha"><div id="img_captcha"><img src='.$_SESSION['fic_image'].' /></div>';
 			?>
-			<label for="code">Recopier les caractères de l'image</label>
-			<input type="text" name="code" id="code" />
+			
+			<div id="input_code"><input type="text" name="code" id="code" /><div />
+			</div>
 			<?php
 			$_SESSION['code']=$_SESSION['captcha'];
 			$req = $bdd->prepare('INSERT INTO imagefiles(image_file) VALUES(:image_file)') or die(print_r($bdd->errorInfo()));
@@ -205,10 +210,12 @@ else
 			unset($_SESSION['fic_image']);
 		}
 		?>
-		<p><input type="submit" value="Envoyer">
 		<label for="auto">Connexion automatique</label>
-		<input type="checkbox" name="auto" id="auto" /></p>
-</form>
+		<input type="checkbox" name="auto" id="auto" /><input type="submit" value="Envoyer">	
+	</form>
+	</div>
+</div>	
+<div class="liens">
 <p><a href="mdp_oubli.php">Mot de passe oublié</a></p>
 <p><a href="sas.php?nouveaumembre=1">S'inscrire</a></p>
 </div>

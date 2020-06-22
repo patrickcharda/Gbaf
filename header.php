@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="./gbafstyle.css">
+	<!--<link rel="stylesheet" type="text/css" href="./gbafstyle.css">-->
 	<link rel="icon" href="./logos/favicon.ico" />
 	<title>GBAF</title>
 </head>
