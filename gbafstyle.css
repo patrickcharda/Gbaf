@@ -3,11 +3,11 @@
 	margin: auto;
 }
 
-.sas,.sas_frm {
+.connexion,.frm_connexion {
 	background-color: #EBE8E0;
 	padding:15px;
 }
-.sas_frm{
+.frm_connexion{
 	width: 400px;
 }
 

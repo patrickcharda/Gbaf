@@ -1,15 +1,15 @@
 <?php 
-include('session_start.php');
-include('header.php');
-include('fonctions_account.php');
-include('connexion_bdd.php');
+include('./fonctions/session_start.php');
+include('./templates/header.php');
+include('./fonctions/fonctions_account.php');
+include('./fonctions/connexion_bdd.php');
 supprFichiersCaptcha();
 
 
 //si l'utilisateur est déjà membre et qu'il est en connexion automatique (cookies), redirection à l'espace membre
 if (isset($_COOKIE['pseudooumail']) AND $_COOKIE['pseudooumail']!='' AND isset($_COOKIE['pass']) AND $_COOKIE['pass']!='')
 {
-	header('Location:connexion.php');
+	header('Location:./account/connexion.php');
 }
 ?>
 
@@ -71,7 +71,7 @@ if (isset($_GET['nouveaumembre']))
 ?>
 <div class="inscription">
 	<div class="frm_inscription">
-	<form action="inscription.php" method="post">
+	<form action="./account/inscription.php" method="post">
 		<h5>Formulaire d'inscription </h5>
 		<p>
 			<label for="pseudooumail"> Nom d'utilisateur* : </label><input type="text" name="pseudooumail" id="pseudooumail" maxlength="20" title="Le nom d'utilisateur correspond au pseudo, ou au username. Maximum 20 caractères alphanumériques." <?php
@@ -138,7 +138,7 @@ if (isset($_GET['nouveaumembre']))
 		}
 		else
 		{
-			echo '<p><img src='.$_SESSION['fic_image'].' />';
+			echo '<p><img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' />';
 			?>
 			<label for="code">Recopier les caractères de l'image</label>
 			<input type="text" name="code" id="code">
@@ -179,7 +179,7 @@ else
 ?>
 <div class="connexion">
 	<div class="frm_connexion">
-	<form action="connexion.php" method="post">
+	<form action="./account/connexion.php" method="post">
 	<!--<h5>Connexion </h5>-->
 	<label for="pseudooumail"> Username ou email* : </label><input type="text" name="pseudooumail" id="pseudooumail"/><br />
 	<label for="pass"> Mot de passe* : </label><input type="password" name="pass" id="pass"/><br />
@@ -194,7 +194,7 @@ else
 		}
 		else
 		{
-			echo '<div id="captcha"><div id="img_captcha"><img src='.$_SESSION['fic_image'].' /></div>';
+			echo '<p><img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' /></p>';
 			?>
 			
 			<div id="input_code"><input type="text" name="code" id="code" /><div />
@@ -216,12 +216,12 @@ else
 	</div>
 </div>	
 <div class="liens">
-<p><a href="mdp_oubli.php">Mot de passe oublié</a></p>
+<p><a href="./account/mdp_oubli.php">Mot de passe oublié</a></p>
 <p><a href="sas.php?nouveaumembre=1">S'inscrire</a></p>
 </div>
 <?php
 	
 }
-include('footer.php');
+include('./templates/footer.php');
 ?>
 

@@ -1,9 +1,9 @@
 <?php
-include('session_start.php');
-include('connexion_bdd.php');
-include('fonctions_account.php');
-include('fonctions_posts_votes.php');
-include('header.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/connexion_bdd.php');
+include('./../fonctions/fonctions_account.php');
+include('./../fonctions/fonctions_posts_votes.php');
+include('./../templates/header.php');
 /*
 afficher le détail d'un acteur
 */
@@ -113,7 +113,7 @@ if (isset($_SESSION['id_acteur']))
 		<?php
 	}
 }
-include('footer.php');
+include('./../templates/footer.php');
 ?>
 
 

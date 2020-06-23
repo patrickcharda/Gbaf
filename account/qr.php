@@ -1,7 +1,7 @@
 <?php
-include('session_start.php');
-include('fonctions_account.php');
-include('header.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/fonctions_account.php');
+include('./../templates/header.php');
 
 /* 
 si le user existe on lui affiche un formulaire avec les champs question, reponse, mot de passe
@@ -30,7 +30,7 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 	}
 	else
 	{
-		include('connexion_bdd.php');
+		include('./../fonctions/connexion_bdd.php');
 		if (isset($bdd))
 		{
 			$req = $bdd->prepare('SELECT id, username, question, reponse FROM account WHERE username= ? or mail = ?') or die(print_r($bdd->errorInfo()));
@@ -58,7 +58,7 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 				</p>
 				<input type="submit" value="Envoyer">
 				</form>
-				<p><a href="sas.php">retour à l'accueil</a></p>
+				<p><a href="./../sas.php">retour à l'accueil</a></p>
 
 			<?php
 			} 
@@ -81,7 +81,7 @@ else
 	$verif='pb';
 	header('Location:mdp_oubli.php?verif='.$verif);
 }
-include('footer.php');
+include('./../templates/footer.php');
 ?>
 
 

@@ -1,11 +1,11 @@
 <?php
-include('session_start.php');
-include('connexion_bdd.php');
-include('fonctions_account.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/connexion_bdd.php');
+include('./../fonctions/fonctions_account.php');
 
 if (!isset($_SESSION['groupe']) AND isset($_SESSION['login']) AND $_SESSION['login']==2)
 {
-	header('Location:sas.php');
+	header('Location:./../sas.php');
 }
 else if (isset($bdd))
 {

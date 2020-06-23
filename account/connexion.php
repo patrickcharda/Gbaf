@@ -1,7 +1,7 @@
 <?php
-include('session_start.php');
-include('connexion_bdd.php');
-include('fonctions_account.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/connexion_bdd.php');
+include('./../fonctions/fonctions_account.php');
 /*
 gère la connexion à l'espace membres
 */
@@ -13,12 +13,12 @@ if (isset($_GET['deconnexion']))
 	setcookie('pass', '', 1);
 	session_destroy();
 	unset($_GET['deconnexion']);
-	header('Location:sas.php');
+	header('Location:./../sas.php');
 }
 else
 {
 	//vérifier infos de connexion
-	include('connexion_bdd.php');
+	include('./../fonctions/connexion_bdd.php');
 	if (isset($_POST['pseudooumail']) AND isset($_POST['pass']))
 	{
 		if (preg_match('#@#', $_POST['pseudooumail']))
@@ -52,7 +52,7 @@ else
 	if (isset($_POST['code']) AND isset($_SESSION['code']) AND $_SESSION['code'] != $_POST['code'])
 	{	
 		unset($_SESSION['code']);
-		header('Location:sas.php');
+		header('Location:./../sas.php');
 	}
 	if (isset($valeur) AND isset($pass))
 	{
@@ -81,11 +81,11 @@ else
 					}
 					if ($_SESSION['groupe'] == 2)
 					{	
-					header('Location:admin.php');
+					header('Location:./../admin/admin.php');
 					}
 					else
 					{
-						header('Location:espacemembres.php');
+						header('Location:./../espacemembres.php');
 					}
 				}
 				else
@@ -108,7 +108,7 @@ else
 	}
 	else 
 	{
-		header('Location:sas.php');
+		header('Location:./../sas.php');
 	}
 }
 

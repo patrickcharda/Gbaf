@@ -1,8 +1,8 @@
 <?php 
-include('session_start.php');
-include('connexion_bdd.php');
-include('fonctions_account.php');
-include('header.php');
+include('./fonctions/session_start.php');
+include('./fonctions/connexion_bdd.php');
+include('./fonctions/fonctions_account.php');
+include('./templates/header.php');
 supprFichiersCaptcha();
 //verifier que session ouverte
 if (isset($_SESSION['login']))
@@ -11,7 +11,7 @@ if (isset($_SESSION['login']))
 }
 else
 {
-	header('Location:connexion.php?deconnexion=1'); //on déconnecte cet intrus!
+	header('Location:./fonctions/connexion.php?deconnexion=1'); //on déconnecte cet intrus!
 }
 
 ?>
@@ -50,8 +50,8 @@ if (isset($bdd))
 				$resume .= nl2br(htmlspecialchars($tableau_de_mots[$i])).' ';
 			}
 			echo $resume;
-			echo '<a href=details.php?acteur='.$ligne['id'].'>...</a>';
-			echo '<p><form method="get" action="details.php" ><input type="hidden" name="acteur" value='.$ligne['id'].' /><button type="submit">Lire la suite</button></form></p>';
+			echo '<a href=./posts_votes/details.php?acteur='.$ligne['id'].'>...</a>';
+			echo '<p><form method="get" action="./posts_votes/details.php" ><input type="hidden" name="acteur" value='.$ligne['id'].' /><button type="submit">Lire la suite</button></form></p>';
 		}
 	}
 }
@@ -59,8 +59,8 @@ if (isset($bdd))
 
 ?>
 
-<p><a href="./connexion.php?deconnexion=1"> Se déconnecter </a></p>
+<p><a href="./fonctions/connexion.php?deconnexion=1"> Se déconnecter </a></p>
 
 <?php
-include('footer.php');
+include('./templates/footer.php');
 ?>

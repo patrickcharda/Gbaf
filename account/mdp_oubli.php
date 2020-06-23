@@ -1,9 +1,9 @@
 <?php 
-include('session_start.php');
-include('connexion_bdd.php');
-include('fonctions_account.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/connexion_bdd.php');
+include('./../fonctions_account.php');
 supprFichiersCaptcha();
-include('header.php');
+include('./../templates/header.php');
 
 
 if (isset($_GET['verif']))
@@ -66,9 +66,9 @@ if (isset($_GET['verif']))
 		?>
 		<input type="submit" value="Envoyer">
 	</form>
-	<p><a href="sas.php">retour à l'accueil</a></p>
+	<p><a href="./../sas.php">retour à l'accueil</a></p>
 	<?php
-	include('footer.php');
+	include('./../templates/footer.php');
 	?>
 
 

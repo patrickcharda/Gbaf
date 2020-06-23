@@ -1,9 +1,9 @@
 <?php
-include('session_start.php');
-include('connexion_bdd.php');
-include('fonctions_account.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/connexion_bdd.php');
+include('./../fonctions/fonctions_account.php');
 supprFichiersCaptcha(); 
-include('header.php');
+include('./../templates/header.php');
 
 echo 'admin page';
 ?>
@@ -34,7 +34,7 @@ echo 'admin page';
 		}
 		else
 		{
-			echo '<p><img src='.$_SESSION['fic_image'].' />';
+			echo '<p><img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' />';
 			?>
 			<label for="code">Recopier les caractères de l'image</label>
 			<input type="text" name="code" id="code">
@@ -52,8 +52,8 @@ echo 'admin page';
 		?>
 		<input type="submit" value="Envoyer">
 	</form>
-	<p><a href="connexion.php?deconnexion=1">retour à l'accueil</a></p>
+	<p><a href="./../account/connexion.php?deconnexion=1">retour à l'accueil</a></p>
 	<?php
-	include('footer.php');
+	include('./../templates/footer.php');
 	?>
 

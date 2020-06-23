@@ -1,7 +1,7 @@
 <?php
-include('session_start.php');
-include('fonctions_account.php');
-include('header.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/fonctions_account.php');
+
 
 /* reçoit le formulaire d'inscription et enregistre ds la bdd
 si le formulaire est ok et que le username n'est pas déjà pris (ni l'adresse mail) 
@@ -88,14 +88,14 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 	}
 	if (!is_null($verif))
 	{
-		header('Location:sas.php?nouveaumembre=1&verif='.$verif); // s'il y a des choses à corriger on réaffiche le formulaire
+		header('Location:./../sas.php?nouveaumembre=1&verif='.$verif); // s'il y a des choses à corriger on réaffiche le formulaire
 	}
 
 // pas d erreur ds formumaire donc vérifier user non déjà existant avant insertion bdd :
 
 	else
 	{
-		include('connexion_bdd.php');
+		include('./../fonctions/connexion_bdd.php');
 		if (isset($bdd))
 		{
 			$req = $bdd->prepare('SELECT username,mail FROM account WHERE username= ? or mail = ?') or die(print_r($bdd->errorInfo()));
@@ -116,7 +116,7 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 				$req->closeCursor();
 				/*$_POST['mail'] = preg_replace('#@#', '(at)', $_POST['mail']); // remplacer l'@ par ()at pour passage url
 				$verif .='&p='.$_POST['pseudooumail'].'&m='.$_POST['mail'];*/
-				header("Location:sas.php?nouveaumembre=0&verif=$verif");
+				header("Location:./../sas.php?nouveaumembre=0&verif=$verif");
 			}
 
 				// on peut insérer le nouvel util dans la bdd :
@@ -144,7 +144,7 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 				}
 				session_destroy();
 				unset($_SESSION);
-				header('Location:sas.php?insertuser=1');
+				header('Location:./../sas.php?insertuser=1');
 			}
 		}
 		else
@@ -156,10 +156,10 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 }
 else
 {
-	header('Location:sas.php');
+	header('Location:./../sas.php');
 
 }
-include('footer.php');
+
 ?>
 
 

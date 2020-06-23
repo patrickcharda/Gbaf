@@ -1,6 +1,6 @@
 <?php
-include('session_start.php');
-include('connexion_bdd.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/connexion_bdd.php');
 
 if (isset($_POST['comment']))
 {

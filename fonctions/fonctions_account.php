@@ -32,18 +32,27 @@ function createImageCaptcha($captcha,$redirection)
 	$noir = imagecolorallocate($image, 20, 20, 20);
 	$blanc = imagecolorallocate($image, 255, 255, 255);
 	$nb_caracteres = mt_rand(2,4);
-	$_SESSION['fic_image'] = './images/'.createComplexeString(15).'.png';
-	imagestring($image, 9, 30, 33, $captcha, $blanc);
-	if (is_writable('./images'))
+	if (basename(realpath('.')) != 'gbaf')
 	{
-		imagepng($image,$_SESSION['fic_image']);
+		$_SESSION['fic_image'] =createComplexeString(15).'.png';
+		$_SESSION['chemin_vers_fic_image'] = './../images/';
+	}
+	else
+	{
+		$_SESSION['fic_image'] =createComplexeString(15).'.png';
+		$_SESSION['chemin_vers_fic_image'] = './images/';	
+	}
+	imagestring($image, 9, 30, 33, $captcha, $blanc);
+	if (is_writable($_SESSION['chemin_vers_fic_image']))
+	{
+		imagepng($image,$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image']);
 		header('Location:'.$redirection);
 	}
 	else
 	{
-		if (chmod("./images", 0700))
+		if (chmod($_SESSION['chemin_vers_fic_image'], 0700))
 			{
-				imagepng($image,$_SESSION['fic_image']);
+				imagepng($image,$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image']);
 				header('Location:'.$redirection);
 			}
 	}
@@ -59,19 +68,26 @@ function supprFichiersCaptcha()
 	//echo $donnees['count(*)'];
 	$nombre_de_fichiers= $donnees['count(*)'];
 	$reponse->closeCursor();
-	$nb_de_fic_supprimes=0;
-	$nb_entrees_supprimes=0;
-	if ($nombre_de_fichiers > 3) //on laisse 3 fichiers imagecaptcha seulement sur le serveur, pas plus
+	$chemin_dossier_images=null;
+	if ($nombre_de_fichiers > 3) //on laisse 4 fichiers imagecaptcha seulement sur le serveur, pas plus
 	{
 		$reponse = $bdd->query('SELECT id,image_file FROM imagefiles ORDER BY id') or die(print_r($bdd->errorInfo()));
 		$ids_a_supprimer=array(); //pr les entrees table à suppr
 		$imagefiles_to_delete=array(); //pr les fichiers physiques à suppr
+		if (basename(realpath('.')) != 'gbaf')
+		{
+			$chemin_dossier_images = './../images/';
+		}
+		else
+		{
+			$chemin_dossier_images = './images/';
+		}
 		while ($data = $reponse->fetch()) 
 		{
 			if ($nombre_de_fichiers >3)
 			{
 				$ids_a_supprimer[]=$data['id'];
-				$imagefiles_a_supprimer[]=$data['image_file'];
+				$imagefiles_a_supprimer[]=$chemin_dossier_images.$data['image_file'];
 				$nombre_de_fichiers--;
 			}
 		}
@@ -101,6 +117,19 @@ function save_form_field($field_name,$field_content)
 	$GLOBALS['fields'][$field_name]=$field_content;
 	$_SESSION['form_fields']=$GLOBALS['fields'];
 }
+
+function contexte()
+{
+	if (basename(realpath('.')) == 'gbaf')
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 
 
 

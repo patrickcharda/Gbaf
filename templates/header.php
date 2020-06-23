@@ -8,6 +8,18 @@
 </head>
 <body>
 <header>
-	<a href="./index.php"><img src="./logos/logo75x100.png" alt="logo GBAF" /></a>
+	<?php
+	$relatif=null;
+	if (basename(realpath('.')) == 'gbaf')
+	{
+		$relatif="./";
+	}
+	else
+	{
+		$relatif="./../";
+	}
+
+	echo '<a href='.$relatif.'index.php ><img src='.$relatif.'logos/logo75x100.png alt=logo GBAF /></a>';
+	?>
 </header>
 <hr />

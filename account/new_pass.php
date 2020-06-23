@@ -1,6 +1,6 @@
 <?php
-include('session_start.php');
-include('fonctions_account.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/fonctions_account.php');
 
 /* 
 si le formulaire de maj du password est ok on update ds la bdd
@@ -25,7 +25,7 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 	else
 	{
 		$pass_hache=password_hash($_POST['pass'], PASSWORD_DEFAULT);
-		include('connexion_bdd.php');
+		include('./../fonctions/connexion_bdd.php');
 		if (isset($bdd))
 		{
 			$req = $bdd->prepare('UPDATE account SET passwd= :pass WHERE id= :id ') or die(print_r($bdd->errorInfo()));
@@ -34,7 +34,7 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 					'id'=>$_SESSION['joker']
 				));	
 			$req->closeCursor();
-			header('Location:sas.php');
+			header('Location:./../sas.php');
 		}
 		else
 		{
