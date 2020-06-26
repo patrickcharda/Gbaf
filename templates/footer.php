@@ -1,6 +1,5 @@
-<hr />
-<footer>
-<a href="#">Mentions légales</a>
+<footer class="footer">
+<a href="#">Mentions légales | Contact</a>
 </footer>
 </body>
 </html>

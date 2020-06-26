@@ -37,7 +37,7 @@ if (isset($bdd))
 	{
 		while ($ligne = $donnees->fetch())
 		{
-			echo '<p><img src='.$ligne['logo'].' /></p>';
+			echo '<p><img src=logos/'.$ligne['logo'].' /></p>';
 			echo '<p><h3>'.$ligne['acteur'].'</h3></p><p>';
 
 			$nb_de_mots_description=str_word_count($ligne['description']);

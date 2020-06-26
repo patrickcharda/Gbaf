@@ -1,7 +1,7 @@
 <?php
-include('session_start.php');
-include('connexion_bdd.php');
-include('fonctions_posts_votes.php');
+include('./../fonctions/session_start.php');
+include('./../fonctions/connexion_bdd.php');
+include('./../fonctions/fonctions_posts_votes.php');
 
 if (isset($_GET['vote']) AND isset($_SESSION['id_acteur']))
 {
