@@ -3,13 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="./gbafstyle.css">
-	<link rel="icon" href="./logos/favicon.ico" />
-	<title>GBAF</title>
-</head>
-<body>
-<header class="header">
-	<?php
+		<?php
 	$relatif=null;
 	if (basename(realpath('.')) == 'gbaf')
 	{
@@ -20,18 +14,34 @@
 		$relatif="./../";
 	}
 	?>
+	<link rel='stylesheet' type='text/css' href=<?php echo $relatif.'gbafstyle.css>';?>
+
+	<link rel='icon' href=<?php echo $relatif.'/logos/favicon.ico />';?>
+	<title>GBAF</title>
+</head>
+<body>
+<header class="header">
+
 	<div class="row logo">
 		<div class="col-3"></div>
 		<div class="col-9">
 			
 				<?php
-				echo '<a href='.$relatif.'index.php ><img src='.$relatif.'logos/logo75x100.png alt=logo GBAF /></a>';
+				echo '<div class="logolink"><a href='.$relatif.'index.php >&emsp;&emsp;&emsp;&emsp;</a></div>';
 				?>
 			
 		</div>
 	</div>
 	<div class="row right_sidebar">
-		<div class="col-9"><p>déconnecter</p><p>compte</p></div>
+		<div class="col-9" style="position: relative;">
+			<?php
+				echo '<div class="logoutlink"><a href='.$relatif.'account/connexion.php?deconnexion=1>&emsp;&emsp;&emsp;&emsp;</a></div>';
+				if (isset($_SESSION['id']) && !is_null($_SESSION['id']) && $_SESSION['id']!='')
+				{
+					echo '<div class="accountlink"><a href='.$relatif.'sas.php>&emsp;&emsp;&emsp;&emsp;</a></div>';
+				}
+				?>
+		</div>
 	</div>
 </header>
 

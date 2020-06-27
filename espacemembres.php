@@ -11,7 +11,7 @@ if (isset($_SESSION['login']))
 }
 else
 {
-	header('Location:./fonctions/connexion.php?deconnexion=1'); //on déconnecte cet intrus!
+	header('Location:./account/connexion.php?deconnexion=1'); //on déconnecte cet intrus!
 }
 
 ?>

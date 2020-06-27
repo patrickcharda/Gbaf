@@ -26,6 +26,7 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 	{
 		//echo $_GET['verif'];
 		$alerte='';
+		global $alerte;
 		if (preg_match('#motdepasse#', $_GET['verif']))
 		{
 			$alerte.='- mot de passe à vérifier<br />';
@@ -66,24 +67,30 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 		{
 			$alerte.='- mail déjà pris <br />';
 		}
-		echo $alerte;
 	}
 ?>
 </div>
-<!--
-<main class="main">	
-<div class="row top_main">
-	<div class="col--3"></div>
-	<div class="col--18 main_content">top</div>
-</div>-->
+
 <main class="main">
 <div class="row top_main">
 		<div class="col--3"></div>
 		<div class="col--18 main_content" >
-				<form action="./account/inscription.php" method="post" class="row">
+
+			<div class="row ">
+
+
+				<div class="left_side col-12">
+
+					<div class="col-3"></div>
+
+					<div class="frm_left col-6 frm radius">
+
+				<form action="./account/inscription.php" method="post">
+					<?php echo '<div style="text-align:left; font-weight:bold; padding:5px;">'.$alerte.'</div>';
+					unset($alerte); ?>
 					<h5>Formulaire d'inscription </h5>
 					<p>
-					<label for="pseudooumail"> Nom d'utilisateur* : </label><input type="text" name="pseudooumail" id="pseudooumail" maxlength="20" title="Le nom d'utilisateur correspond au pseudo, ou au username. Maximum 20 caractères alphanumériques." <?php
+					<label for="pseudooumail"> Nom d'utilisateur * : </label><input type="text" name="pseudooumail" id="pseudooumail" maxlength="20" title="Le nom d'utilisateur correspond au pseudo, ou au username. Maximum 20 caractères alphanumériques." <?php
 					if (isset($_SESSION['form_fields']['username']))
 					{
 						echo 'value='.htmlspecialchars($_SESSION['form_fields']['username']).' ';
@@ -91,7 +98,7 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					?>/>
 					</p>
 					<p>
-					<label for="nom"> Nom* : </label><input type="text" name="nom" id="nom" maxlength="25" <?php
+					<label for="nom"> Nom * : </label><input type="text" name="nom" id="nom" maxlength="25" <?php
 					if (isset($_SESSION['form_fields']['nom']))
 					{
 						echo 'value='.htmlspecialchars($_SESSION['form_fields']['nom']).' ';
@@ -99,7 +106,7 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					?>/>
 					</p>
 					<p>
-					<label for="prenom"> Prénom* : </label><input type="text" name="prenom" id="prenom" maxlength="25" <?php
+					<label for="prenom"> Prénom * : </label><input type="text" name="prenom" id="prenom" maxlength="25" <?php
 					if (isset($_SESSION['form_fields']['prenom']))
 					{
 						echo 'value='.htmlspecialchars($_SESSION['form_fields']['prenom']).' ';
@@ -107,10 +114,10 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					?>/>
 					</p>		
 					<p>
-					<label for="pass"> Mot de passe* : </label><input type="password" name="pass" id="pass" maxlength="10" minlength="6" />
+					<label for="pass"> Mot de passe * : </label><input type="password" name="pass" id="pass" maxlength="10" minlength="6" />
 					</p>
 					<p>
-					<label for="mail"> Email* : </label><input type="text" name="mail" id="mail" maxlength="30" <?php
+					<label for="mail"> Email * : </label><input type="text" name="mail" id="mail" maxlength="30" <?php
 					if (isset($_SESSION['form_fields']['mail']))
 					{
 						echo 'value='.htmlspecialchars($_SESSION['form_fields']['mail']).' ';
@@ -119,7 +126,7 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					</p>
 
 					<p>
-					<label for="question"> Question* : </label><input type="text" name="question" id="question" maxlength="30" <?php
+					<label for="question"> Question * : </label><input type="text" name="question" id="question" maxlength="30" <?php
 					if (isset($_SESSION['form_fields']['question']))
 					{
 						echo 'value='.htmlspecialchars($_SESSION['form_fields']['question']).' ';
@@ -127,7 +134,7 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					?>/>
 					</p>
 					<p>
-					<label for="reponse"> Réponse* : </label><input type="text" name="reponse" id="reponse" maxlength="30" <?php
+					<label for="reponse"> Réponse * : </label><input type="text" name="reponse" id="reponse" maxlength="30" <?php
 					if (isset($_SESSION['form_fields']['reponse']))
 					{
 						echo 'value='.htmlspecialchars($_SESSION['form_fields']['reponse']).' ';
@@ -147,9 +154,9 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					}
 					else
 					{
-						echo '<p><img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' />';
+						echo '<p><img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' /><br />';
 					?>
-					<label for="code">Recopier les caractères de l'image</label>
+					<label for="code">Recopier les caractères</label><br />
 					<input type="text" name="code" id="code">
 					</p>
 					<?php
@@ -163,16 +170,30 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					unset($_SESSION['fic_image']);
 					}
 					?>
-					<input type="submit" value="Envoyer">
+
 					<label for="auto">Connexion automatique</label>
-					<input type="checkbox" name="auto" id="auto" />
-				</form>
+					<input type="checkbox" name="auto" id="auto" /><br /><br />
+					<input type="submit" value="Envoyer">
+
+	</form>
+
+				<div class="col-3"></div>
+				
+
+				</div>
 			</div>
+
+
 	</div>
-	<div class="bottom_main"></div>
-	<div class="col--3"></div>
-	<p><a href="sas.php">retour à l'accueil</a></p>
+</div>	
 </main>
+<div class="liens">
+		<div class="marge_gauche_liens"></div>
+		<div class="contenu_liens">
+			
+		</div>
+		<div classe="marge_droite_liens"></div>
+</div>
 <?php
 
 }                		
@@ -193,8 +214,8 @@ else
 <main class="main">
 <div class="row top_main">
 		<div class="col--3"></div>
-		<div class="col--18 main_content" >
-			<div class="row form_2columns">
+		<div class="col--18 main_content white" >
+			<div class="row ">
 
 
 
@@ -202,12 +223,12 @@ else
 
 					<div class="col-3"></div>
 
-					<div class="frm_left col-6 frm">
+					<div class="frm_left col-6 frm radius">
 
 	<form action="./account/connexion.php" method="post">
 	<!--<h5>Connexion </h5>-->
-	<label for="pseudooumail"> Username ou email* : </label><input type="text" name="pseudooumail" id="pseudooumail"/><br />
-	<label for="pass"> Mot de passe* : </label><input type="password" name="pass" id="pass"/><br />
+	<label for="pseudooumail"> Username ou email *  </label><input type="text" name="pseudooumail" id="pseudooumail"/><br />
+	<label for="pass"> Mot de passe *  </label><input type="password" name="pass" id="pass"/><br />
 
 		<?php
 		if (!isset($_SESSION['captcha']))
@@ -220,9 +241,9 @@ else
 		}
 		else
 		{
-			echo '<p><img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' /></p>';
+			echo '<img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' /><br />';
 			?>
-			
+			<label for="code">Recopier les caractères</label><br />
 			<input type="text" name="code" id="code" /><br />
 			
 			<?php
@@ -241,7 +262,7 @@ else
 		<input type="submit" value="Envoyer">	
 	</form>
 
-				<div class="col-3"></div>
+				<!--<div class="col-3 radius"></div>-->
 				
 
 				</div>
@@ -255,8 +276,8 @@ else
 <div class="liens">
 		<div class="marge_gauche_liens"></div>
 		<div class="contenu_liens">
-			<p><a href="./account/mdp_oubli.php">Mot de passe oublié</a></p>
-			<p><a href="sas.php?nouveaumembre=1">S'inscrire</a></p>
+			<p><a href="./account/mdp_oubli.php">Mot de passe oublié</a>&emsp;
+			<a href="sas.php?nouveaumembre=1">Inscription</a></p>
 		</div>
 		<div classe="marge_droite_liens"></div>
 </div>
