@@ -72,20 +72,13 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 </div>
 
 <main class="main">
-<div class="row top_main">
+	<div class="row top_main">
 		<div class="col--3"></div>
 		<div class="col--18 main_content" >
-
-			<div class="row ">
-
-
-				<div class="left_side col-12">
-
-					<div class="col-3"></div>
-
-					<div class="frm_left col-6 frm radius">
-
-				<form action="./account/inscription.php" method="post">
+			<div class="row">
+				<div class="col-3"></div>
+				<div class="frm_left col-6 frm radius">
+					<form action="./account/inscription.php" method="post">
 					<?php echo '<div style="text-align:left; font-weight:bold; padding:5px;">'.$alerte.'</div>';
 					unset($alerte); ?>
 					<h5>Formulaire d'inscription </h5>
@@ -174,18 +167,13 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					<label for="auto">Connexion automatique</label>
 					<input type="checkbox" name="auto" id="auto" /><br /><br />
 					<input type="submit" value="Envoyer">
-
-	</form>
-
-				<div class="col-3"></div>
-				
-
+					</form>				
 				</div>
+				<div class="col-3"></div>
 			</div>
-
-
-	</div>
-</div>	
+		</div>
+		<div class="col--3"></div>
+	</div>	
 </main>
 <div class="liens">
 		<div class="marge_gauche_liens"></div>
@@ -208,69 +196,54 @@ else
 	{
 		unset($GLOBALS['fields']);
 	}
-
-
 ?>
 <main class="main">
 <div class="row top_main">
 		<div class="col--3"></div>
 		<div class="col--18 main_content white" >
 			<div class="row ">
-
-
-
-				<div class="left_side col-12">
-
+				<div class="col-12">
 					<div class="col-3"></div>
-
 					<div class="frm_left col-6 frm radius">
+					<form action="./account/connexion.php" method="post">
+					<!--<h5>Connexion </h5>-->
+					<label for="pseudooumail"> Username ou email *  </label><input type="text" name="pseudooumail" id="pseudooumail"/><br />
+					<label for="pass"> Mot de passe *  </label><input type="password" name="pass" id="pass"/><br />
 
-	<form action="./account/connexion.php" method="post">
-	<!--<h5>Connexion </h5>-->
-	<label for="pseudooumail"> Username ou email *  </label><input type="text" name="pseudooumail" id="pseudooumail"/><br />
-	<label for="pass"> Mot de passe *  </label><input type="password" name="pass" id="pass"/><br />
-
-		<?php
-		if (!isset($_SESSION['captcha']))
-		{
-			$nb_caracteres = mt_rand(2,4);
-			$captcha = createCaptcha($nb_caracteres);
-			$_SESSION['captcha'] = $captcha; 
-			$redirection = './sas.php';
-			createImageCaptcha($captcha,$redirection);
-		}
-		else
-		{
-			echo '<img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' /><br />';
-			?>
-			<label for="code">Recopier les caractères</label><br />
-			<input type="text" name="code" id="code" /><br />
-			
-			<?php
-			$_SESSION['code']=$_SESSION['captcha'];
-			$req = $bdd->prepare('INSERT INTO imagefiles(image_file) VALUES(:image_file)') or die(print_r($bdd->errorInfo()));
-				$req->execute(array(
+					<?php
+					if (!isset($_SESSION['captcha']))
+					{
+						$nb_caracteres = mt_rand(2,4);
+						$captcha = createCaptcha($nb_caracteres);
+						$_SESSION['captcha'] = $captcha; 
+						$redirection = './sas.php';
+						createImageCaptcha($captcha,$redirection);
+					}
+					else
+					{
+						echo '<img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' /><br />';
+					?>
+					<label for="code">Recopier les caractères</label><br />
+					<input type="text" name="code" id="code" /><br />	<?php
+					$_SESSION['code']=$_SESSION['captcha'];
+					$req = $bdd->prepare('INSERT INTO imagefiles(image_file) VALUES(:image_file)') or die(print_r($bdd->errorInfo()));
+					$req->execute(array(
 					'image_file'=>$_SESSION['fic_image']
-				));	
-			$req->closeCursor();
-			unset($_SESSION['captcha']);
-			unset($_SESSION['fic_image']);
-		}
-		?>
-		<label for="auto">Connexion automatique</label>
-		<input type="checkbox" name="auto" id="auto" /><br /><br />
-		<input type="submit" value="Envoyer">	
-	</form>
-
-				<!--<div class="col-3 radius"></div>-->
-				
-
+					));	
+					$req->closeCursor();
+					unset($_SESSION['captcha']);
+					unset($_SESSION['fic_image']);
+					}
+					?>
+					<label for="auto">Connexion automatique</label>
+					<input type="checkbox" name="auto" id="auto" /><br /><br />
+					<input type="submit" value="Envoyer">	
+					</form>
+					</div>
+					<div class="col-3 radius"></div>
+					</div>
 				</div>
-			</div>
-
-
-	</div>
-</div>	
+			</div>	
 </main>
 
 <div class="liens">

@@ -28,7 +28,7 @@ function createComplexeString($nb_caracteres)
 function createImageCaptcha($captcha,$redirection)
 {
 	header ("Content-type: image/png");
-	$image = imagecreate(90,90) or die("Impossible d'initialiser la bibliothèque GD");
+	$image = imagecreate(70,70) or die("Impossible d'initialiser la bibliothèque GD");
 	$noir = imagecolorallocate($image, 20, 20, 20);
 	$blanc = imagecolorallocate($image, 255, 255, 255);
 	$nb_caracteres = mt_rand(2,4);
@@ -42,7 +42,7 @@ function createImageCaptcha($captcha,$redirection)
 		$_SESSION['fic_image'] =createComplexeString(15).'.png';
 		$_SESSION['chemin_vers_fic_image'] = './images/';	
 	}
-	imagestring($image, 9, 30, 33, $captcha, $blanc);
+	imagestring($image, 9, 20, 26, $captcha, $blanc);
 	if (is_writable($_SESSION['chemin_vers_fic_image']))
 	{
 		imagepng($image,$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image']);

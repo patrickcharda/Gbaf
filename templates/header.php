@@ -36,7 +36,7 @@
 		<div class="col-9" style="position: relative;">
 			<?php
 				echo '<div class="logoutlink"><a href='.$relatif.'account/connexion.php?deconnexion=1>&emsp;&emsp;&emsp;&emsp;</a></div>';
-				if (isset($_SESSION['id']) && !is_null($_SESSION['id']) && $_SESSION['id']!='')
+				if (isset($_SESSION['login']) && !is_null($_SESSION['login']) && $_SESSION['login']!='')
 				{
 					echo '<div class="accountlink"><a href='.$relatif.'sas.php>&emsp;&emsp;&emsp;&emsp;</a></div>';
 				}

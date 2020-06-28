@@ -94,7 +94,7 @@ input[type=text], input[type=password], select, textarea {
 }
 
 #code {
-	width: 90px;
+	width: 70px;
 	padding: 12px;
   	border: 1px solid #ccc;
   	border-radius: 4px;
@@ -103,12 +103,16 @@ input[type=text], input[type=password], select, textarea {
   	margin-bottom: 16px;
   	resize: vertical;
 }
+
+.container {
+	display: flex;
+	justify-content: space-around;
 }
 
-.frm_left, {
+.frm_left {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: flex-end;
 
 }
@@ -139,7 +143,7 @@ input[type=text], input[type=password], select, textarea {
 }
 
 .white{
-	background-color: white;
+	background-color: #ffffff;
 }
 
 a {
@@ -154,18 +158,18 @@ a {
 .logoutlink {
 	position: absolute;
 	right: 10px;
-	width: 36px;
-	height: 36px;
-	background-image: url("./logout35x35.png"), url("./logos/logout35x35.png");
+	width: 26px;
+	height: 26px;
+	background-image: url("./logout25x25.png"), url("./logos/logout25x25.png");
 }
 
 .accountlink {
 	position: absolute;
 	right: 10px;
-	top: 55px;
-	width: 33px;
-	height: 33px;
-	background-image: url("./account32x32.png"), url("./logos/account32x32.png");
+	top: 50px;
+	width: 26px;
+	height: 26px;
+	background-image: url("./account25x25.png"), url("./logos/account25x25.png");
 }
 
 .logolink a{
@@ -176,6 +180,14 @@ a {
 }
 .accountlink a{
 	text-decoration: none;
+}
+
+.container {
+	display: flex;
+}
+
+.container >* {
+	flex: 1;
 }
 
 [class*="col-"] {
@@ -192,13 +204,13 @@ a {
 .col-7 {width: 58.33%;}
 .col-8 {width: 66.66%;}
 .col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
+.col-10 {width: 83.34%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 /* 24 colonnes */
 .col--1 {width: 4.16%;}
 .col--2 {width: 8.32%;}
-.col--3 {width: 12.48%;}
+.col--3 {width: 12.5%;}
 .col--4 {width: 16.64%;}
 .col--5 {width: 20.80%;}
 .col--6 {width: 24.96%;}
@@ -213,7 +225,7 @@ a {
 .col--15 {width: 62.4%;}
 .col--16 {width: 66.56%;}
 .col--17 {width: 70.72%;}
-.col--18 {width: 74.88%;}
+.col--18 {width: 75%;}
 .col--19 {width: 79.04%;}
 .col--20 {width: 83.2%;}
 .col--21 {width: 87.36%;}
@@ -239,14 +251,14 @@ a {
   	background-image: url("./logo32x32.png"), url("./logos/logo32x32.png");
   }
   [class="logoutlink"] {
-  	width: 36px;
-  	height: 36px;
+  	width: 16px;
+  	height: 18px;
   	background-image: url("./logout15x15.png"), url("./logos/logout15x15.png");
     background-repeat: no-repeat, no-repeat;
   }
   [class="accountlink"] {
-  	width: 36px;
-  	height: 36px;
+  	width: 16px;
+  	height: 18px;
   	background-image: url("./account15x15.png"), url("./logos/account15x15.png");
     background-repeat: no-repeat, no-repeat;
   }
