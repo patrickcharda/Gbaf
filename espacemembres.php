@@ -33,7 +33,7 @@ else
 			<div class="col--18 white">
 				<div class="row">
 					<div class="col-1"></div>
-					<div class="col-10 frm">
+					<div class="col-10 frm radius">
 			<?php
 			if (isset($bdd))
 			{
@@ -67,7 +67,7 @@ else
 									<div class="liresuite">
 						<form method="get" action="./posts_votes/details.php" >
 						<?php 
-						echo'<input type="hidden" name="acteur" value='.$ligne['id'].' /><button type="submit">Lire la suite</button></form>';
+						echo'<input type="hidden" name="acteur" value='.$ligne['id'].' /><button type="submit" id="readmore">Lire la suite</button></form><br />';
 								echo '</div>';
 							echo '</div>';					
 				}
@@ -82,7 +82,7 @@ else
 	</div>
 </main>
 
-<p><a href="./fonctions/connexion.php?deconnexion=1"> Se déconnecter </a></p>
+<!--<p><a href="./fonctions/connexion.php?deconnexion=1"> Se déconnecter </a></p>-->
 
 <?php
 include('./templates/footer.php');

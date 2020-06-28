@@ -184,10 +184,35 @@ a {
 
 .container {
 	display: flex;
+	justify-content: stretch;
+	align-items: flex-end;
+	border: 1px dashed #EBE8E0;
+  	border-radius: 2px;
+  	padding-right: 20px;
 }
 
-.container >* {
-	flex: 1;
+.logo_acteur {
+	padding: 20px;
+	flex-grow: 1;
+	flex-basis: 101px;
+	align-self: flex-end;
+}
+
+.lirelasuite {
+	flex-basis: 120px;
+	padding: 30px;
+	align-self: space-around;
+}
+
+.resume_acteur {
+	padding: 30px;
+	text-align: left;
+	align-self: space-around;
+}
+
+#readmore {
+	min-width: 90px;
+	border-color: red;
 }
 
 [class*="col-"] {
@@ -262,6 +287,7 @@ a {
   	background-image: url("./account15x15.png"), url("./logos/account15x15.png");
     background-repeat: no-repeat, no-repeat;
   }
+
 }
 
 
