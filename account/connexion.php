@@ -11,6 +11,7 @@ if (isset($_GET['deconnexion']))
 {
 	setcookie('pseudooumail', '', 1);
 	setcookie('pass', '', 1);
+	unset($_SESSION['login']);
 	session_destroy();
 	unset($_GET['deconnexion']);
 	header('Location:./../sas.php');
