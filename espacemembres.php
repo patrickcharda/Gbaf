@@ -31,23 +31,28 @@ else
 			<?php
 			if (isset($bdd))
 			{
-				$donnees = $bdd->query('SELECT id, acteur, SUBSTR(description,1,125) as description_courte, logo FROM acteurs ORDER BY acteur ASC') or die(print_r($bdd->errorInfo()));	
+				$donnees = $bdd->query('SELECT id, acteur, SUBSTR(description,1,110) as description_courte, logo FROM acteurs ORDER BY acteur ASC') or die(print_r($bdd->errorInfo()));	
 				if (!is_null($donnees))
 				{
 					while ($ligne = $donnees->fetch())
 					{
 						?>
 						<div class="container">
-							<div class="logo_acteur">
+							<div class="logo_acteur200x100">
 						<?php
-						echo '<img src=logos/'.$ligne['logo'].' />';
+						echo '<img src=logos/'.$ligne['logo'].'200x100.png />';
+						?>	
+							</div>
+							<div class="logo_acteur100x50">
+						<?php
+						echo '<img src=logos/'.$ligne['logo'].'100x50.png />';
 						?>	
 							</div>
 							<div class="resume_acteur">
 						<?php
 						echo '<h3>'.($ligne['acteur']).'</h3>';
 						$description = $ligne['description_courte'];
-						//$description= utf8_decode(html_entity_decode($ligne['description'], ENT_QUOTES, 'utf-8'));
+						/*$description= utf8_decode(html_entity_decode($ligne['description'], ENT_QUOTES, 'utf-8'));
 						$nb_de_mots_description=str_word_count($description);
 						$tableau_de_mots=str_word_count($description,1);
 						//print_r($tableau_de_mots);
@@ -56,7 +61,7 @@ else
 						{
 							$resume .= $tableau_de_mots[$i].' ';
 						}
-						//echo $resume;
+						//echo $resume;*/
 						echo $description;
 						echo '<a href=./posts_votes/details.php?acteur='.$ligne['id'].' class="reda">&emsp;...</a>';
 						?>

@@ -42,7 +42,8 @@ body {
 	grid-area: top_main;
 	background-color: red;
 	border-radius: 4px;
-	border-color: transparent;*/
+	border-color: transparent;
+	/*overflow: auto;*/
 }
 .bottom_main {
 	grid-area: bottom_main;
@@ -197,7 +198,12 @@ a {
   	margin: 1px;
 }
 
-.logo_acteur {
+.logo_acteur100x50 {
+	display: none;
+	clip: rect(0,0,0,0);
+}
+
+.logo_acteur200x100 {
 	padding: 20px;
 	flex-grow: 1;
 	flex-basis: 101px;
@@ -214,6 +220,7 @@ a {
 	padding: 30px;
 	text-align: left;
 	align-self: space-around;
+	font-size: 13px;
 }
 
 #readmore, button, input[type=submit]  {
@@ -271,6 +278,7 @@ a {
   }
 */  
 
+
 @media only screen and (max-width: 620px) {
   [class*="bottom"] {
     /*background-color: yellow;*/
@@ -294,7 +302,79 @@ a {
     background-repeat: no-repeat, no-repeat;
   }
 
+    [class="container"] {
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+    	border-radius: 2px;
+    }
+    [class="logo_acteur100x50"] {
+    display: inherit;
+  	width: 122px;
+  	align-self: center;
+  	padding: 10px
+  }
+   [class="logo_acteur200x100"] {
+  	display: none;
+	clip: rect(0,0,0,0);
+  }
+
+  [class="resume_acteur"] {
+  	min-width: 122px;
+	padding: 10px;
+	text-align: center;
+	align-self: center;
+	font-size: 10px;
+  }
+    [class="liresuite"] {
+  	min-width: 122px;
+	padding: 10px;
+	align-self: center;
+	font-size: 10px;
+  }
 }
+@media only screen and (max-width: 1024px) and (min-width: 620px) {
+  [class*="bottom"] {
+    display: none;
+  }
+  [class="container"] {
+  	display: flex;
+  	flex-direction: row;
+  	flex-wrap: wrap;
+  	border: 1px solid #EBE8E0;
+  	border-radius: 4px;
+  	padding-right: 10px;
+  	margin: 1px;
+  }
+  [class="logo_acteur100x50"] {
+  	display: inherit;
+  	position: relative;
+  	width: 122px;
+  	align-content: flex-start;
+  	align-self: center;
+  	padding: 20px;
+  }
+   [class="logo_acteur200x100"] {
+  	display: none;
+	clip: rect(0,0,0,0);
+  }
+  [class="resume_acteur"] {
+  	max-width: 200px;
+	padding: 20px;
+	text-align: left;
+	align-self: center;
+	align-content: flex-start;
+	font-size: 12px;
+  }
+  [class="lirelasuite"] {
+  	min-width: 100px;
+	text-align: right;
+	padding: 20px;
+	align-content: flex-end;
+	align-self: center;
+  }
+}
+
 
 
 
