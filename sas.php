@@ -5,6 +5,11 @@ include('./fonctions/fonctions_account.php');
 include('./fonctions/connexion_bdd.php');
 supprFichiersCaptcha();
 
+//si l'utilisateur est loggé on le transfère vers l'espace membres
+if (isset($_SESSION['login']) && !is_null($_SESSION['login']) and $_SESSION['login']!='')
+{
+	header('Location:./espacemembres.php');
+}
 
 //si l'utilisateur est déjà membre et qu'il est en connexion automatique (cookies), redirection à l'espace membre
 if (isset($_COOKIE['pseudooumail']) AND $_COOKIE['pseudooumail']!='' AND isset($_COOKIE['pass']) AND $_COOKIE['pass']!='')

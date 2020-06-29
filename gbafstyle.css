@@ -146,6 +146,11 @@ input[type=text], input[type=password], select, textarea {
 	background-color: #ffffff;
 }
 
+.reda {
+	color: red;
+	text-decoration: none;
+}
+
 a {
 	color: #A8BBB0;
 }
@@ -186,9 +191,10 @@ a {
 	display: flex;
 	justify-content: stretch;
 	align-items: flex-end;
-	border: 1px dashed #EBE8E0;
+	border: 1px solid #EBE8E0;
   	border-radius: 2px;
   	padding-right: 20px;
+  	margin: 1px;
 }
 
 .logo_acteur {
@@ -210,7 +216,7 @@ a {
 	align-self: space-around;
 }
 
-#readmore {
+#readmore, button, input[type=submit]  {
 	min-width: 90px;
 	border-color: red;
 }

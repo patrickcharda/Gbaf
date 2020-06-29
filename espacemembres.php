@@ -8,6 +8,7 @@ supprFichiersCaptcha();
 if (isset($_SESSION['login']))
 {
 	//echo 'bonjour '.$_SESSION['login'];
+	//echo mb_internal_encoding();
 }
 else
 {
@@ -15,14 +16,7 @@ else
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<!-- <link rel="stylesheet" type="text/css" href="./canvas6.css"> -->
-	<title>Espace membres</title>
-</head>
-<body>
+
 
 <!-- afficher ici le bandeau de présentation de GBAF -->
 
@@ -37,7 +31,7 @@ else
 			<?php
 			if (isset($bdd))
 			{
-				$donnees = $bdd->query('SELECT id, acteur, description, logo FROM acteurs ORDER BY acteur ASC') or die(print_r($bdd->errorInfo()));	
+				$donnees = $bdd->query('SELECT id, acteur, SUBSTR(description,1,125) as description_courte, logo FROM acteurs ORDER BY acteur ASC') or die(print_r($bdd->errorInfo()));	
 				if (!is_null($donnees))
 				{
 					while ($ligne = $donnees->fetch())
@@ -51,17 +45,20 @@ else
 							</div>
 							<div class="resume_acteur">
 						<?php
-						echo '<h3>'.$ligne['acteur'].'</h3>';
-						$nb_de_mots_description=str_word_count($ligne['description']);
-						$tableau_de_mots=str_word_count($ligne['description'],1);
+						echo '<h3>'.($ligne['acteur']).'</h3>';
+						$description = $ligne['description_courte'];
+						//$description= utf8_decode(html_entity_decode($ligne['description'], ENT_QUOTES, 'utf-8'));
+						$nb_de_mots_description=str_word_count($description);
+						$tableau_de_mots=str_word_count($description,1);
 						//print_r($tableau_de_mots);
 						$resume=null;
 						for ($i=0;$i<$nb_de_mots_description and $i<20;$i++)
 						{
-							$resume .= htmlspecialchars($tableau_de_mots[$i]).' ';
+							$resume .= $tableau_de_mots[$i].' ';
 						}
-						echo $resume;
-						echo '<a href=./posts_votes/details.php?acteur='.$ligne['id'].'>...</a>';
+						//echo $resume;
+						echo $description;
+						echo '<a href=./posts_votes/details.php?acteur='.$ligne['id'].' class="reda">&emsp;...</a>';
 						?>
 									</div>
 									<div class="liresuite">
@@ -82,7 +79,7 @@ else
 	</div>
 </main>
 
-<!--<p><a href="./fonctions/connexion.php?deconnexion=1"> Se déconnecter </a></p>-->
+<p><a href="./fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>
 
 <?php
 include('./templates/footer.php');
