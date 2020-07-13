@@ -9,9 +9,11 @@ gère la connexion à l'espace membres
 //déconnexion
 if (isset($_GET['deconnexion']))
 {
-	setcookie('pseudooumail', '', 1);
-	setcookie('pass', '', 1);
-	unset($_SESSION['login']);
+	if (isset($_COOKIE['pseudooumail']))
+	{
+		unset($_COOKIE['pseudooumail']);
+		unset($_COOKIE['pass']);
+	} 
 	session_destroy();
 	unset($_GET['deconnexion']);
 	header('Location:./../sas.php');
@@ -50,11 +52,17 @@ else
 			$pass = $_COOKIE['pass'];
 		}
 	}
+	//verif captcha :
 	if (isset($_POST['code']) AND isset($_SESSION['code']) AND $_SESSION['code'] != $_POST['code'])
 	{	
 		unset($_SESSION['code']);
+
+		unset($_POST['code']);
+
 		header('Location:./../sas.php');
+		
 	}
+
 	if (isset($valeur) AND isset($pass))
 	{
 		if (isset($bdd))
@@ -82,7 +90,7 @@ else
 					}
 					if ($_SESSION['groupe'] == 2)
 					{	
-					header('Location:./../admin/admin.php');
+					header('Location:./../admin/admin.php'); //page pour saisie nouvel acteur
 					}
 					else
 					{
@@ -110,6 +118,7 @@ else
 	else 
 	{
 		header('Location:./../sas.php');
+		//echo 'toto';
 	}
 }
 

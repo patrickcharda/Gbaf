@@ -15,6 +15,7 @@
 	}
 	?>
 	<link rel='stylesheet' type='text/css' href=<?php echo $relatif.'gbafstyle.css>';?>
+	<link rel='stylesheet' type='text/css' href=<?php echo $relatif.'responsive.css>';?>
 
 	<link rel='icon' href=<?php echo $relatif.'/logos/favicon.ico />';?>
 	<title>GBAF</title>
@@ -35,15 +36,12 @@
 	<div class="row right_sidebar">
 		<div class="col-9" style="position: relative;">
 			<?php
-				if (isset($_SESSION['login']) && !is_null($_SESSION['login']) && $_SESSION['login']!='')
+				if (isset($_SESSION['login']) && !is_null($_SESSION['login']))
 				{
 					echo '<div class="logoutlink"><a href='.$relatif.'account/connexion.php?deconnexion=1>&emsp;&emsp;&emsp;&emsp;</a></div>';
 					echo '<div class="accountlink"><a href='.$relatif.'sas.php>&emsp;&emsp;&emsp;&emsp;</a></div>';
 				}
-				else
-				{
-					//
-				}
+
 				?>
 		</div>
 	</div>

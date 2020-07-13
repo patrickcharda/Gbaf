@@ -8,24 +8,51 @@ include('./../templates/header.php');
 afficher le détail d'un acteur
 */
 
+
+if (ok_login())
+{
+}
+else
+{
+	header('Location:../account/connexion.php?deconnexion=1'); //on déconnecte cet intrus!
+}
+
 if (isset($_GET['acteur']))
 {
-	$id= (int)($_GET['acteur']);
-	$_SESSION['id_acteur']=$id;
+	$id= (int)($_GET['acteur']); //on verifie que l'argument passé en url est un chiffre...
+	if ($id>0 && $id<1000)
+	{
+		$_SESSION['id_acteur']=$id;
+	}
+	else
+	{
+		header('Location:./../espacemembres.php');
+	}
+
 }
 if (isset($_SESSION['id_acteur']))
 {
 	if (isset($bdd))
 	{
+		//on vérifie que l'id existe
+		$reponse = $bdd->query('SELECT count(*) FROM acteurs WHERE id='.$id.'') or die(print_r($bdd->errorInfo()));
+		$data = $reponse->fetch();
+		if ($data['count(*)'] == 0) //l'id n'existe pas, on renvoit sur l'espace membres
+		{
+			$reponse->closeCursor();
+			header('Location:./../espacemembres.php'); 
+		}
+		$reponse->closeCursor();
+
 		$reponse = $bdd->query('SELECT id, acteur, description, logo FROM acteurs WHERE id='.$id.'') or die(print_r($bdd->errorInfo()));	
 		if (!is_null($reponse))
 		{
 			while ($data = $reponse->fetch())
 			{
-			echo '<p><img src=./../logos/'.$data['logo'].' /></p>';
-			echo '<p><h3>'.$data['acteur'].'</h3></p>';
-			echo '<p>'.nl2br(htmlspecialchars($data['description'])).'</p>';
-			}
+				echo '<p><img src=./../logos/'.$data['logo'].'.png /></p>';
+				echo '<p><h3>'.$data['acteur'].'</h3></p>';
+				echo '<p>'.nl2br(htmlspecialchars($data['description'])).'</p>';
+			}			
 			$reponse->closeCursor();
 		}
 		$nb_posts=nombre_de('posts','id_acteur',$id);
@@ -111,6 +138,10 @@ if (isset($_SESSION['id_acteur']))
 			<input type="submit" value="Envoyer">
 		</form>
 		<?php
+	}
+	else
+	{
+		header('Location:../espacemembres.php');
 	}
 }
 include('./../templates/footer.php');

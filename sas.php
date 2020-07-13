@@ -6,7 +6,7 @@ include('./fonctions/connexion_bdd.php');
 supprFichiersCaptcha();
 
 //si l'utilisateur est loggé on le transfère vers l'espace membres
-if (isset($_SESSION['login']) && !is_null($_SESSION['login']) and $_SESSION['login']!='')
+if (ok_login())
 {
 	header('Location:./espacemembres.php');
 }

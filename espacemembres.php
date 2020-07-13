@@ -5,10 +5,8 @@ include('./fonctions/fonctions_account.php');
 include('./templates/header.php');
 supprFichiersCaptcha();
 //verifier que session ouverte
-if (isset($_SESSION['login']))
+if (ok_login())
 {
-	//echo 'bonjour '.$_SESSION['login'];
-	//echo mb_internal_encoding();
 }
 else
 {
@@ -26,7 +24,7 @@ else
 			<div class="col--3"></div>
 			<div class="col--18 white">
 				<div class="row">
-					<div class="col-1"></div>
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
 					<div class="col-10 frm radius">
 			<?php
 			if (isset($bdd))
@@ -76,10 +74,10 @@ else
 			}
 		}
 	?>				</div>
-					<div class="col-1"></div>
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
 				</div>
 			</div>
-			<div class="col--3"></div>
+			<div class="col--3"><span class="invisible">&emsp;</span></div>
 		</div>
 	</div>
 </main>
