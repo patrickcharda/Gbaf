@@ -3,7 +3,7 @@ include('./fonctions/session_start.php');
 include('./fonctions/connexion_bdd.php');
 include('./fonctions/fonctions_account.php');
 include('./templates/header.php');
-supprFichiersCaptcha();
+//supprFichiersCaptcha();
 //verifier que session ouverte
 if (ok_login())
 {

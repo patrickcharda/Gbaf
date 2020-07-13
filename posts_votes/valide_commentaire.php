@@ -1,6 +1,15 @@
 <?php
 include('./../fonctions/session_start.php');
 include('./../fonctions/connexion_bdd.php');
+include('./../fonctions/fonctions_account.php');
+
+if (!ok_login())
+{
+	header('Location:./account/connexion.php?deconnexion=1'); //on déconnecte cet intrus!
+}
+
+
+
 
 if (isset($_POST['comment']))
 {

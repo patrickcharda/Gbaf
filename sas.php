@@ -11,7 +11,7 @@ if (ok_login())
 	header('Location:./espacemembres.php');
 }
 
-//si l'utilisateur est déjà membre et qu'il est en connexion automatique (cookies), redirection à l'espace membre
+//si l'utilisateur est déjà membre et qu'il est en connexion automatique (cookies), redirection à l'espace membres via la page connexion.php 
 if (isset($_COOKIE['pseudooumail']) AND $_COOKIE['pseudooumail']!='' AND isset($_COOKIE['pass']) AND $_COOKIE['pass']!='')
 {
 	header('Location:./account/connexion.php');

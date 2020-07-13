@@ -9,12 +9,11 @@ function nombre_de($table,$nomChampId,$id)
 
 	if (!is_null($reponse))
 	{
-		$nb_posts= $reponse->fetch();
+		$nb_de_qqch= $reponse->fetch();
 		$reponse->closeCursor();
-		return $nb_posts['count(*)'];
+		return $nb_de_qqch['count(*)'];
 	}
 	
-	//$retour = 'table : '.$table.' champ : '.$nomChampId.' valeur : '.$id;
 	return null;
 }
 

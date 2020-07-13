@@ -2,6 +2,7 @@
 include('./../fonctions/session_start.php');
 include('./../fonctions/connexion_bdd.php');
 include('./../fonctions/fonctions_account.php');
+supprFichiersCaptcha();
 /*
 gère la connexion à l'espace membres
 */
