@@ -5,59 +5,50 @@ include('./../fonctions/fonctions_account.php');
 supprFichiersCaptcha(); 
 include('./../templates/header.php');
 
-echo 'admin page';
+if (!ok_login() && !is_admin())
+{
+	header('Location:./../sas.php');
+}
+
+echo 'PAGE ADMINISTRATEUR';
 ?>
 
 <form action="add_acteur.php" method="post">
-		<h5>Nouvel acteur</h5>
-		<p>
-			<label for="acteur"> Nom de l'acteur* : </label><input type="text" name="acteur" id="acteur" maxlength="75" />
-		</p>
-		<p>
-			<label for="description"> Présentation* : </label>
-			<textarea name="description" id="description" maxlength="2500" >
+	<h5>INSERER UN NOUVEL ACTEUR</h5>
+	<p>
+		<label for="acteur"> Nom de l'acteur* : </label><input type="text" name="acteur" id="acteur" maxlength="75" />
+	</p>
+	<p>
+		<label for="description"> Présentation* : </label>
+		<textarea name="description" id="description" maxlength="2500" >
 			Présentation de l'acteur
-			</textarea>
-		</p>
-		<p>
-			<label for="logo"> Nom du fichier logo (png)* : </label><input type="text" name="logo" id="logo" />
-		</p>		
-		<?php
-		if (!isset($_SESSION['captcha']))
-		{
-			$nb_caracteres = mt_rand(2,4);
-			$captcha = createCaptcha($nb_caracteres);
-			$_SESSION['captcha'] = $captcha; 
-			$verif=$_GET['verif'];
-			$redirection = './admin.php';
-			createImageCaptcha($captcha,$redirection);
-		}
-		else
-		{
-			echo '<p><img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' />';
-			?>
-			<label for="code">Recopier les caractères de l'image</label>
-			<input type="text" name="code" id="code">
-			</p>
-			<?php
-			$_SESSION['code']=$_SESSION['captcha'];
-			$req = $bdd->prepare('INSERT INTO imagefiles(image_file) VALUES(:image_file)') or die(print_r($bdd->errorInfo()));
-			$req->execute(array(
-					'image_file'=>$_SESSION['fic_image']
-				));	
-			$req->closeCursor();
-			unset($_SESSION['captcha']);
-			unset($_SESSION['fic_image']);
-		}
-		?>
-		<input type="submit" value="Envoyer">
-	</form>
+		</textarea>
+	</p>
+	<p>
+		<label for="logo"> Nom du fichier logo (png)* : </label><input type="text" name="logo" id="logo" />
+	</p>		
+	<input type="submit" value="Insérer">
+</form>
+
+<form action="change_presentation_gbaf.php" method="post">
+	<h5>MODIFIER LE TEXTE DE PRESENTATION DU GBAF</h5>
+	<?php
+	$reponse = $bdd->query('SELECT presentation FROM identite WHERE id=1') or die(print_r($bdd->errorInfo()));
+	echo '<textarea name="presentation_gbaf">';
+	$texte_presentation= $reponse->fetch();
+	echo $texte_presentation['presentation'];
+	echo '</textarea>';
+	?>
+	<input type="submit" value="Mettre à jour" />
+</form>
+
 	<p><a href="./../account/connexion.php?deconnexion=1">retour à l'accueil</a></p>
 	<?php
 	include('./../templates/footer.php');
 	?>
 
 <?php
+/*
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -105,4 +96,6 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
+*/
 ?>
+

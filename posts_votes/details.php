@@ -64,7 +64,7 @@ if (isset($_SESSION['id_acteur']))
 		$lienReset=null;
 		if ($info_likes['deja_vote'])
 		{
-			echo '<p>a voté :';
+			//echo '<p>a voté :';
 			$_SESSION['id_vote']=$info_likes['id_vote'];
 			if ($info_likes['vote_content']) //vote égal 1
 			{
@@ -86,7 +86,7 @@ if (isset($_SESSION['id_acteur']))
 			$lienDown='<a href=\'change_vote.php?vote=4\'> <img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /> </a>'.$info_likes['negatifs'];
 		}
 		
-		echo '<p><a href=#>actualiser ou ajouter un commentaire</a></p>';
+		
 		$infos_user_comment=null;
 		if (!is_null($nb_posts)) 
 		{

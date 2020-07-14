@@ -1,7 +1,7 @@
 <?php 
 include('./../fonctions/session_start.php');
 include('./../fonctions/connexion_bdd.php');
-include('./../fonctions_account.php');
+include('./../fonctions/fonctions_account.php');
 supprFichiersCaptcha();
 include('./../templates/header.php');
 
@@ -38,31 +38,31 @@ if (isset($_GET['verif']))
 		</p>	
 		<?php
 		if (!isset($_SESSION['captcha']))
-		{
-			$nb_caracteres = mt_rand(2,4);
-			$captcha = createCaptcha($nb_caracteres);
-			$_SESSION['captcha'] = $captcha; 
-			$verif=$_GET['verif'];
-			$redirection = './mdp_oubli.php?verif='.$verif;
-			createImageCaptcha($captcha,$redirection);
-		}
-		else
-		{
-			echo '<p><img src='.$_SESSION['fic_image'].' />';
-			?>
-			<label for="code">Recopier les caractères de l'image</label>
-			<input type="text" name="code" id="code">
-			</p>
-			<?php
-			$_SESSION['code']=$_SESSION['captcha'];
-			$req = $bdd->prepare('INSERT INTO imagefiles(image_file) VALUES(:image_file)') or die(print_r($bdd->errorInfo()));
-			$req->execute(array(
+					{
+						$nb_caracteres = mt_rand(2,4);
+						$captcha = createCaptcha($nb_caracteres);
+						$_SESSION['captcha'] = $captcha; 
+						$verif=$_GET['verif'];
+						$redirection = './mdp_oubli.php?verif='.$verif;
+						createImageCaptcha($captcha,$redirection);
+					}
+					else
+					{
+						echo '<p><img src='.$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image'].' /><br />';
+					?>
+					<label for="code">Recopier les caractères</label><br />
+					<input type="text" name="code" id="code">
+					</p>
+					<?php
+					$_SESSION['code']=$_SESSION['captcha'];
+					$req = $bdd->prepare('INSERT INTO imagefiles(image_file) VALUES(:image_file)') or die(print_r($bdd->errorInfo()));
+					$req->execute(array(
 					'image_file'=>$_SESSION['fic_image']
-				));	
-			$req->closeCursor();
-			unset($_SESSION['captcha']);
-			unset($_SESSION['fic_image']);
-		}
+					));	
+					$req->closeCursor();
+					unset($_SESSION['captcha']);
+					unset($_SESSION['fic_image']);
+					}
 		?>
 		<input type="submit" value="Envoyer">
 	</form>

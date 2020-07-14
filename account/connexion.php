@@ -69,7 +69,7 @@ else
 		if (isset($bdd))
 		{
 			//on verifie login et mot de passe dans la bdd
-			$req = $bdd->prepare('SELECT id, id_groupe, mail,username,passwd FROM account WHERE '.$critere.'= ?') or die(print_r($bdd->errorInfo()));
+			$req = $bdd->prepare('SELECT id, id_groupe, mail,username,passwd,prenom,nom FROM account WHERE '.$critere.'= ?') or die(print_r($bdd->errorInfo()));
 			$req->execute(array(
 			$valeur
 			));	
@@ -83,6 +83,8 @@ else
 					$_SESSION['login']=$donnees['username'];
 					$_SESSION['mail']=$donnees['mail'];
 					$_SESSION['groupe']=$donnees['id_groupe'];
+					$_SESSION['prenom']=$donnees['prenom'];
+					$_SESSION['nom']=$donnees['nom'];
 					$req->closeCursor();
 					if (isset($_POST['auto']) AND $_POST['auto']=='on')
 					{

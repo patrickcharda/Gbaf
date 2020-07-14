@@ -142,6 +142,18 @@ function ok_login()
 	}
 }
 
+function is_admin()
+{
+	if (isset($_SESSION['groupe']) AND $_SESSION['groupe']==2)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 
 
 
