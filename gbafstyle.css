@@ -56,7 +56,9 @@ body {
 	background-image: linear-gradient(90deg, rgba(239,76,76,1) 0%, rgba(156,27,27,1) 50%, rgba(239,76,76,1) 100%);
 	padding:10px;
 	border: 1px;
-	border-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+
 }
 .footer a{
 		color: #ffffff;
@@ -130,9 +132,9 @@ input[type=text], input[type=password], select, textarea {
 }
 
 .frm {
-	/*background-color: #E0DDD5; /*ivoire foncé*/
+	background-color: #E0DDD5; /*ivoire foncé*/
 	/*background-color: #EBE8E0; /*ivoire clair*/
-	background-color: #A8BBB0; /*celadon*/
+	/*background-color: #A8BBB0; /*celadon*/
 }
 
 .radius {
@@ -198,7 +200,7 @@ a {
 	display: flex;
 	justify-content: stretch;
 	align-items: flex-end;
-	border: 1px solid #EBE8E0;
+	border: 1px solid #A8BBB0;
   	border-radius: 2px;
   	padding-right: 20px;
   	margin: 1px;
@@ -232,6 +234,40 @@ a {
 #readmore, button, input[type=submit]  {
 	min-width: 90px;
 	border-color: red;
+}
+
+.presentation_gbaf {
+	display: block;
+	text-align: justify;
+	background-size: cover;
+	background-image: linear-gradient(to right, rgba(239,76,76,45), rgba(156,27,27,1));
+	width: 100%;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-bottom: 0px;
+}
+.bandeau {
+	display: block;
+	text-align: justify;
+	background-image: url("./logos/bandeau800.jpg");
+	background-size: cover;
+	min-height: 240px;
+	width: 100%;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-top: 0px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+#idprez {
+	font-family: Arial, Helvetica, "sans-serif";
+	font-color: #000000;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: 16px;
+	color: #ffffff;
+	margin: 0px;
 }
 
 [class*="col-"] {

@@ -24,18 +24,35 @@
 <header class="header">
 
 	<div class="row logo">
-		<div class="col-3"></div>
+		<div class="col-3">
+							<?php
+				echo '<div class="logolink"><a href='.$relatif.'index.php >&emsp;&emsp;&emsp;&emsp;</a></div>';
+				?>
+		</div>
 		<div class="col-9">
 			
-				<?php
-				echo '<div class="logolink"><a href='.$relatif.'index.php >&emsp;&emsp;&emsp;&emsp;</a></div>';
+				<?php /*
+				echo '<div class="logolink"><a href='.$relatif.'index.php >&emsp;&emsp;&emsp;&emsp;</a></div>'; */
 				?>
 			
 		</div>
 	</div>
 	<div class="row right_sidebar">
 		<div class="col-9" style="position: relative;">
-			<?php
+			<?php /*
+				if (isset($_SESSION['login']) && !is_null($_SESSION['login']))
+				{
+					echo '<div class="logoutlink"><a href='.$relatif.'account/connexion.php?deconnexion=1>&emsp;&emsp;&emsp;&emsp;</a></div>';
+					echo '<div class="accountlink"><a href='.$relatif.'account/mon_compte.php >&emsp;&emsp;&emsp;&emsp;</a></div>';
+
+				}
+					*/
+				?>
+		</div>
+
+		<div class="col-3">
+
+						<?php
 				if (isset($_SESSION['login']) && !is_null($_SESSION['login']))
 				{
 					echo '<div class="logoutlink"><a href='.$relatif.'account/connexion.php?deconnexion=1>&emsp;&emsp;&emsp;&emsp;</a></div>';
@@ -44,7 +61,9 @@
 				}
 
 				?>
+
 		</div>
+
 	</div>
 </header>
 

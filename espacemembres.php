@@ -18,6 +18,23 @@ else
 
 <!-- afficher ici le bandeau de présentation de GBAF -->
 
+<div class="presentation_gbaf">
+	<?php
+	if (isset($bdd))
+	{
+		$req = $bdd->prepare('SELECT presentation FROM identite WHERE id= :id') or die(print_r($bdd->errorInfo()));
+		$req->execute(array(
+				'id'=>1
+			));
+		$presentation = $req->fetch();
+		echo '<p id="idprez">'.$presentation['presentation'].'</p>';
+		$req->closeCursor();
+	}
+	?>
+</div>
+<div class="bandeau">
+</div>
+
 <main class="main">
 	<div class="top_main">
 		<div class="row">

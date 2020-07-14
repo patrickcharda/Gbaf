@@ -18,6 +18,17 @@ else
 	header('Location:../account/connexion.php?deconnexion=1'); //on déconnecte cet intrus!
 }
 
+?>
+
+<main class="main">
+	<div class="top_main">
+		<div class="row">
+			<div class="col--3"></div>
+			<div class="col--18 white">
+				<div class="row">
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
+					<div class="col-10 frm radius">
+<?php
 if (isset($_GET['acteur']))
 {
 	$id= (int)($_GET['acteur']); //on verifie que l'argument passé en url est un chiffre...
@@ -64,7 +75,7 @@ if (isset($_SESSION['id_acteur']))
 		$lienReset=null;
 		if ($info_likes['deja_vote'])
 		{
-			//echo '<p>a voté :';
+			echo '<p>';
 			$_SESSION['id_vote']=$info_likes['id_vote'];
 			if ($info_likes['vote_content']) //vote égal 1
 			{
@@ -112,7 +123,7 @@ if (isset($_SESSION['id_acteur']))
 						//echo '<br>';
 						//print_r($_SESSION['infos_user_comment']);
 						echo '<form action="form_commentaires.php" method="post">';
-						echo '<p><input type="submit" id="modif_commentaire" value="Modifier le commentaire" name="modif_commentaire" /></p></form>';
+						echo '<p><input type="submit" id="modif_commentaire" value="Modifier votre commentaire" name="modif_commentaire" /></p></form>';
 
 					}
 				}
@@ -131,8 +142,22 @@ if (isset($_SESSION['id_acteur']))
 		header('Location:../espacemembres.php');
 	}
 }
-include('./../templates/footer.php');
 ?>
+</div>
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
+				</div>
+			</div>
+			<div class="col--3"><span class="invisible">&emsp;</span></div>
+		</div>
+	</div>
+</main>
 
+<p><a href="./fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>
+
+
+<?php
+include('./../templates/footer.php');
+?>	
+					
 
 
