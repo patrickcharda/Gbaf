@@ -18,9 +18,13 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 	{
 		$verif .="qrhs";
 	}
+	if (strlen($_POST['pass']) < 6 OR strlen($_POST['pass']) > 10)
+	{
+		$verif .='motdepasse';
+	}
 	if (!is_null($verif))
 	{
-		header('Location:mdp_oubli.php?verif='.$verif); // s'il y a des choses à corriger on réaffiche le formulaire
+		header('Location:mdp_oubli.php?verif='.$verif); // s'il y a des choses à corriger on réaffiche le formulaire 
 	}
 	else
 	{
@@ -44,7 +48,7 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 }
 else
 {
-	$verif ="qrhs";
+	$verif ="incomplet";
 	header('Location:mdp_oubli.php?verif='.$verif);
 
 }

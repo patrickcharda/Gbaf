@@ -1,7 +1,7 @@
 <?php
 include('./../fonctions/session_start.php');
 include('./../fonctions/fonctions_account.php');
-
+supprFichiersCaptcha()
 
 /* reçoit le formulaire d'inscription et enregistre ds la bdd
 si le formulaire est ok et que le username n'est pas déjà pris (ni l'adresse mail) 
@@ -137,11 +137,11 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 				$req->closeCursor();
 				//$_SESSION['insert']='ok';
 				// gérer cookie :
-				if (isset($_POST['auto']))
+				/*if (isset($_POST['auto']))
 				{
 					setcookie('pseudooumail',$_POST['pseudooumail'],time()+365*24*3600,null,null,false,true);
 					setcookie('pass',$_POST['pass'],time()+365*24*3600,null,null,false,true);
-				}
+				}*/
 				session_destroy();
 				unset($_SESSION);
 				header('Location:./../sas.php?insertuser=1');

@@ -28,8 +28,26 @@ if (isset($_GET['verif']))
  	{
  		echo 'Accès base de données indisponible. Veuillez réessayer ultérieurement <br />';
  	}
+ 	if (preg_match('#motdepasse#', $_GET['verif']))
+ 	{
+ 		echo 'Le mot de passe doit contenir entre 6 et 10 caractères <br />';
+ 	}
+ 	 if (preg_match('#incomplet#', $_GET['verif']))
+ 	{
+ 		echo 'Formulaire incomplet, vous devez saisir tous les champs... <br />';
+ 	}
+ 	//echo $_GET['verif'].'<br />';
 }
 ?>
+
+<main class="main">
+	<div class="top_main">
+		<div class="row">
+			<div class="col--3"></div>
+			<div class="col--18 white">
+				<div class="row">
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
+					<div class="col-10 frm radius">
 
 <form action="qr.php" method="post">
 		<h5>Veuillez saisir votre identifiant ou votre adresse mail</h5>
@@ -66,6 +84,16 @@ if (isset($_GET['verif']))
 		?>
 		<input type="submit" value="Envoyer">
 	</form>
+
+						</div>
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
+				</div>
+			</div>
+			<div class="col--3"><span class="invisible">&emsp;</span></div>
+		</div>
+	</div>
+</main>
+
 	<p><a href="./../sas.php">retour à l'accueil</a></p>
 	<?php
 	include('./../templates/footer.php');

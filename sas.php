@@ -169,8 +169,8 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					}
 					?>
 
-					<label for="auto">Connexion automatique</label>
-					<input type="checkbox" name="auto" id="auto" /><br /><br />
+					<!--<label for="auto">Connexion automatique</label>
+					<input type="checkbox" name="auto" id="auto" /><br />--><br />
 					<input type="submit" value="Envoyer">
 					</form>				
 				</div>
@@ -242,7 +242,7 @@ else
 					?>
 					<label for="auto">Connexion automatique</label>
 					<input type="checkbox" name="auto" id="auto" /><br /><br />
-					<input type="submit" value="Envoyer">	
+					<input type="submit" value="Connexion">	
 					</form>
 					</div>
 					<div class="col-3 radius"></div>

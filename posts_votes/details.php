@@ -4,16 +4,13 @@ include('./../fonctions/connexion_bdd.php');
 include('./../fonctions/fonctions_account.php');
 include('./../fonctions/fonctions_posts_votes.php');
 include('./../templates/header.php');
-//supprFichiersCaptcha();
+
 /*
 afficher le détail d'un acteur
 */
 
 
-if (ok_login())
-{
-}
-else
+if (!ok_login())
 {
 	header('Location:../account/connexion.php?deconnexion=1'); //on déconnecte cet intrus!
 }
@@ -61,9 +58,11 @@ if (isset($_SESSION['id_acteur']))
 		{
 			while ($data = $reponse->fetch())
 			{
-				echo '<p><img src=./../logos/'.$data['logo'].'.png /></p>';
-				echo '<p><h3>'.$data['acteur'].'</h3></p>';
-				echo '<p>'.nl2br(htmlspecialchars($data['description'])).'</p>';
+				$_SESSION['logo_acteur']=$data['logo'];
+				echo '<p><img src=./../logos/'.$data['logo'].'.png /></p><br />';
+				echo '<hgroup id="details_acteur"><p><h2>'.$data['acteur'].'</h2></p>';
+				echo '<p><em><a href=\'./details.php?acteur='.$data['id'].'\'>'.$data['acteur'].'</a></em></p><br />';
+				echo '<p>'.nl2br(htmlspecialchars($data['description'])).'</p></hgroup>';
 			}			
 			$reponse->closeCursor();
 		}
@@ -75,7 +74,7 @@ if (isset($_SESSION['id_acteur']))
 		$lienReset=null;
 		if ($info_likes['deja_vote'])
 		{
-			echo '<p>';
+			//echo '<p>';
 			$_SESSION['id_vote']=$info_likes['id_vote'];
 			if ($info_likes['vote_content']) //vote égal 1
 			{
@@ -89,7 +88,7 @@ if (isset($_SESSION['id_acteur']))
 				$lienDown='<a href=\'change_vote.php?vote=0\'><strong><img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /></strong></a>'.$info_likes['negatifs'];
 				$lienReset='<a href=\'change_vote.php?vote=2\'> reset </a>';
 			}
-			echo '</p>';
+			//echo '</p>';
 		}
 		else
 		{
@@ -101,17 +100,15 @@ if (isset($_SESSION['id_acteur']))
 		$infos_user_comment=null;
 		if (!is_null($nb_posts)) 
 		{
-
-			echo '<p>'.$nb_posts.' commentaire(s) <br/>'.$nb_votes.' vote(s) <br/>'.$lienUp.' - '.$lienReset.' - '.$lienDown.'</p>';
-
 			//afficher tous les commentaires et infos associées pour l'acteur choisi
+			$tous_les_commentaires='<div id="tous_les_commentaires">';
 			if ($nb_posts > 0)
 			{
 				$reponse = $bdd->query('SELECT p.id p_id, p.post p_post, a.id a_id,a.prenom a_prenom, a.nom a_nom, DATE_FORMAT(p.date_add,\'%d/%m/%Y\') date_ajout FROM posts p INNER JOIN account a ON a.id=p.id_account WHERE p.id_acteur='.$id.'') or die(print_r($bdd->errorInfo()));
 				while ($data = $reponse->fetch())
 				{
-					echo '<p>'.$data['a_prenom'].' '.$data['a_nom'].' '.$data['date_ajout'].'</p>';
-					echo '<p>'.$data['p_post'].'</p>';
+					$tous_les_commentaires .= '<div class="un_commentaire"><p>'.$data['a_prenom'].' '.$data['a_nom'].'<br /> '.$data['date_ajout'].'</p>';
+					$tous_les_commentaires .= '<p>'.$data['p_post'].'</p>';
 					if ($data['a_id'] == $_SESSION['id'])
 					{
 						
@@ -122,19 +119,41 @@ if (isset($_SESSION['id_acteur']))
 						//print_r($infos_user_comment);
 						//echo '<br>';
 						//print_r($_SESSION['infos_user_comment']);
-						echo '<form action="form_commentaires.php" method="post">';
-						echo '<p><input type="submit" id="modif_commentaire" value="Modifier votre commentaire" name="modif_commentaire" /></p></form>';
+						$tous_les_commentaires .= '<form action="form_commentaires.php" method="post">';
+						$tous_les_commentaires .= '<p><input type="submit" id="modif_commentaire" value="Modifier votre commentaire" name="modif_commentaire" /></p></form>';
 
 					}
+					$tous_les_commentaires .= '</div>';
 				}
+				$tous_les_commentaires .= '</div>';
 				$reponse->closeCursor();
 			}
 		}
+
+		$btn_ajout_commentaire='0';
 		if (is_null($infos_user_comment))
 		{
-			echo '<form action="form_commentaires.php" method="post">';
-			echo '<p><button type="submit" id="ajout_commentaire" name="ajout_commentaire">Nouveau commentaire</button></p></form>';
+			$btn_ajout_commentaire = '<form action="form_commentaires.php" method="post" id="ajout_commentaire">';
+			$btn_ajout_commentaire .= '<input type="submit" form="ajout_commentaire" id="btn_ajout_commentaire" value="Commenter" name="ajout_commentaire"/>';
+			$btn_ajout_commentaire .= '</form>';
 		}
+
+			echo '<div class="row ">';
+				echo '<div class="col-2">';
+				echo $nb_posts.' commentaire(s)';
+				echo '</div>';
+				echo '<div class="col-6 alignright">';
+				if ($btn_ajout_commentaire !='0')
+				{
+					echo $btn_ajout_commentaire;
+				}
+				echo '</div>';
+				echo '<div class="col-4 alignright">';
+				echo $nb_votes.' vote(s) '.$lienUp.' - '.$lienReset.' - '.$lienDown;
+				echo '</div>';
+			echo '</div>';
+			echo '<div>&emsp;</div>';
+			echo $tous_les_commentaires;
 
 	}
 	else

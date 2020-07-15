@@ -45,6 +45,16 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 				$req->closeCursor();
 
 				?>
+
+<main class="main">
+	<div class="top_main">
+		<div class="row">
+			<div class="col--3"></div>
+			<div class="col--18 white">
+				<div class="row">
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
+					<div class="col-10 frm radius">
+
 				<form action="new_pass.php" method="post">
 				<h5>Réinitialisation du mot de passe</h5>
 				<p>
@@ -59,6 +69,16 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 				<input type="submit" value="Envoyer">
 				</form>
 				<p><a href="./../sas.php">retour à l'accueil</a></p>
+
+
+						</div>
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
+				</div>
+			</div>
+			<div class="col--3"><span class="invisible">&emsp;</span></div>
+		</div>
+	</div>
+</main>
 
 			<?php
 			} 

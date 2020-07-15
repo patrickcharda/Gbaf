@@ -10,7 +10,21 @@ if (!ok_login() && !is_admin())
 	header('Location:./../sas.php');
 }
 
+?>
+<main class="main">
+	<div class="top_main">
+		<div class="row">
+			<div class="col--3"></div>
+			<div class="col--18 white">
+				<div class="row">
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
+					<div class="col-10 frm radius">
+
+<?php
+
 echo 'PAGE ADMINISTRATEUR';
+echo '<br /><hr />';
+
 ?>
 
 <form action="add_acteur.php" method="post">
@@ -29,7 +43,7 @@ echo 'PAGE ADMINISTRATEUR';
 	</p>		
 	<input type="submit" value="Insérer">
 </form>
-
+<hr />
 <form action="change_presentation_gbaf.php" method="post">
 	<h5>MODIFIER LE TEXTE DE PRESENTATION DU GBAF</h5>
 	<?php
@@ -41,6 +55,18 @@ echo 'PAGE ADMINISTRATEUR';
 	?>
 	<input type="submit" value="Mettre à jour" />
 </form>
+<hr />
+
+						</div>
+					<div class="col-1"><span class="invisible">&emsp;</span></div>
+				</div>
+			</div>
+			<div class="col--3"><span class="invisible">&emsp;</span></div>
+		</div>
+	</div>
+</main>
+
+<p><a href="./fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>
 
 	<p><a href="./../account/connexion.php?deconnexion=1">retour à l'accueil</a></p>
 	<?php
