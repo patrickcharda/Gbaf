@@ -78,22 +78,22 @@ if (isset($_SESSION['id_acteur']))
 			$_SESSION['id_vote']=$info_likes['id_vote'];
 			if ($info_likes['vote_content']) //vote égal 1
 			{
-				$lienUp=$info_likes['positifs'].'<a href=\'change_vote.php?vote=1\'><strong> <img src=\'./images/Likes33.jpg\' alt=\'image pouce levé\' /> </strong></a>';
-				$lienDown='<a href=\'change_vote.php?vote=0\'> <img src=\'./images/DislikesOff33.jpg\' alt=\'image pouce baissé\' /></a>'.$info_likes['negatifs'];
-				$lienReset='<a href=\'change_vote.php?vote=2\'> reset </a>';
+				$lienUp='<a href=\'change_vote.php?vote=1\' class="notextdeco"><strong><img src=\'./images/Likes33.jpg\' alt=\'image pouce levé\' /></strong></a>'.$info_likes['positifs'];
+				$lienDown='<a href=\'change_vote.php?vote=0\' class="notextdeco"><img src=\'./images/DislikesOff33.jpg\' alt=\'image pouce baissé\' /></a>'.$info_likes['negatifs'];
+				$lienReset='<a href=\'change_vote.php?vote=2\' class="notextdeco"><img src="./images/reset23x23.png" alt="reset"></a>';
 			}
 			else
 			{
-				$lienUp=$info_likes['positifs'].'<a href=\'change_vote.php?vote=1\'> <img src=\'./images/LikesOff33.jpg\' alt=\'image pouce levé\' /> </a>';
-				$lienDown='<a href=\'change_vote.php?vote=0\'><strong><img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /></strong></a>'.$info_likes['negatifs'];
-				$lienReset='<a href=\'change_vote.php?vote=2\'> reset </a>';
+				$lienUp='<a href=\'change_vote.php?vote=1\' class="notextdeco"><img src=\'./images/LikesOff33.jpg\' alt=\'image pouce levé\' /></a>'.$info_likes['positifs'];
+				$lienDown='<a href=\'change_vote.php?vote=0\' class="notextdeco"><strong><img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /></strong></a>'.$info_likes['negatifs'];
+				$lienReset='<a href=\'change_vote.php?vote=2\' class="notextdeco"><img src="./images/reset23x23.png" alt="reset"></a>';
 			}
 			//echo '</p>';
 		}
 		else
 		{
-			$lienUp=$info_likes['positifs'].'<a href=\'change_vote.php?vote=3\'> <img src=\'./images/Likes33.jpg\' alt=\'image pouce levé\' /> </a>';
-			$lienDown='<a href=\'change_vote.php?vote=4\'> <img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /> </a>'.$info_likes['negatifs'];
+			$lienUp='<a href=\'change_vote.php?vote=3\' class="notextdeco"><img src=\'./images/Likes33.jpg\' alt=\'image pouce levé\' /></a>'.$info_likes['positifs'];
+			$lienDown='<a href=\'change_vote.php?vote=4\' class="notextdeco"><img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /></a>'.$info_likes['negatifs'];
 		}
 		
 		
@@ -138,9 +138,16 @@ if (isset($_SESSION['id_acteur']))
 			$btn_ajout_commentaire .= '</form>';
 		}
 
-			echo '<div class="row ">';
+			echo '<div class="white row"><strong>';
 				echo '<div class="col-2">';
-				echo $nb_posts.' commentaire(s)';
+				if ($nb_posts > 1)
+				{
+					echo $nb_posts.' commentaires';
+				}
+				else
+				{
+					echo $nb_posts.' commentaire';
+				}
 				echo '</div>';
 				echo '<div class="col-6 alignright">';
 				if ($btn_ajout_commentaire !='0')
@@ -149,10 +156,18 @@ if (isset($_SESSION['id_acteur']))
 				}
 				echo '</div>';
 				echo '<div class="col-4 alignright">';
-				echo $nb_votes.' vote(s) '.$lienUp.' - '.$lienReset.' - '.$lienDown;
+				if ($nb_votes > 1)
+				{
+					echo $nb_votes.' votes '.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown;
+				}
+				else
+				{
+					echo $nb_votes.' vote '.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown;
+				}
+				
 				echo '</div>';
-			echo '</div>';
-			echo '<div>&emsp;</div>';
+			echo '</div></strong>';
+			echo '<div class="white">&emsp;</div>';
 			echo $tous_les_commentaires;
 
 	}

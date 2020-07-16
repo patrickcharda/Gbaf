@@ -57,7 +57,7 @@ else
 					echo '<em><strong>Mail : </strong></em>'.$_SESSION['mail'].'<br />';
 					?>
 				</p>
-				<p align="left"> Vous pouvez utiliser le formulaire ci-dessous pour changer votre "question-réponse" ( employée pour la vérification en cas de <em><strong><a href="mdp_oubli.php" style="color:white;text-decoration: none;">mot de passe oublié</a></em></strong> )</p>
+				<p align="left"> Vous pouvez utiliser le formulaire pour changer votre "question-réponse" (requis en cas de mot de passe oublié)</p>
 				<p>
 				<label for="question"><em><strong> Question* : </strong></em></label><input type="text" name="question" id="question" maxlength="30" />
 				</p>
