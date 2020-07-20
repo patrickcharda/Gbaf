@@ -1,7 +1,7 @@
 <?php
 include('./../fonctions/session_start.php');
 include('./../fonctions/fonctions_account.php');
-supprFichiersCaptcha()
+supprFichiersCaptcha();
 
 /* reçoit le formulaire d'inscription et enregistre ds la bdd
 si le formulaire est ok et que le username n'est pas déjà pris (ni l'adresse mail) 
@@ -55,27 +55,27 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 		unset($_SESSION['code']);
 	}
 	//verif username
-	if (strlen($_POST['pseudooumail']) > 20 OR !preg_match('#^[a-zA-Z0-9_\.-]{1,20}$#',$_POST['pseudooumail'])) //pas d@ ds username
+	if (strlen($_POST['pseudooumail']) > 20 OR !preg_match('#^[a-zA-Zçâàéèêïîë 0-9_\. -]{1,20}$#',$_POST['pseudooumail'])) //pas d@ ds username
 	{
 		$verif .='pseudo';
 	}
 	//verif nom
-	if (strlen($_POST['nom']) > 25 OR !preg_match('#^[a-zA-Z-]{1,25}$#',$_POST['nom']))
+	if (strlen($_POST['nom']) > 25 OR !preg_match('#^[a-zA-Zçâàéèêïîë -]{1,25}$#',$_POST['nom']))
 	{
 		$verif .='nom';
 	}
 	//verif prénom
-	if (strlen($_POST['prenom']) > 25 OR !preg_match('#^[a-zA-Z-]{1,25}$#',$_POST['prenom'])) 
+	if (strlen($_POST['prenom']) > 25 OR !preg_match('#^[a-zA-Zçâàéèêïîë -]{1,25}$#',$_POST['prenom'])) 
 	{
 		$verif .='prenom';
 	}
 	//verif question
-	if (strlen($_POST['question']) > 30 OR !preg_match('#^[a-zA-Z -]{1,30}$#',$_POST['question']))
+	if (strlen($_POST['question']) > 30 OR !preg_match('#^[a-zA-Zçâàéèêïîë 0-9_\. -]{1,30}$#',$_POST['question']))
 	{
 		$verif .='question';
 	}
 	//verif reponse
-	if (strlen($_POST['reponse']) > 30 OR !preg_match('#^[a-zA-Z -]{1,30}$#',$_POST['reponse'])) 
+	if (strlen($_POST['reponse']) > 30 OR !preg_match('#^[a-zA-Zçâàéèêïîë 0-9_\. -]{1,30}$#',$_POST['reponse'])) 
 	{
 		$verif .='reponse';
 	}

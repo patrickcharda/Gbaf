@@ -91,25 +91,28 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					<label for="pseudooumail"> Nom d'utilisateur * : </label><input type="text" name="pseudooumail" id="pseudooumail" maxlength="20" title="Le nom d'utilisateur correspond au pseudo, ou au username. Maximum 20 caractères alphanumériques." <?php
 					if (isset($_SESSION['form_fields']['username']))
 					{
-						echo 'value='.htmlspecialchars($_SESSION['form_fields']['username']).' ';
+						echo 'value="'.htmlspecialchars($_SESSION['form_fields']['username']).'"';
 					}
-					?>/>
+					?>
+					>
 					</p>
 					<p>
 					<label for="nom"> Nom * : </label><input type="text" name="nom" id="nom" maxlength="25" <?php
 					if (isset($_SESSION['form_fields']['nom']))
 					{
-						echo 'value='.htmlspecialchars($_SESSION['form_fields']['nom']).' ';
+						echo 'value="'.htmlspecialchars($_SESSION['form_fields']['nom']).'"';
 					}
-					?>/>
+					?> 
+					>
 					</p>
 					<p>
 					<label for="prenom"> Prénom * : </label><input type="text" name="prenom" id="prenom" maxlength="25" <?php
 					if (isset($_SESSION['form_fields']['prenom']))
 					{
-						echo 'value='.htmlspecialchars($_SESSION['form_fields']['prenom']).' ';
+						echo 'value="'.htmlspecialchars($_SESSION['form_fields']['prenom']).'"';
 					}
-					?>/>
+					?> 
+					>
 					</p>		
 					<p>
 					<label for="pass"> Mot de passe * : </label><input type="password" name="pass" id="pass" maxlength="10" minlength="6" />
@@ -118,26 +121,29 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					<label for="mail"> Email * : </label><input type="text" name="mail" id="mail" maxlength="30" <?php
 					if (isset($_SESSION['form_fields']['mail']))
 					{
-						echo 'value='.htmlspecialchars($_SESSION['form_fields']['mail']).' ';
+						echo 'value="'.htmlspecialchars($_SESSION['form_fields']['mail']).'"';
 					}
-					?>/>
+					?>
+					>
 					</p>
 
 					<p>
 					<label for="question"> Question * : </label><input type="text" name="question" id="question" maxlength="30" <?php
 					if (isset($_SESSION['form_fields']['question']))
 					{
-						echo 'value='.htmlspecialchars($_SESSION['form_fields']['question']).' ';
+						echo 'value="'.$_SESSION['form_fields']['question'].'"';
 					}
-					?>/>
+					?>
+					>
 					</p>
 					<p>
 					<label for="reponse"> Réponse * : </label><input type="text" name="reponse" id="reponse" maxlength="30" <?php
 					if (isset($_SESSION['form_fields']['reponse']))
 					{
-						echo 'value='.htmlspecialchars($_SESSION['form_fields']['reponse']).' ';
+						echo 'value="'.htmlspecialchars($_SESSION['form_fields']['reponse']).'"';
 					}
-					?>/>
+					?>
+					>
 					</p>
 
 					<?php
