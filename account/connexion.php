@@ -16,14 +16,15 @@ if (isset($_GET['deconnexion']))
 		unset($_COOKIE['pass']);
 	} 
 	session_destroy();
-	unset($_GET['deconnexion']);
+	//unset($_GET['deconnexion']);
+	echo 'ohoh';
 	header('Location:./../sas.php');
 }
 else
 {
 	//vérifier infos de connexion
 	include('./../fonctions/connexion_bdd.php');
-	if (isset($_POST['pseudooumail']) AND isset($_POST['pass']))
+	if (isset($_POST['pseudooumail']) AND isset($_POST['pass']) && $_POST['pseudooumail']!='' && $_POST['pass']!='')
 	{
 		if (preg_match('#@#', $_POST['pseudooumail']))
 		{
@@ -53,16 +54,14 @@ else
 			$pass = $_COOKIE['pass'];
 		}
 	}
-	//verif captcha :
-	if (isset($_POST['code']) AND isset($_SESSION['code']) AND $_SESSION['code'] != $_POST['code'])
-	{	
-		unset($_SESSION['code']);
-
-		unset($_POST['code']);
-
-		header('Location:./../sas.php');
-		
+	else 
+	{
+		header("Location:./../sas.php?connex=777");
 	}
+
+	//verif captcha
+	if ($_POST['code'] == $_SESSION['code'])
+	{
 
 	if (isset($valeur) AND isset($pass))
 	{
@@ -102,14 +101,16 @@ else
 				}
 				else
 				{
-					echo 'pb de mot de passe';
+					//echo 'pb de mot de passe';
+					header("Location:./../sas.php?connex=777");
 					$req->closeCursor();
 				}
 			}
 			else
 			{
 				$req->closeCursor();
-				echo 'identifiant ou mot de passe incorrect';
+				echo 'toto';
+				header("Location:./../sas.php?connex=777");
 			}
 
 		}
@@ -120,9 +121,18 @@ else
 	}
 	else 
 	{
-		header('Location:./../sas.php');
-		//echo 'toto';
+		//echo 'tata';
+		header("Location:./../sas.php?connex=777");
+
 	}
+	}
+	else
+	{
+		$verif .='code';
+		//echo 'hoho';
+		header('Location:./../sas.php?connex=777&verif='.$verif);
+	}
+
 }
 
 ?>

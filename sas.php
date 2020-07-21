@@ -199,14 +199,7 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					//FORMULAIRE DE CONNEXION
 else
 {
-	if (isset($_GET['insertuser']) OR isset($_SESSION['insert']))
-	{
-		echo 'Compte user créé';
-	}
-	if (isset($GLOBALS['fields']));
-	{
-		unset($GLOBALS['fields']);
-	}
+
 ?>
 <main class="main">
 <div class="row top_main">
@@ -217,7 +210,36 @@ else
 					<div class="col-3"></div>
 					<div class="frm_left col-6 frm radius">
 					<form action="./account/connexion.php" method="post">
-					<!--<h5>Connexion </h5>-->
+					<?php
+					if (isset($_GET['insertuser']) OR isset($_SESSION['insert']))
+					{
+						echo 'Compte user créé';
+					}
+					else
+					{
+						//echo 'oups';
+					}
+					if (isset($_GET['connex']))
+					{
+						if (preg_match('#777#', $_GET['connex']))
+							{
+								echo '- Informations incorrectes, veuillez recommencer <br /><br />';
+							}
+							else
+							{
+								echo 'ops';
+							}
+					}
+					else
+					{
+						//echo 'oks';
+						//header("Location:./sas.php?connex=777");
+					}
+					if (isset($GLOBALS['fields']));
+					{
+						unset($GLOBALS['fields']);
+					}
+					?>
 					<label for="pseudooumail"> Username ou email *  </label><input type="text" name="pseudooumail" id="pseudooumail"/><br />
 					<label for="pass"> Mot de passe *  </label><input type="password" name="pass" id="pass"/><br />
 
@@ -226,8 +248,15 @@ else
 					{
 						$nb_caracteres = mt_rand(2,4);
 						$captcha = createCaptcha($nb_caracteres);
-						$_SESSION['captcha'] = $captcha; 
-						$redirection = './sas.php';
+						$_SESSION['captcha'] = $captcha;
+						if (isset($_GET['connex']))
+						{ 
+							$redirection = './sas.php?connex=777';
+						}
+						else
+						{
+							$redirection = './sas.php';
+						}
 						createImageCaptcha($captcha,$redirection);
 					}
 					else

@@ -88,7 +88,6 @@ if (isset($_SESSION['id_acteur']))
 				$lienDown='<a href=\'change_vote.php?vote=0\' class="notextdeco"><strong><img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /></strong></a>'.$info_likes['negatifs'];
 				$lienReset='<a href=\'change_vote.php?vote=2\' class="notextdeco"><img src="./images/reset23x23.png" alt="reset"></a>';
 			}
-			//echo '</p>';
 		}
 		else
 		{
@@ -107,7 +106,7 @@ if (isset($_SESSION['id_acteur']))
 				$reponse = $bdd->query('SELECT p.id p_id, p.post p_post, a.id a_id,a.prenom a_prenom, a.nom a_nom, DATE_FORMAT(p.date_add,\'%d/%m/%Y\') date_ajout FROM posts p INNER JOIN account a ON a.id=p.id_account WHERE p.id_acteur='.$id.'') or die(print_r($bdd->errorInfo()));
 				while ($data = $reponse->fetch())
 				{
-					$tous_les_commentaires .= '<div class="un_commentaire"><p>'.$data['a_prenom'].' '.$data['a_nom'].'<br /> '.$data['date_ajout'].'</p>';
+					$tous_les_commentaires .= '<div class="un_commentaire"><p class="entete_commentaire">'.$data['a_prenom'].'<br /> '.$data['date_ajout'].'</p>';
 					$tous_les_commentaires .= '<p>'.$data['p_post'].'</p>';
 					if ($data['a_id'] == $_SESSION['id'])
 					{
@@ -167,7 +166,7 @@ if (isset($_SESSION['id_acteur']))
 				
 				echo '</div>';
 			echo '</div></strong>';
-			echo '<div class="white">&emsp;</div>';
+			echo '<div class="synthese">&emsp;</div>';
 			echo $tous_les_commentaires;
 
 	}

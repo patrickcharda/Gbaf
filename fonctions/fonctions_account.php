@@ -35,12 +35,12 @@ function createImageCaptcha($captcha,$redirection)
 	if (basename(realpath('.')) != 'gbaf')
 	{
 		$_SESSION['fic_image'] =createComplexeString(15).'.png';
-		$_SESSION['chemin_vers_fic_image'] = './../images/';
+		$_SESSION['chemin_vers_fic_image'] = './../imagescaptcha/';
 	}
 	else
 	{
 		$_SESSION['fic_image'] =createComplexeString(15).'.png';
-		$_SESSION['chemin_vers_fic_image'] = './images/';	
+		$_SESSION['chemin_vers_fic_image'] = './imagescaptcha/';	
 	}
 	imagestring($image, 9, 20, 26, $captcha, $blanc);
 	if (is_writable($_SESSION['chemin_vers_fic_image']))
@@ -76,11 +76,11 @@ function supprFichiersCaptcha()
 		$imagefiles_to_delete=array(); //pr les fichiers physiques à suppr
 		if (basename(realpath('.')) != 'gbaf')
 		{
-			$chemin_dossier_images = './../images/';
+			$chemin_dossier_images = './../imagescaptcha/';
 		}
 		else
 		{
-			$chemin_dossier_images = './images/';
+			$chemin_dossier_images = './imagescaptcha/';
 		}
 		while ($data = $reponse->fetch()) 
 		{
