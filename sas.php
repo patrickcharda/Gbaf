@@ -19,17 +19,13 @@ if (isset($_COOKIE['pseudooumail']) AND $_COOKIE['pseudooumail']!='' AND isset($
 ?>
 
 
-<!--
-#si le visiteur l'a demandé on affiche le formulaire d'inscription
--->
-<div class="alerte">
-
 <?php
+
+//relevé des erreurs de saisie du formulaire d'inscription
 if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 {
 	if (isset($_GET['verif']) && strlen($_GET['verif'])<60)
 	{
-		//echo $_GET['verif'];
 		$alerte='';
 		global $alerte;
 		if (preg_match('#motdepasse#', $_GET['verif']))
@@ -72,10 +68,14 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 		{
 			$alerte.='- mail déjà pris <br />';
 		}
+		if (preg_match('#bdd#', $_GET['verif']))
+		{
+			$alerte.='- problème accès base de données <br />';
+		}
 	}
 ?>
-</div>
 
+<!--formulaire d'inscription-->
 <main class="main">
 	<div class="row top_main">
 		<div class="col--3"></div>
@@ -174,9 +174,7 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					unset($_SESSION['fic_image']);
 					}
 					?>
-
-					<!--<label for="auto">Connexion automatique</label>
-					<input type="checkbox" name="auto" id="auto" /><br />--><br />
+					<br />
 					<input type="submit" value="Envoyer">
 					</form>				
 				</div>
@@ -196,24 +194,23 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 <?php
 
 }                		
-					//FORMULAIRE DE CONNEXION
 else
 {
-
+//formulaire de connexion
 ?>
 <main class="main">
 <div class="row top_main">
-		<div class="col--3"></div>
-		<div class="col--18 main_content white" >
+		<div class="col--2"></div>
+		<div class="col--20 main_content white" >
 			<div class="row ">
 				<div class="col-12">
-					<div class="col-3"></div>
-					<div class="frm_left col-6 frm radius">
+					<div class="col-3 gouttiere">&nbsp;</div>
+					<div class="frm_left col-6 gouttiere frm radius">
 					<form action="./account/connexion.php" method="post">
 					<?php
 					if (isset($_GET['insertuser']) OR isset($_SESSION['insert']))
 					{
-						echo 'Compte user créé';
+						echo '<strong> Compte utilisateur créé </strong><br />';
 					}
 					else
 					{
@@ -225,15 +222,10 @@ else
 							{
 								echo '- Informations incorrectes, veuillez recommencer <br /><br />';
 							}
-							else
+						if (preg_match('#888#', $_GET['connex']))
 							{
-								echo 'ops';
+								echo '- Problème de connexion à la base de données <br /><br />';
 							}
-					}
-					else
-					{
-						//echo 'oks';
-						//header("Location:./sas.php?connex=777");
 					}
 					if (isset($GLOBALS['fields']));
 					{
@@ -252,6 +244,10 @@ else
 						if (isset($_GET['connex']))
 						{ 
 							$redirection = './sas.php?connex=777';
+						}
+						else if (isset($_GET['insertuser']))
+						{
+							$redirection = './sas.php?insertuser=1';
 						}
 						else
 						{
@@ -280,10 +276,11 @@ else
 					<input type="submit" value="Connexion">	
 					</form>
 					</div>
-					<div class="col-3 radius"></div>
+					<div class="col-3 gouttiere radius">&nbsp;</div>
 					</div>
 				</div>
 			</div>	
+		<div class="col--2"></div>
 </main>
 
 <div class="liens">

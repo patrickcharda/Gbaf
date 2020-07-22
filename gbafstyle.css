@@ -9,6 +9,7 @@ body {
 .alerte,
 .main,
 .footer {
+	font-family: Arial, Helvetica, "sans-serif";
 	/*display: 1170px;*/
 	margin: 0 auto 0;
 	padding: 1em O;
@@ -239,6 +240,7 @@ a {
 }
 
 .resume_acteur {
+	font-family: Arial, Helvetica, "sans-serif";
 	padding: 30px;
 	text-align: left;
 	align-self: space-around;
@@ -356,7 +358,7 @@ a {
 .col-12 {width: 100%;}
 /* 24 colonnes */
 .col--1 {width: 4.16%;}
-.col--2 {width: 8.32%;}
+.col--2 {width: 8%;}
 .col--3 {width: 12.5%;}
 .col--4 {width: 16.64%;}
 .col--5 {width: 20.80%;}
@@ -374,7 +376,7 @@ a {
 .col--17 {width: 70.72%;}
 .col--18 {width: 75%;}
 .col--19 {width: 79.04%;}
-.col--20 {width: 83.2%;}
+.col--20 {width: 84%;}
 .col--21 {width: 87.36%;}
 .col--22 {width: 91.52%;}
 .col--23 {width: 95.68%;}

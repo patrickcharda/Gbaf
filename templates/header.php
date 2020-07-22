@@ -24,12 +24,12 @@
 <header class="header">
 
 	<div class="row logo">
-		<div class="col-3">
+		<div class="col-2">
 							<?php
 				echo '<div class="logolink"><a href='.$relatif.'index.php >&emsp;&emsp;&emsp;&emsp;</a></div>';
 				?>
 		</div>
-		<div class="col-9">
+		<div class="col-10">
 			
 				<?php /*
 				echo '<div class="logolink"><a href='.$relatif.'index.php >&emsp;&emsp;&emsp;&emsp;</a></div>'; */
@@ -38,7 +38,7 @@
 		</div>
 	</div>
 	<div class="row right_sidebar">
-		<div class="col-9" style="position: relative;">
+		<div class="col-10" style="position: relative;">
 			<?php /*
 				if (isset($_SESSION['login']) && !is_null($_SESSION['login']))
 				{
@@ -50,7 +50,7 @@
 				?>
 		</div>
 
-		<div class="col-3">
+		<div class="col-2">
 
 						<?php
 				if (isset($_SESSION['login']) && !is_null($_SESSION['login']))

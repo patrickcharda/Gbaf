@@ -16,14 +16,13 @@ if (isset($_GET['deconnexion']))
 		unset($_COOKIE['pass']);
 	} 
 	session_destroy();
-	//unset($_GET['deconnexion']);
-	echo 'ohoh';
 	header('Location:./../sas.php');
 }
 else
 {
 	//vérifier infos de connexion
 	include('./../fonctions/connexion_bdd.php');
+	//si connexion depuis formulaire
 	if (isset($_POST['pseudooumail']) AND isset($_POST['pass']) && $_POST['pseudooumail']!='' && $_POST['pass']!='')
 	{
 		if (preg_match('#@#', $_POST['pseudooumail']))
@@ -39,6 +38,7 @@ else
 			$pass = $_POST['pass'];
 		}
 	}
+	//si connexion automatique
 	else if (isset($_COOKIE['pseudooumail']) AND $_COOKIE['pseudooumail']!='' AND isset($_COOKIE['pass']) AND $_COOKIE['pass']!='')
 	{
 		if (preg_match('#@#', $_COOKIE['pseudooumail']))
@@ -62,77 +62,78 @@ else
 	//verif captcha
 	if ($_POST['code'] == $_SESSION['code'])
 	{
-
-	if (isset($valeur) AND isset($pass))
-	{
-		if (isset($bdd))
+		if (isset($valeur) AND isset($pass))
 		{
-			//on verifie login et mot de passe dans la bdd
-			$req = $bdd->prepare('SELECT id, id_groupe, mail,username,passwd,prenom,nom FROM account WHERE '.$critere.'= ?') or die(print_r($bdd->errorInfo()));
-			$req->execute(array(
-			$valeur
-			));	
-			$donnees = $req->fetch();
-			if (!empty($donnees))
+			if (isset($bdd))
 			{
-				$isPasswordCorrect = password_verify($pass, $donnees['passwd']);
-				if ($isPasswordCorrect)
+				//on verifie login et mot de passe dans la bdd
+				$req = $bdd->prepare('SELECT id, id_groupe, mail, username, passwd, prenom, nom, question, reponse FROM account WHERE '.$critere.'= ?') or die(print_r($bdd->errorInfo()));
+				$req->execute(array(
+				$valeur
+				));	
+				$donnees = $req->fetch();
+				if (!empty($donnees))
 				{
-					$_SESSION['id']=$donnees['id'];
-					$_SESSION['login']=$donnees['username'];
-					$_SESSION['mail']=$donnees['mail'];
-					$_SESSION['groupe']=$donnees['id_groupe'];
-					$_SESSION['prenom']=$donnees['prenom'];
-					$_SESSION['nom']=$donnees['nom'];
-					$req->closeCursor();
-					if (isset($_POST['auto']) AND $_POST['auto']=='on')
+					$isPasswordCorrect = password_verify($pass, $donnees['passwd']);
+					if ($isPasswordCorrect)
 					{
-						setcookie('pseudooumail',$_POST['pseudooumail'],time()+365*24*3600,null,null,false,true);
-						setcookie('pass',$_POST['pass'],time()+365*24*3600,null,null,false,true);
-					}
-					if ($_SESSION['groupe'] == 2)
-					{	
-					header('Location:./../admin/admin.php'); //page pour saisie nouvel acteur
+						$_SESSION['id']=htmlspecialchars($donnees['id']);
+						$_SESSION['login']=htmlspecialchars($donnees['username']);
+						$_SESSION['mail']=htmlspecialchars($donnees['mail']);
+						$_SESSION['groupe']=htmlspecialchars($donnees['id_groupe']);
+						$_SESSION['prenom']=htmlspecialchars($donnees['prenom']);
+						$_SESSION['nom']=htmlspecialchars($donnees['nom']);
+						$_SESSION['question']=htmlspecialchars($donnees['question']);
+						$_SESSION['reponse']=htmlspecialchars($donnees['reponse']);
+						$req->closeCursor();
+						if (isset($_POST['auto']) AND $_POST['auto']=='on')
+						{
+							setcookie('pseudooumail',$_POST['pseudooumail'],time()+365*24*3600,null,null,false,true);
+							setcookie('pass',$_POST['pass'],time()+365*24*3600,null,null,false,true);
+						}
+						if ($_SESSION['groupe'] == 2)
+						{	
+							header('Location:./../admin/admin.php'); //page pour saisie nouvel acteur
+						}
+						else
+						{
+							//ok on donne accès à l'extranet
+							header('Location:./../espacemembres.php');
+						}
 					}
 					else
 					{
-						header('Location:./../espacemembres.php');
+						//pb de mot de passe
+						header("Location:./../sas.php?connex=777");
+						$req->closeCursor();
 					}
 				}
 				else
 				{
-					//echo 'pb de mot de passe';
-					header("Location:./../sas.php?connex=777");
+					//la requete ne retourne aucun résultat
 					$req->closeCursor();
+					header("Location:./../sas.php?connex=777");
 				}
 			}
 			else
 			{
-				$req->closeCursor();
-				echo 'toto';
+				//problème de connexion à la base de données
 				header("Location:./../sas.php?connex=777");
 			}
-
 		}
-		else
+		else 
 		{
-			echo 'pb acces bdd';
+			//comment est-ce possible?
+			header("Location:./../sas.php?connex=777");
 		}
-	}
-	else 
-	{
-		//echo 'tata';
-		header("Location:./../sas.php?connex=777");
-
-	}
 	}
 	else
 	{
+		//incohérence captcha
 		$verif .='code';
-		//echo 'hoho';
 		header('Location:./../sas.php?connex=777&verif='.$verif);
 	}
-
 }
+
 
 ?>

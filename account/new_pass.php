@@ -42,7 +42,7 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 		}
 		else
 		{
-			echo 'pb de connexion bdd; veuillez contacter l\'administrateur du site';
+			header("Location:./../sas.php?connex=888");
 		}
 	}
 }

@@ -26,10 +26,10 @@ else
 			<div class="col--18 white">
 				<div class="row">
 					<div class="col-1"><span class="invisible">&emsp;</span></div>
-					<div class="col-10 frm radius">
-			
+					<div class="col-10 frm radius">	
 			<form action="modif_qr.php" method="post">
-				<p align=left"><strong>
+				<p align="left">
+					<strong>
 					<?php
 					if (isset($_GET['verif']))
 					{
@@ -49,21 +49,55 @@ else
 					?>
 					</strong>
 				</p>
-				<p align="left">
-					<?php
-					echo '<em><strong>Login : </strong></em>'.$_SESSION['login'].'<br />';
-					echo '<em><strong>Prénom : </strong></em>'.$_SESSION['prenom'].'<br />';
-					echo '<em><strong>Nom : </strong></em>'.$_SESSION['nom'].'<br />';
-					echo '<em><strong>Mail : </strong></em>'.$_SESSION['mail'].'<br />';
+
+					<p>
+					<label for="pseudooumail"> Nom d'utilisateur * : </label><input type="text" name="pseudooumail" id="pseudooumail" maxlength="20" title="Le nom d'utilisateur correspond au pseudo, ou au username. Maximum 20 caractères alphanumériques." <?php
+					if (isset($_SESSION['login']))
+					{
+						echo 'value="'.htmlspecialchars($_SESSION['login']).'"';
+					}
 					?>
-				</p>
-				<p align="left"> Vous pouvez utiliser le formulaire pour changer votre "question-réponse" (requis en cas de mot de passe oublié)</p>
-				<p>
-				<label for="question"><em><strong> Question* : </strong></em></label><input type="text" name="question" id="question" maxlength="30" />
-				</p>
-				<p>
-				<label for="reponse"><em><strong> Réponse* : </strong></em></label><input type="text" name="reponse" id="reponse" maxlength="30" />
-				</p>
+					>
+					</p>
+					<p>
+					<label for="nom"> Nom * : </label><input type="text" name="nom" id="nom" maxlength="25" <?php
+					if (isset($_SESSION['nom']))
+					{
+						echo 'value="'.htmlspecialchars($_SESSION['nom']).'"';
+					}
+					?> 
+					>
+					</p>
+					<p>
+					<label for="prenom"> Prénom * : </label><input type="text" name="prenom" id="prenom" maxlength="25" <?php
+					if (isset($_SESSION['prenom']))
+					{
+						echo 'value="'.htmlspecialchars($_SESSION['prenom']).'"';
+					}
+					?> 
+					>
+					</p>		
+					<p>
+					<label for="pass"> Mot de passe * : </label><input type="password" name="pass" id="pass" maxlength="10" minlength="6" />
+					</p>
+					<p>
+					<label for="question"> Question * : </label><input type="text" name="question" id="question" maxlength="30" <?php
+					if (isset($_SESSION['question']))
+					{
+						echo 'value="'.$_SESSION['question'].'"';
+					}
+					?>
+					>
+					</p>
+					<p>
+					<label for="reponse"> Réponse * : </label><input type="text" name="reponse" id="reponse" maxlength="30" <?php
+					if (isset($_SESSION['reponse']))
+					{
+						echo 'value="'.htmlspecialchars($_SESSION['reponse']).'"';
+					}
+					?>
+					>
+					</p>
 				<input type="submit" value="Enregistrer" />
 			</form>
 

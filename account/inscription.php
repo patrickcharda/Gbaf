@@ -70,12 +70,12 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 		$verif .='prenom';
 	}
 	//verif question
-	if (strlen($_POST['question']) > 30 OR !preg_match('#^[a-zA-Zçâàéèêïîë 0-9_\. -]{1,30}$#',$_POST['question']))
+	if (strlen($_POST['question']) > 30 OR !preg_match('#^[a-zA-Zçâàéèêïîë 0-9_\.!?\' -]{1,30}$#',$_POST['question']))
 	{
 		$verif .='question';
 	}
 	//verif reponse
-	if (strlen($_POST['reponse']) > 30 OR !preg_match('#^[a-zA-Zçâàéèêïîë 0-9_\. -]{1,30}$#',$_POST['reponse'])) 
+	if (strlen($_POST['reponse']) > 30 OR !preg_match('#^[a-zA-Zçâàéèêïîë 0-9_\.!\' -]{1,30}$#',$_POST['reponse'])) 
 	{
 		$verif .='reponse';
 	}
@@ -114,15 +114,11 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 					$verif .= "2";
 				} 
 				$req->closeCursor();
-				/*$_POST['mail'] = preg_replace('#@#', '(at)', $_POST['mail']); // remplacer l'@ par ()at pour passage url
-				$verif .='&p='.$_POST['pseudooumail'].'&m='.$_POST['mail'];*/
 				header("Location:./../sas.php?nouveaumembre=0&verif=$verif");
 			}
-
-				// on peut insérer le nouvel util dans la bdd :
 			else
 			{
-				
+				// on peut insérer le nouvel util dans la bdd :
 				$pass_hache=password_hash($_POST['pass'], PASSWORD_DEFAULT);
 				$req = $bdd->prepare('INSERT INTO account(username,nom,prenom,mail,passwd,date_inscription,question,reponse) VALUES(:username, :nom, :prenom, :mail, :pass, CURDATE(), :question, :reponse)') or die(print_r($bdd->errorInfo()));
 				$req->execute(array(
@@ -135,29 +131,22 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 					'reponse'=>$_POST['reponse']
 				));	
 				$req->closeCursor();
-				//$_SESSION['insert']='ok';
-				// gérer cookie :
-				/*if (isset($_POST['auto']))
-				{
-					setcookie('pseudooumail',$_POST['pseudooumail'],time()+365*24*3600,null,null,false,true);
-					setcookie('pass',$_POST['pass'],time()+365*24*3600,null,null,false,true);
-				}*/
 				session_destroy();
-				unset($_SESSION);
 				header('Location:./../sas.php?insertuser=1');
 			}
 		}
 		else
 		{
-			echo 'pb de connexion à la base de données';
+			$verif='bdd';
+			header("Location:./../sas.php?verif=$verif");
 		}
 
 	}
 }
 else
 {
-	header('Location:./../sas.php');
-
+	$connex=777;
+	header("Location:./../sas.php?connex=$connex");
 }
 
 ?>

@@ -22,7 +22,6 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 	if ($_POST['code'] != $_SESSION['code'])
 	{
 		$verif .='code';
-		//unset($_SESSION['code']);
 	}
 	if (!is_null($verif))
 	{
@@ -58,10 +57,16 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 				<form action="new_pass.php" method="post">
 				<h5>Réinitialisation du mot de passe</h5>
 				<p>
-				<label for="question"> * Question </label><input type="text" name="question" id="question" />
+				<label for="question"> Question * : </label><input type="text" name="question" id="question" maxlength="30" <?php
+					if (isset($_SESSION['question']))
+					{
+						echo 'value="'.$_SESSION['question'].'"';
+					}
+					?>
+				readonly>
 				</p>	
 				<p>
-				<label for="reponse"> * Réponse </label><input type="text" name="reponse" id="reponse" />
+				<label for="reponse"> * Réponse </label><input type="text" name="reponse" id="reponse" maxlength="30"/>
 				</p>
 				<p>
 				<label for="pass"> * Nouveau mot de passe </label><input type="password" name="pass" id="pass" />

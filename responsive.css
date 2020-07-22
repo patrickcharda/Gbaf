@@ -18,6 +18,18 @@
   	height: 16px;
   	background-image: url("./logo15x15.png"), url("./logos/logo15x15.png");
   }
+  .col-3.gouttiere {
+    width: 5%;
+  }
+  .col-6.gouttiere {
+    width: 90%;
+  }
+  .col--3 {
+    width: 5%;
+  }
+  .col--18 {
+    width: 90%;
+  }
   .logoutlink {
   	width: 16px;
   	height: 18px;

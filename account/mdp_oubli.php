@@ -8,21 +8,22 @@ include('./../templates/header.php');
 
 if (isset($_GET['verif']))
 {
+	$alerte=null;
 	if (preg_match('#pb#', $_GET['verif']))
  	{
- 		echo 'Identifiant et/ou code de sécurité incorrect <br />';
+ 		$alerte .= 'Identifiant et/ou code de sécurité incorrect <br />';
  	}
   	if (preg_match('#login#', $_GET['verif']))
  	{
- 		echo 'Identifiant inconnu <br />';
+ 		$alerte .= 'Identifiant inconnu <br />';
  	}
    	if (preg_match('#code#', $_GET['verif']))
  	{
- 		echo 'Code de sécurité incorrect <br />';
+ 		$alerte .= 'Code de sécurité incorrect <br />';
  	}
  	if (preg_match('#qrhs#', $_GET['verif']))
  	{
- 		echo 'Question et/ou réponse incorrecte(s) <br />';
+ 		$alerte .= 'Question et/ou réponse incorrecte(s) <br />';
  	}
  	if (preg_match('#bdd#', $_GET['verif']))
  	{
@@ -30,13 +31,12 @@ if (isset($_GET['verif']))
  	}
  	if (preg_match('#motdepasse#', $_GET['verif']))
  	{
- 		echo 'Le mot de passe doit contenir entre 6 et 10 caractères <br />';
+ 		$alerte .= 'Le mot de passe doit contenir entre 6 et 10 caractères <br />';
  	}
  	 if (preg_match('#incomplet#', $_GET['verif']))
  	{
- 		echo 'Formulaire incomplet, vous devez saisir tous les champs... <br />';
+ 		$alerte .= 'Formulaire incomplet, vous devez saisir tous les champs... <br />';
  	}
- 	//echo $_GET['verif'].'<br />';
 }
 ?>
 
@@ -50,7 +50,14 @@ if (isset($_GET['verif']))
 					<div class="col-10 frm radius">
 
 <form action="qr.php" method="post">
+
 		<h5>Veuillez saisir votre identifiant ou votre adresse mail</h5>
+		<?php
+		if (!is_null($alerte))
+		{
+			echo $alerte;
+		}
+		?>
 		<p>
 			<input type="text" name="pseudooumail" id="pseudooumail" maxlength="30" />
 		</p>	
