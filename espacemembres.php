@@ -37,14 +37,11 @@ else
 <div class="bandeau">
 </div>
 
-<main class="main">
-	<div class="top_main">
-		<div class="row">
-			<div class="col--3"></div>
-			<div class="col--18 white">
-				<div class="row">
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-					<div class="col-10 frm radius">
+<main>
+			<div class="col-deco-gauche"></div>
+			<div class="col-gouttiere-gauche"></div>
+			<div class="col-contenu" >
+				<div class="frm radius">
 			<?php
 			if (isset($bdd))
 			{
@@ -67,7 +64,7 @@ else
 							</div>
 							<div class="resume_acteur">
 						<?php
-						echo '<h3>'.($ligne['acteur']).'</h3>';
+						echo '<h3>'.($ligne['acteur']).'</h3><p>';
 						$description = $ligne['description_courte'];
 						/*$description= utf8_decode(html_entity_decode($ligne['description'], ENT_QUOTES, 'utf-8'));
 						$nb_de_mots_description=str_word_count($description);
@@ -80,25 +77,24 @@ else
 						}
 						//echo $resume;*/
 						echo $description;
-						echo '<a href=./posts_votes/details.php?acteur='.$ligne['id'].' class="reda">&emsp;...</a>';
+						echo '<a href=./posts_votes/details.php?acteur='.$ligne['id'].' class="reda">&emsp;...</a></p>';
 						?>
-									</div>
-									<div class="liresuite">
+							</div>
+							<div class="liresuite">
 						<form method="get" action="./posts_votes/details.php" >
 						<?php 
 						echo'<input type="hidden" name="acteur" value='.$ligne['id'].' /><button type="submit" id="readmore">Lire la suite</button></form><br />';
-								echo '</div>';
-							echo '</div>';					
+						?>
+							</div>
+						</div>
+						<?php					
 				}
 			}
 		}
-	?>				</div>
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-				</div>
+	?>			</div>
 			</div>
-			<div class="col--3"><span class="invisible">&emsp;</span></div>
-		</div>
-	</div>
+			<div class="col-gouttiere-droite"></div>
+			<div class="col-deco-droite"></div>
 </main>
 
 <p><a href="./fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>

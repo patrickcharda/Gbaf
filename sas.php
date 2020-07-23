@@ -76,13 +76,11 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 ?>
 
 <!--formulaire d'inscription-->
-<main class="main">
-	<div class="row top_main">
-		<div class="col--3"></div>
-		<div class="col--18 main_content" >
-			<div class="row">
-				<div class="col-3"></div>
-				<div class="frm_left col-6 frm radius">
+<main>
+			<div class="col-deco-gauche"></div>
+			<div class="col-gouttiere-gauche"></div>
+			<div class="col-contenu" >
+				<div class="frm radius">
 					<form action="./account/inscription.php" method="post">
 					<?php echo '<div style="text-align:left; font-weight:bold; padding:5px;">'.$alerte.'</div>';
 					unset($alerte); ?>
@@ -178,19 +176,11 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					<input type="submit" value="Envoyer">
 					</form>				
 				</div>
-				<div class="col-3"></div>
 			</div>
-		</div>
-		<div class="col--3"></div>
-	</div>	
+			<div class="col-gouttiere-droite"></div>
+			<div class="col-deco-droite"></div>
 </main>
-<div class="liens">
-		<div class="marge_gauche_liens"></div>
-		<div class="contenu_liens">
-			
-		</div>
-		<div classe="marge_droite_liens"></div>
-</div>
+
 <?php
 
 }                		
@@ -198,14 +188,11 @@ else
 {
 //formulaire de connexion
 ?>
-<main class="main">
-<div class="row top_main">
-		<div class="col--2"></div>
-		<div class="col--20 main_content white" >
-			<div class="row ">
-				<div class="col-12">
-					<div class="col-3 gouttiere">&nbsp;</div>
-					<div class="frm_left col-6 gouttiere frm radius">
+<main>
+			<div class="col-deco-gauche"></div>
+			<div class="col-gouttiere-gauche"></div>
+			<div class="col-contenu" >
+				<div class="frm radius">
 					<form action="./account/connexion.php" method="post">
 					<?php
 					if (isset($_GET['insertuser']) OR isset($_SESSION['insert']))
@@ -275,25 +262,21 @@ else
 					<input type="checkbox" name="auto" id="auto" /><br /><br />
 					<input type="submit" value="Connexion">	
 					</form>
-					</div>
-					<div class="col-3 gouttiere radius">&nbsp;</div>
-					</div>
 				</div>
-			</div>	
-		<div class="col--2"></div>
+			</div>
+			<div class="col-gouttiere-droite"></div>
+			<div class="col-deco-droite"></div>
 </main>
 
-<div class="liens">
-		<div class="marge_gauche_liens"></div>
+
 		<div class="contenu_liens">
-			<p><a href="./account/mdp_oubli.php">Mot de passe oublié</a>&emsp;
+			<p align="center"><a href="./account/mdp_oubli.php">Mot de passe oublié</a>&emsp;
 			<a href="sas.php?nouveaumembre=1">Inscription</a></p>
 		</div>
-		<div classe="marge_droite_liens"></div>
-</div>
-<?php
-	
+
+<?php	
 }
+
 include('./templates/footer.php');
 ?>
 

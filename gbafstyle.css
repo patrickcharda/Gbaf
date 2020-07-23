@@ -10,9 +10,6 @@ body {
 .main,
 .footer {
 	font-family: Arial, Helvetica, "sans-serif";
-	/*display: 1170px;*/
-	margin: 0 auto 0;
-	padding: 1em O;
 }
 .header {
 	display: flex;
@@ -25,52 +22,26 @@ body {
 	align-items: flex-end;
 }
 
-.main {
+main {
 	display: grid;
-	grid-template-rows: auto auto;
-	grid-template-areas: "top_main   "
-			   			 "bottom_main";
-	text-align: center;
-	background-color: white;
+	grid-template-columns: 7% 3% 80% 3% 7%;
+	/*text-align: center;
+	background-color: white;*/
 	/*border-radius: 4px;
 	border-color: transparent;*/
 	/*background-color: #EBE8E0; /* ivoire */
 }
-.top_main {
-	grid-area: top_main;
-	/*background-color: red;*/
-	background-image: linear-gradient(to bottom, rgba(239,76,76,45), rgba(156,27,27,1));
-	border-radius: 4px;
-	border-color: transparent;
-	/*overflow: auto;*/
-}
-.bottom_main {
-	grid-area: bottom_main;
-	background-color: purple;
-}
+
 
 }
-.footer {
-	text-align: center;
-	/*background-color: red; /* rouge */
-	background-image: linear-gradient(90deg, rgba(239,76,76,1) 0%, rgba(156,27,27,1) 50%, rgba(239,76,76,1) 100%);
-	padding:10px;
-	border: 1px;
-	border-top-right-radius: 4px;
-	border-top-left-radius: 4px;
 
-}
 .footer a{
-		color: #ffffff;
-		/*font-weight: bold;*/
+		color: #aa2323;
 		text-decoration: none;
-		hover: {
-			font-size:1.3em;
-		}
+
 }
 .footer a:hover {
-			color: #A8BBB0;
-			font-size: 1.1em;
+			font-size: 1.2em;
 			
 		}
 .main_content {
@@ -78,17 +49,11 @@ body {
 	background-color: #ffffff; 
 }
 
-.liens {
-	display:flex;
-	padding: 5px;
-}
+
 .contenu_liens a{
 	color: black;
 }
-.marge_gauche_liens,
-.marge_droite_liens {
-	width: 12.5%;
-}
+
 
 input[type=text], input[type=password], select, textarea {
   width: 100%;
@@ -112,6 +77,10 @@ input[type=text], input[type=password], select, textarea {
   	resize: vertical;
 }
 
+#foot {
+	color: #c32b0b;
+}
+
 .container {
 	display: flex;
 	justify-content: space-around;
@@ -132,15 +101,17 @@ input[type=text], input[type=password], select, textarea {
 }
 
 .frm {
+	margin-top: 15px;
+	padding: 15px;
+	text-align: center;
 	background-color: #E0DDD5; /*ivoire foncé*/
 	/*background-color: #EBE8E0; /*ivoire clair*/
 	/*background-color: #A8BBB0; /*celadon*/
 }
 
 .radius {
-	border-top-right-radius: 4px;
-	border-top-left-radius: 4px;
-	/*border-radius: 4px;	*/
+
+	border-radius: 4px;	
 	border-color: transparent;
 }
 
@@ -149,11 +120,13 @@ input[type=text], input[type=password], select, textarea {
 	/*background-color: red;*/
 	background-image: linear-gradient(to right, rgba(239,76,76,45), rgba(156,27,27,0.6));
 }
+
+/*
 .row::after {
   clear: both;
   display: block;
 }
-
+*/
 .white {
 	background-color: #ffffff;
 }
@@ -174,9 +147,7 @@ input[type=text], input[type=password], select, textarea {
 	text-decoration: none;
 }
 
-a {
-	color: #A8BBB0;
-}
+
 .logolink {
 	width: 80px;
 	height: 80px;
@@ -228,22 +199,24 @@ a {
 .logo_acteur200x100 {
 	padding: 20px;
 	flex-grow: 1;
-	flex-basis: 101px;
+	flex-basis: 101px;*
 	align-self: flex-end;
+	max-width: 221px;
 }
 
 .lirelasuite {
 	flex-basis: 120px;
 	padding: 30px;
-	align-self: space-around;
+	/*align-self: space-around;*/
 }
 
 .resume_acteur {
 	font-family: Arial, Helvetica, "sans-serif";
-	padding: 30px;
+	padding: 20px;
 	text-align: left;
-	align-self: space-around;
-	font-size: 13px;
+	/*align-self: space-around;
+	font-size: 13px;*/
+	/*min-height: 121px;*/
 }
 
 #readmore, button, input[type=submit]  {
@@ -338,10 +311,53 @@ a {
 	text-decoration: none;
 }
 
-[class*="col-"] {
+/*[class*="col-"] {
   float: left;
   padding: 15px;
+}*/
+/*gbaf*/
+/*[class*="col-deco"] {
+	min-width: 7.5%;
+	background-image: linear-gradient(to right, rgba(239,76,76,45), rgba(156,27,27,0.6));
 }
+[class*="col-gouttiere"] {
+	min-width: 2.5%;
+}*/
+.col-contenu {
+	min-width: 80%;
+	grid-row: 1;
+	grid-column: 3;
+	justify-self: center;
+	align-self: center;
+}
+
+.col-deco-gauche {
+	background-image: linear-gradient(to bottom, rgba(239,76,76,45), rgba(156,27,27,1));
+	border-radius: 4px;
+	border-color: transparent;
+	grid-row: 1;
+	grid-column: 1;
+	min-width: 7%;
+}
+.col-deco-droite {
+	background-image: linear-gradient(to bottom, rgba(239,76,76,45), rgba(156,27,27,1));
+	border-radius: 4px;
+	border-color: transparent;
+	grid-row: 1;
+	grid-column: 5;
+	min-width: 7%;
+}
+.col-gouttiere-gauche {
+	grid-row: 1;
+	grid-column: 2;
+	min-width: 3%;
+}
+.col-gouttiere-droite {
+	grid-row: 1;
+	grid-column: 4;
+	min-width: 3%;
+}
+
 /* 12 colonnes */
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
