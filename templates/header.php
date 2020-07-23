@@ -23,49 +23,37 @@
 <body>
 <header class="header">
 
-	<div class="row logo">
-		<div class="col-2">
+	<div class="logo">
 							<?php
 				echo '<div class="logolink"><a href='.$relatif.'index.php >&emsp;&emsp;&emsp;&emsp;</a></div>';
 				?>
-		</div>
-		<div class="col-10">
-			
-				<?php /*
-				echo '<div class="logolink"><a href='.$relatif.'index.php >&emsp;&emsp;&emsp;&emsp;</a></div>'; */
-				?>
-			
-		</div>
 	</div>
-	<div class="row right_sidebar">
-		<div class="col-10" style="position: relative;">
-			<?php /*
+
+	<div class="right_sidebar">
+		
+				<?php
 				if (isset($_SESSION['login']) && !is_null($_SESSION['login']))
 				{
-					echo '<div class="logoutlink"><a href='.$relatif.'account/connexion.php?deconnexion=1>&emsp;&emsp;&emsp;&emsp;</a></div>';
-					echo '<div class="accountlink"><a href='.$relatif.'account/mon_compte.php >&emsp;&emsp;&emsp;&emsp;</a></div>';
-
-				}
-					*/
 				?>
-		</div>
+				<div class="wrap_logout" align="right">
+					<div class="logoutlink">
+						<a href=<?php echo $relatif.'account/connexion.php?deconnexion=1';?>>
+						&emsp;&emsp;&emsp;&emsp;</a>
+					</div>
+				</div>
 
-		<div class="col-2">
-
-						<?php
-				if (isset($_SESSION['login']) && !is_null($_SESSION['login']))
-				{
-					echo '<div class="accountlink"><a href='.$relatif.'account/mon_compte.php >&emsp;&emsp;&emsp;&emsp;</a>';
-					echo $_SESSION['nom'].'&nbsp'.$_SESSION['prenom'].'</div>';
-					echo '<div class="logoutlink"><a href='.$relatif.'account/connexion.php?deconnexion=1>&emsp;&emsp;&emsp;&emsp;</a></div>';
-					
-
+				<div class="haut_droit">
+						<div class="accountname">
+							<?php echo $_SESSION['nom'].'&nbsp'.$_SESSION['prenom'];?>
+						</div>
+						<div class="accountlink">
+							<a href=<?php echo $relatif.'account/mon_compte.php';?>>
+							&emsp;&emsp;&emsp;&emsp;</a>
+						</div>
+				</div>
+				<?php
 				}
-
 				?>
-
-		</div>
-
 	</div>
 </header>
 

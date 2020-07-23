@@ -8,77 +8,8 @@
 */  
 
 
-@media only screen and (max-width: 420px) {
-  [class*="bottom"] {
-    /*background-color: yellow;*/
-    display: none;
-  }
-  .logolink {
-  	width: 16px;
-  	height: 16px;
-  	background-image: url("./logo15x15.png"), url("./logos/logo15x15.png");
-  }
-  .col-3.gouttiere {
-    width: 5%;
-  }
-  .col-6.gouttiere {
-    width: 90%;
-  }
-  .col--3 {
-    width: 5%;
-  }
-  .col--18 {
-    width: 90%;
-  }
-  .logoutlink {
-  	width: 16px;
-  	height: 18px;
-  	background-image: url("./logout15x15.png"), url("./logos/logout15x15.png");
-    background-repeat: no-repeat, no-repeat;
-  }
-  .accountlink {
-  	width: 16px;
-  	height: 18px;
-  	background-image: url("./account15x15.png"), url("./logos/account15x15.png");
-    background-repeat: no-repeat, no-repeat;
-  }
 
-  .container {
-    	display: flex;
-    	flex-direction: column;
-    	justify-content: center;
-    	align-items: center;
-    	border-radius: 2px;
-    }
-  .logo_acteur100x50 {
-    display: inherit;
-  	/*width: 122px;*/
-  	align-self: center;
-  	padding: 10px
-  }
-  .logo_acteur200x100 {
-  	display: none;
-	clip: rect(0,0,0,0);
-  }
-
-  .resume_acteur {
-  	/*min-width: 122px;*/
-	padding: 10px;
-	text-align: center;
-	align-self: center;
-	font-size: 10px;
-	text-overflow: auto;
-	border: 1px solid;
-  }
-  .liresuite {
-  	/*min-width: 122px;*/
-	padding: 10px;
-	align-self: center;
-	text-align: center;
-	font-size: 10px;
-  }
-}
-@media only screen and (max-width: 1400px) and (min-width: 720px) {
+@media only screen and (max-width: 1400px) and (min-width: 721px) {
   [class*="bottom"] {
     display: none;
   }
@@ -120,6 +51,141 @@
   }
 }
 
+@media only screen and (max-width: 720px)  {
+  [class*="bottom"] {
+    display: none;
+  }
+  [class="container"] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid #EBE8E0;
+    border-radius: 4px;
+    padding-right: 10px;
+    margin: 1px;
+  }
+  [class="logo_acteur100x50"] {
+    display: inherit;
+    position: relative;
+    width: 122px;
+    align-content: flex-start;
+    align-self: center;
+    padding: 20px;
+  }
+   [class="logo_acteur200x100"] {
+    display: none;
+  clip: rect(0,0,0,0);
+  }
+  [class="resume_acteur"] {
+    max-width: 200px;
+  padding: 20px;
+  text-align: left;
+  align-self: center;
+  align-content: flex-start;
+  font-size: 12px;
+  }
+  [class="lirelasuite"] {
+    min-width: 100px;
+  text-align: right;
+  padding: 20px;
+  align-content: flex-end;
+  align-self: center;
+  }
+}
+
+/*smartphone*/
+@media only screen and (max-width: 420px) {
+  [class*="bottom"] {
+    /*background-color: yellow;*/
+    display: none;
+  }
+  .logolink {
+    width: 33px;
+    height: 33px;
+    background-image: url("./logo32x32.png"), url("./logos/logo32x32.png");
+  }
+  .col-3.gouttiere {
+    width: 5%;
+  }
+  .col-6.gouttiere {
+    width: 90%;
+  }
+  .col--3 {
+    width: 5%;
+  }
+  .col--18 {
+    width: 90%;
+  }
+  .logoutlink {
+    width: 16px;
+    height: 18px;
+    background-image: url("./logout15x15.png"), url("./logos/logout15x15.png");
+    background-repeat: no-repeat, no-repeat;
+  }
+  .accountlink {
+    width: 16px;
+    height: 18px;
+    background-image: url("./account15x15.png"), url("./logos/account15x15.png");
+    background-repeat: no-repeat, no-repeat;
+  }
+
+  .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 2px;
+    }
+  .logo_acteur100x50 {
+    display: inherit;
+    /*width: 122px;*/
+    align-self: center;
+    padding: 10px
+  }
+  .logo_acteur200x100 {
+    display: none;
+  clip: rect(0,0,0,0);
+  }
+
+  .resume_acteur {
+    /*min-width: 122px;*/
+  padding: 10px;
+  text-align: center;
+  align-self: center;
+  font-size: 10px;
+  text-overflow: auto;
+  border: 1px solid;
+  }
+  .liresuite {
+    /*min-width: 122px;*/
+  padding: 10px;
+  align-self: center;
+  text-align: center;
+  font-size: 10px;
+  }
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.haut_droit {
+  display: flex; 
+  flex-direction: row-reverse;
+  justify-content: right;
+  align-items: flex-end;
+}
+.right_sidebar {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.wrap_logout {
+
+}
+
+}
 
 
 

@@ -15,17 +15,14 @@ body {
 	padding: 1em O;
 }
 .header {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-template-areas: "logo right_sidebar";
+	display: flex;
+	justify-content: space-between;
 }
 
-.logo {
-	grid-area: logo;
-}
-.right_sidebar {
-	grid-area: right_sidebar;
-	text-align: right;
+.haut_droit {
+	display: flex;
+	justify-content: right;
+	align-items: flex-end;
 }
 
 .main {
@@ -50,6 +47,8 @@ body {
 .bottom_main {
 	grid-area: bottom_main;
 	background-color: purple;
+}
+
 }
 .footer {
 	text-align: center;
@@ -185,17 +184,17 @@ a {
 }
 
 .logoutlink {
-	position: absolute;
-	right: 20px;
+	/*position: absolute;
+	right: 20px;*/
 	width: 26px;
 	height: 26px;
 	background-image: url("./logout25x25.png"), url("./logos/logout25x25.png");
 }
 
 .accountlink {
-	position: absolute;
+	/*position: absolute;
 	right: 20px;
-	top: 50px;
+	top: 50px;*/
 	width: 26px;
 	height: 26px;
 	background-image: url("./account25x25.png"), url("./logos/account25x25.png");
