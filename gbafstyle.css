@@ -232,17 +232,18 @@ input[type=text], input[type=password], select, textarea {
 }
 
 #readmore, button, input[type=submit]  {
-	min-width: 90px;
+	/*min-width: 90px;*/
 	border-color: red;
 	font-size: 0.8em;
 }
 
-#details_acteur {
+.details_acteur {
 	text-align: left;
     font-family: Arial, Helvetica, "sans-serif";
     padding-left: 16px;
     /*border-left: 10px solid #00c8d7;*/
     border-left: 8px solid #000000;
+    font-size: 0.8em;
 }
 
 .presentation_gbaf {
@@ -369,6 +370,36 @@ input[type=text], input[type=password], select, textarea {
 	grid-row: 1;
 	grid-column: 4;
 	min-width: 3%;
+}
+
+.evaluation_acteur {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 10px;
+	border: 2px solid black;
+	min-height:60px;
+	padding-top: 20px;
+}
+.nb_comments {
+border-bottom: 1px solid grey;
+}
+.nb_votes {
+	display: flex;
+	justify-content: stretch;
+	/*min-width: 250px;*/
+}
+#new_vote_btn,
+#new_comment_btn {
+	height: 50px;
+	padding: 0px;
+}
+#new_comment_btn {
+	text-align: left;
+}
+
+#btn_ajout_commentaire {
+	height: 33px;
 }
 
 /* 12 colonnes */

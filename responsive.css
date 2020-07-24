@@ -73,13 +73,15 @@
 }
 
 #readmore, button, input[type=submit]  {
-  min-width: 70px;
+  /*min-width: 70px;*/
   border-color: red;
   font-size: 0.6em;
 }
 
 /*smartphone*/
 @media only screen and (max-width: 600px) {
+
+
 
 .presentation_gbaf {
   font-size: 0.7em;
@@ -123,7 +125,9 @@ padding: 0px;
 /*border: 1px solid green;*/
 }
 
-
+.un_commentaire {
+  font-size: 0.8em;
+}
 
 .resume_acteur {
   display: flex;
@@ -136,7 +140,7 @@ padding: 0px;
   padding-bottom: 5px;
   text-align: left;
   margin-bottom: 30px;
-  max-height: 200px;
+  max-height: 400px;
 }
 
 .resume_acteur p{
@@ -210,6 +214,25 @@ align-items: center;
 
 @media only screen and (max-width: 560px) {
 
+.evaluation_acteur {
+  display: flex;
+  flex-direction: column;
+  /*flex-wrap: wrap;*/
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nb_votes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;  
+}
+
+#new_vote_btn {
+  margin-top: 10px;
+}
+
 .presentation_gbaf {
   font-size: 0.4em;
 }
@@ -222,6 +245,7 @@ margin-left: 290px;
 padding: 0px;
 /*border: 1px solid green;*/
 }
+
 }
 
 @media only screen and (max-width: 440px) {

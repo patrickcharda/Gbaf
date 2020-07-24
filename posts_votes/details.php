@@ -17,14 +17,11 @@ if (!ok_login())
 
 ?>
 
-<main class="main">
-	<div class="top_main">
-		<div class="row">
-			<div class="col--3"></div>
-			<div class="col--18 white">
-				<div class="row">
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-					<div class="col-10 frm radius">
+<main>
+			<div class="col-deco-gauche"></div>
+			<div class="col-gouttiere-gauche"></div>
+			<div class="col-contenu" >
+				<div class="frm radius">
 <?php
 if (isset($_GET['acteur']))
 {
@@ -59,8 +56,8 @@ if (isset($_SESSION['id_acteur']))
 			while ($data = $reponse->fetch())
 			{
 				$_SESSION['logo_acteur']=$data['logo'];
-				echo '<p><img src=./../logos/'.$data['logo'].'.png /></p><br />';
-				echo '<hgroup id="details_acteur"><p><h2>'.$data['acteur'].'</h2></p>';
+				echo '<p><img src=./../logos/'.$data['logo'].'200x100.png /></p><br />';
+				echo '<hgroup class="details_acteur"><p><h2>'.$data['acteur'].'</h2></p>';
 				echo '<p><em><a href=\'./details.php?acteur='.$data['id'].'\'>'.$data['acteur'].'</a></em></p><br />';
 				echo '<p>'.nl2br(htmlspecialchars($data['description'])).'</p></hgroup>';
 			}			
@@ -137,8 +134,8 @@ if (isset($_SESSION['id_acteur']))
 			$btn_ajout_commentaire .= '</form>';
 		}
 
-			echo '<div class="white row"><strong>';
-				echo '<div class="col-2">';
+			echo '<div class="evaluation_acteur">';
+				echo '<div class="nb_comments">';
 				if ($nb_posts > 1)
 				{
 					echo $nb_posts.' commentaires';
@@ -147,26 +144,24 @@ if (isset($_SESSION['id_acteur']))
 				{
 					echo $nb_posts.' commentaire';
 				}
-				echo '</div>';
-				echo '<div class="col-6 alignright">';
+				echo '</div>'; //div nb_comments
+				echo '<div class="nb_votes">';
 				if ($btn_ajout_commentaire !='0')
 				{
-					echo $btn_ajout_commentaire;
+					echo '<div id="new_comment_btn">'.$btn_ajout_commentaire.'&nbsp;</div>';
 				}
-				echo '</div>';
-				echo '<div class="col-4 alignright">';
+
 				if ($nb_votes > 1)
 				{
-					echo $nb_votes.' votes '.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown;
+					echo '&nbsp;<div id="new_vote_btn">'.$nb_votes.' votes </div><div id="bilan_likes">'.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown.'</div>';
 				}
 				else
 				{
-					echo $nb_votes.' vote '.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown;
+					echo '<div id="new_vote_btn">'.$nb_votes.' vote </div><div id="bilan_likes">'.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown.'</div>';
 				}
 				
-				echo '</div>';
-			echo '</div></strong>';
-			echo '<div class="synthese">&emsp;</div>';
+				echo '</div>'; //div nb_votes
+			echo '</div>';//div evaluation_acteur
 			echo $tous_les_commentaires;
 
 	}
@@ -176,13 +171,10 @@ if (isset($_SESSION['id_acteur']))
 	}
 }
 ?>
-</div>
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-				</div>
-			</div>
-			<div class="col--3"><span class="invisible">&emsp;</span></div>
-		</div>
-	</div>
+				</div><!--div frm-->
+			</div><!--div contenu-->
+			<div class="col-gouttiere-droite"></div>
+			<div class="col-deco-droite"></div>
 </main>
 
 <p><a href="./fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>
