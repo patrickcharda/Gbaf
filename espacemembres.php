@@ -52,19 +52,22 @@ else
 					{
 						?>
 						<div class="container">
-							<div class="logo_acteur200x100">
+
+							<div class="logoresume">
+
+								<div class="logo_acteur200x100">
 						<?php
 						echo '<img src=logos/'.$ligne['logo'].'200x100.png />';
 						?>	
-							</div>
-							<div class="logo_acteur100x50">
+								</div>
+								<div class="logo_acteur100x50">
 						<?php
 						echo '<img src=logos/'.$ligne['logo'].'100x50.png />';
 						?>	
-							</div>
-							<div class="resume_acteur">
+								</div>
+								<div class="resume_acteur">
 						<?php
-						echo '<h3>'.($ligne['acteur']).'</h3><p>';
+						echo '<div><h3>'.($ligne['acteur']).'</h3></div><div><p>';
 						$description = $ligne['description_courte'];
 						/*$description= utf8_decode(html_entity_decode($ligne['description'], ENT_QUOTES, 'utf-8'));
 						$nb_de_mots_description=str_word_count($description);
@@ -77,14 +80,22 @@ else
 						}
 						//echo $resume;*/
 						echo $description;
-						echo '<a href=./posts_votes/details.php?acteur='.$ligne['id'].' class="reda">&emsp;...</a></p>';
+						echo '<a href=./posts_votes/details.php?acteur='.$ligne['id'].' class="reda">&emsp;...</a></p></div>';
 						?>
-							</div>
+
+								</div><!--resume_acteur-->
+
+							</div> <!--logoresume-->
+
+
 							<div class="liresuite">
-						<form method="get" action="./posts_votes/details.php" >
-						<?php 
-						echo'<input type="hidden" name="acteur" value='.$ligne['id'].' /><button type="submit" id="readmore">Lire la suite</button></form><br />';
-						?>
+								<div>&emsp;</div>
+								<div>
+									<form method="get" action="./posts_votes/details.php" >
+									<?php 
+									echo'<input type="hidden" name="acteur" value='.$ligne['id'].' /><button type="submit" id="readmore">Lire la suite</button></form><br />';
+									?>
+								</div>
 							</div>
 						</div>
 						<?php					
