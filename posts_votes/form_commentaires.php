@@ -19,14 +19,11 @@ if (isset($_POST['ajout_commentaire']))
 	unset($_POST['ajout_commentaire']);
 	?>
 
-	<main class="main">
-	<div class="top_main">
-		<div class="row">
-			<div class="col--3"></div>
-			<div class="col--18 white">
-				<div class="row">
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-					<div class="col-10 frm radius">
+<main>
+			<div class="col-deco-gauche"></div>
+			<div class="col-gouttiere-gauche"></div>
+			<div class="col-contenu" >
+				<div class="frm radius">
 
 	<form action="valide_commentaire.php" method="post">
 		<?php
@@ -38,13 +35,10 @@ if (isset($_POST['ajout_commentaire']))
 	<input type="submit" value="Envoyer">
 	</form>
 
-					</div>
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-				</div>
-			</div>
-			<div class="col--3"><span class="invisible">&emsp;</span></div>
-		</div>
-	</div>
+				</div><!--div frm-->
+			</div><!--div contenu-->
+			<div class="col-gouttiere-droite"></div>
+			<div class="col-deco-droite"></div>
 </main>
 
 	<?php
@@ -56,14 +50,11 @@ else if (isset($_POST['modif_commentaire']))
 	//echo $_SESSION['infos_user_comment']['post_content'];
 	?>
 
-	<main class="main">
-	<div class="top_main">
-		<div class="row">
-			<div class="col--3"></div>
-			<div class="col--18 white">
-				<div class="row">
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-					<div class="col-10 frm radius">
+<main>
+			<div class="col-deco-gauche"></div>
+			<div class="col-gouttiere-gauche"></div>
+			<div class="col-contenu" >
+				<div class="frm radius">
 
 	<form action="update_commentaire.php" method="post">
 				<?php
@@ -79,13 +70,10 @@ else if (isset($_POST['modif_commentaire']))
 	</form>
 
 
-					</div>
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-				</div>
-			</div>
-			<div class="col--3"><span class="invisible">&emsp;</span></div>
-		</div>
-	</div>
+				</div><!--div frm-->
+			</div><!--div contenu-->
+			<div class="col-gouttiere-droite"></div>
+			<div class="col-deco-droite"></div>
 </main>
 
 <?php

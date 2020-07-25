@@ -40,14 +40,11 @@ if (isset($_GET['verif']))
 }
 ?>
 
-<main class="main">
-	<div class="top_main">
-		<div class="row">
-			<div class="col--3"></div>
-			<div class="col--18 white">
-				<div class="row">
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-					<div class="col-10 frm radius">
+<main>
+			<div class="col-deco-gauche"></div>
+			<div class="col-gouttiere-gauche"></div>
+			<div class="col-contenu" >
+				<div class="frm radius">
 
 <form action="qr.php" method="post">
 
@@ -92,16 +89,13 @@ if (isset($_GET['verif']))
 		<input type="submit" value="Envoyer">
 	</form>
 
-						</div>
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-				</div>
-			</div>
-			<div class="col--3"><span class="invisible">&emsp;</span></div>
-		</div>
-	</div>
+				</div><!--div frm-->
+			</div><!--div contenu-->
+			<div class="col-gouttiere-droite"></div>
+			<div class="col-deco-droite"></div>
 </main>
 
-	<p><a href="./../sas.php">retour à l'accueil</a></p>
+
 	<?php
 	include('./../templates/footer.php');
 	?>

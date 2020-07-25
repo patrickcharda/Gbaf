@@ -19,14 +19,12 @@ else
 
 <!-- afficher ici le bandeau de présentation de GBAF -->
 
-<main class="main">
-	<div class="top_main">
-		<div class="row">
-			<div class="col--3"></div>
-			<div class="col--18 white">
-				<div class="row">
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-					<div class="col-10 frm radius">	
+<main>
+			<div class="col-deco-gauche"></div>
+			<div class="col-gouttiere-gauche"></div>
+			<div class="col-contenu" >
+				<div class="frm radius">
+
 			<form action="modif_qr.php" method="post">
 				<p align="left">
 					<strong>
@@ -58,6 +56,18 @@ else
 					}
 					?>
 					>
+
+					<p>
+					<label for="pseudooumail"><em> E-mail : </em></label><input type="text" name="mail" id="mail" maxlength="30" <?php
+					if (isset($_SESSION['mail']))
+					{
+						echo 'value="'.htmlspecialchars($_SESSION['mail']).'"';
+					}
+					?>
+					readonly>
+					</p>
+
+
 					</p>
 					<p>
 					<label for="nom"> Nom * : </label><input type="text" name="nom" id="nom" maxlength="25" <?php
@@ -78,7 +88,7 @@ else
 					>
 					</p>		
 					<p>
-					<label for="pass"> Mot de passe * : </label><input type="password" name="pass" id="pass" maxlength="10" minlength="6" />
+					<label for="pass" style="color:red"> Mot de passe * : </label><input type="password" name="pass" id="pass" maxlength="10" minlength="6" />
 					</p>
 					<p>
 					<label for="question"> Question * : </label><input type="text" name="question" id="question" maxlength="30" <?php
@@ -101,13 +111,10 @@ else
 				<input type="submit" value="Enregistrer" />
 			</form>
 
-					</div>
-					<div class="col-1"><span class="invisible">&emsp;</span></div>
-				</div>
-			</div>
-			<div class="col--3"><span class="invisible">&emsp;</span></div>
-		</div>
-	</div>
+				</div><!--div frm-->
+			</div><!--div contenu-->
+			<div class="col-gouttiere-droite"></div>
+			<div class="col-deco-droite"></div>
 </main>
 
 <p><a href="./../fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>

@@ -258,8 +258,8 @@ else
 					unset($_SESSION['fic_image']);
 					}
 					?>
-					<label for="auto">Connexion automatique</label>
-					<input type="checkbox" name="auto" id="auto" /><br /><br />
+					<!--<label for="auto">Connexion automatique</label>
+					<input type="checkbox" name="auto" id="auto" /><br />--><br />
 					<input type="submit" value="Connexion">	
 					</form>
 				</div>

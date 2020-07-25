@@ -372,6 +372,11 @@ input[type=text], input[type=password], select, textarea {
 	min-width: 3%;
 }
 
+.aacteur{
+	color: #A98E5F;
+	text-decoration: none;
+}
+
 .evaluation_acteur {
 	display: flex;
 	justify-content: space-between;
@@ -380,10 +385,11 @@ input[type=text], input[type=password], select, textarea {
 	border: 2px solid black;
 	min-height:60px;
 	padding-top: 20px;
+	border-radius: 3px;
+	margin-bottom: 4px;
+	background-color: white;
 }
-.nb_comments {
-border-bottom: 1px solid grey;
-}
+
 .nb_votes {
 	display: flex;
 	justify-content: stretch;
