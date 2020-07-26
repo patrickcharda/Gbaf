@@ -57,8 +57,11 @@ if (isset($_SESSION['id_acteur']))
 			{
 				$_SESSION['logo_acteur']=$data['logo'];
 				echo '<p><img src=./../logos/'.$data['logo'].'200x100.png /></p><br />';
-				echo '<hgroup class="details_acteur"><p><h2>'.$data['acteur'].'</h2></p>';
-				echo '<p><em><a href=\'./details.php?acteur='.$data['id'].'\' class="aacteur">'.$data['acteur'].'</a></em></p><br />';
+				echo '<p class="aacteur"><strong><a href=\'./../espacemembres.php\' >&larr;</a></strong></p><br />';
+				echo '<hgroup class="details_acteur"><p><h2>'.$data['acteur'].'</h2>
+				<br /></p>';
+				//echo '<p><em><a href=\'./details.php?acteur='.$data['id'].'\' class="aacteur">'.$data['acteur'].'</a></em></p><br />';
+
 				echo '<p>'.nl2br(htmlspecialchars($data['description'])).'</p></hgroup>';
 			}			
 			$reponse->closeCursor();

@@ -372,9 +372,17 @@ input[type=text], input[type=password], select, textarea {
 	min-width: 3%;
 }
 
-.aacteur{
+.aacteur a{
 	color: #A98E5F;
 	text-decoration: none;
+}
+
+.aacteur a:hover {
+	font-size: 1.1em;
+	}
+
+.aacteur {
+	font-size: 2em;
 }
 
 .evaluation_acteur {

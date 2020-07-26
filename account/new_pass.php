@@ -42,7 +42,7 @@ if (isset($_POST['question']) AND isset($_POST['reponse']) AND isset($_POST['pas
 		}
 		else
 		{
-			header("Location:./../sas.php?connex=888");
+			header('Location:./../sas.php?connex=\'888\'');
 		}
 	}
 }

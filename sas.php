@@ -113,7 +113,9 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					>
 					</p>		
 					<p>
-					<label for="pass"> Mot de passe * : </label><input type="password" name="pass" id="pass" maxlength="10" minlength="6" />
+					<label for="pass"> Mot de passe * : <br>
+					<span style="font-size: 0.8em">Le mot de passe doit contenir entre 6 et 10 caractères</span>
+					</label><input type="password" name="pass" id="pass" maxlength="10" minlength="6" />
 					</p>
 					<p>
 					<label for="mail"> Email * : </label><input type="text" name="mail" id="mail" maxlength="30" <?php
@@ -212,6 +214,10 @@ else
 						if (preg_match('#888#', $_GET['connex']))
 							{
 								echo '- Problème de connexion à la base de données <br /><br />';
+							}
+						if (preg_match('#999#', $_GET['connex']))
+							{
+								echo '- Mot de passe correctement réinitialisé <br /><br />';
 							}
 					}
 					if (isset($GLOBALS['fields']));
