@@ -76,9 +76,9 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 ?>
 
 <!--formulaire d'inscription-->
-<main>
-			<div class="col-deco-gauche"></div>
-			<div class="col-gouttiere-gauche"></div>
+<?php 
+include('./templates/colonnes_deco_gauche.php');
+?>
 			<div class="col-contenu" >
 				<div class="frm radius">
 					<form action="./account/inscription.php" method="post">
@@ -179,20 +179,14 @@ if (isset($_GET['nouveaumembre']) && strlen($_GET['nouveaumembre'])<60)
 					</form>				
 				</div>
 			</div>
-			<div class="col-gouttiere-droite"></div>
-			<div class="col-deco-droite"></div>
-</main>
-
 <?php
-
+include('./templates/colonnes_deco_droite.php');
 }                		
 else
 {
 //formulaire de connexion
+include('./templates/colonnes_deco_gauche.php');
 ?>
-<main>
-			<div class="col-deco-gauche"></div>
-			<div class="col-gouttiere-gauche"></div>
 			<div class="col-contenu" >
 				<div class="frm radius">
 					<form action="./account/connexion.php" method="post">
@@ -270,11 +264,9 @@ else
 					</form>
 				</div>
 			</div>
-			<div class="col-gouttiere-droite"></div>
-			<div class="col-deco-droite"></div>
-</main>
-
-
+<?php
+		include('./templates/colonnes_deco_droite.php');
+?>
 		<div class="contenu_liens">
 			<p align="center"><a href="./account/mdp_oubli.php">Mot de passe oublié</a>&emsp;
 			<a href="sas.php?nouveaumembre=1">Inscription</a></p>

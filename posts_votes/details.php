@@ -17,9 +17,9 @@ if (!ok_login())
 
 ?>
 
-<main>
-			<div class="col-deco-gauche"></div>
-			<div class="col-gouttiere-gauche"></div>
+<?php
+include('./../templates/colonnes_deco_gauche.php');
+?>
 			<div class="col-contenu" >
 				<div class="frm radius">
 <?php
@@ -176,14 +176,8 @@ if (isset($_SESSION['id_acteur']))
 ?>
 				</div><!--div frm-->
 			</div><!--div contenu-->
-			<div class="col-gouttiere-droite"></div>
-			<div class="col-deco-droite"></div>
-</main>
-
-<p><a href="./fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>
-
-
 <?php
+include('./../templates/colonnes_deco_droite.php');
 include('./../templates/footer.php');
 ?>	
 					

@@ -45,9 +45,9 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 
 				?>
 
-<main>
-			<div class="col-deco-gauche"></div>
-			<div class="col-gouttiere-gauche"></div>
+<?php
+include('./../templates/colonnes_deco_gauche.php');
+?>
 			<div class="col-contenu" >
 				<div class="frm radius">
 
@@ -74,9 +74,9 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 
 				</div><!--div frm-->
 			</div><!--div contenu-->
-			<div class="col-gouttiere-droite"></div>
-			<div class="col-deco-droite"></div>
-</main>
+<?php
+include('./../templates/colonnes_deco_droite.php');
+?>
 
 			<?php
 			} 

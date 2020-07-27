@@ -55,16 +55,17 @@ echo '<br /><hr />';
 
 				</div><!--div frm-->
 			</div><!--div contenu-->
-			<div class="col-gouttiere-droite"></div>
-			<div class="col-deco-droite"></div>
-</main>
+<?php
+include('./../templates/colonnes_deco_droite.php');
+?>
 
 <p><a href="./fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>
 
 
-	<?php
-	include('./../templates/footer.php');
-	?>
+<?php
+include('./../templates/footer.php');
+?>
+
 
 <?php
 /*

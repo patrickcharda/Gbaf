@@ -37,9 +37,9 @@ else
 <div class="bandeau">
 </div>
 
-<main>
-			<div class="col-deco-gauche"></div>
-			<div class="col-gouttiere-gauche"></div>
+<?php
+include('./templates/colonnes_deco_gauche.php');
+?>
 			<div class="col-contenu" >
 				<div class="frm radius">
 			<?php
@@ -104,9 +104,9 @@ else
 		}
 	?>			</div>
 			</div>
-			<div class="col-gouttiere-droite"></div>
-			<div class="col-deco-droite"></div>
-</main>
+<?php
+include('./templates/colonnes_deco_droite.php');
+?>
 
 <p><a href="./fonctions/connexion.php?deconnexion=1" style="text-decoration:none;">&emsp;</a></p>
 

@@ -19,9 +19,9 @@ if (isset($_POST['ajout_commentaire']))
 	unset($_POST['ajout_commentaire']);
 	?>
 
-<main>
-			<div class="col-deco-gauche"></div>
-			<div class="col-gouttiere-gauche"></div>
+<?php
+include('./../templates/colonnes_deco_gauche.php');
+?>
 			<div class="col-contenu" >
 				<div class="frm radius">
 
@@ -37,9 +37,10 @@ if (isset($_POST['ajout_commentaire']))
 
 				</div><!--div frm-->
 			</div><!--div contenu-->
-			<div class="col-gouttiere-droite"></div>
-			<div class="col-deco-droite"></div>
-</main>
+<?php
+include('./../templates/colonnes_deco_droite.php');
+include('./../templates/footer.php');
+?>
 
 	<?php
 }
@@ -50,9 +51,9 @@ else if (isset($_POST['modif_commentaire']))
 	//echo $_SESSION['infos_user_comment']['post_content'];
 	?>
 
-<main>
-			<div class="col-deco-gauche"></div>
-			<div class="col-gouttiere-gauche"></div>
+<?php
+include('./../templates/colonnes_deco_gauche.php');
+?>
 			<div class="col-contenu" >
 				<div class="frm radius">
 
@@ -72,9 +73,10 @@ else if (isset($_POST['modif_commentaire']))
 
 				</div><!--div frm-->
 			</div><!--div contenu-->
-			<div class="col-gouttiere-droite"></div>
-			<div class="col-deco-droite"></div>
-</main>
+<?php
+include('./../templates/colonnes_deco_droite.php');
+include('./../templates/footer.php');
+?>
 
 <?php
 }
