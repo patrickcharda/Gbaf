@@ -78,14 +78,14 @@ if (isset($_SESSION['id_acteur']))
 			$_SESSION['id_vote']=$info_likes['id_vote'];
 			if ($info_likes['vote_content']) //vote égal 1
 			{
-				$lienUp='<a href=\'change_vote.php?vote=1\' class="notextdeco"><strong><img src=\'./images/Likes33.jpg\' alt=\'image pouce levé\' /></strong></a>'.$info_likes['positifs'];
-				$lienDown='<a href=\'change_vote.php?vote=0\' class="notextdeco"><img src=\'./images/DislikesOff33.jpg\' alt=\'image pouce baissé\' /></a>'.$info_likes['negatifs'];
+				$lienUp='<a href=\'change_vote.php?vote=1\' class="notextdeco"><img src=\'./images/Likes33.jpg\' alt=\'image pouce levé\' /></a><strong>'.$info_likes['positifs'].'</strong>';
+				$lienDown='<a href=\'change_vote.php?vote=0\' class="notextdeco"><img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /></a>'.$info_likes['negatifs'];
 				$lienReset='<a href=\'change_vote.php?vote=2\' class="notextdeco"><img src="./images/reset23x23.png" alt="reset"></a>';
 			}
 			else
 			{
-				$lienUp='<a href=\'change_vote.php?vote=1\' class="notextdeco"><img src=\'./images/LikesOff33.jpg\' alt=\'image pouce levé\' /></a>'.$info_likes['positifs'];
-				$lienDown='<a href=\'change_vote.php?vote=0\' class="notextdeco"><strong><img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /></strong></a>'.$info_likes['negatifs'];
+				$lienUp='<a href=\'change_vote.php?vote=1\' class="notextdeco"><img src=\'./images/Likes33.jpg\' alt=\'image pouce levé\' /></a>'.$info_likes['positifs'];
+				$lienDown='<a href=\'change_vote.php?vote=0\' class="notextdeco"><img src=\'./images/Dislikes33.jpg\' alt=\'image pouce baissé\' /></a><strong>'.$info_likes['negatifs'].'</strong>';
 				$lienReset='<a href=\'change_vote.php?vote=2\' class="notextdeco"><img src="./images/reset23x23.png" alt="reset"></a>';
 			}
 		}
@@ -156,11 +156,11 @@ if (isset($_SESSION['id_acteur']))
 
 				if ($nb_votes > 1)
 				{
-					echo '&nbsp;<div id="new_vote_btn">'.$nb_votes.' votes </div><div id="bilan_likes">'.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown.'</div>';
+					echo '&nbsp;<div id="new_vote_btn">'.$nb_votes.' votes &emsp; </div><div id="bilan_likes">'.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown.'</div>';
 				}
 				else
 				{
-					echo '<div id="new_vote_btn">'.$nb_votes.' vote </div><div id="bilan_likes">'.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown.'</div>';
+					echo '<div id="new_vote_btn">'.$nb_votes.' vote &emsp; </div><div id="bilan_likes">'.$lienUp.' &nbsp; '.$lienReset.' &nbsp; '.$lienDown.'</div>';
 				}
 				
 				echo '</div>'; //div nb_votes

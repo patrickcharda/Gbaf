@@ -233,8 +233,11 @@ input[type=text], input[type=password], select, textarea {
 
 #readmore, button, input[type=submit]  {
 	/*min-width: 90px;*/
-	border-color: red;
 	font-size: 0.8em;
+	border-radius: 10px;
+	background-color: red;
+	color: white;
+	border-color: red;
 }
 
 .details_acteur {
@@ -347,7 +350,8 @@ input[type=text], input[type=password], select, textarea {
 
 .col-deco-gauche {
 	background-image: linear-gradient(to bottom, rgba(239,76,76,45), rgba(156,27,27,1));
-	border-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
 	border-color: transparent;
 	grid-row: 1;
 	grid-column: 1;
@@ -355,7 +359,8 @@ input[type=text], input[type=password], select, textarea {
 }
 .col-deco-droite {
 	background-image: linear-gradient(to bottom, rgba(239,76,76,45), rgba(156,27,27,1));
-	border-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
 	border-color: transparent;
 	grid-row: 1;
 	grid-column: 5;
@@ -407,6 +412,8 @@ input[type=text], input[type=password], select, textarea {
 #new_comment_btn {
 	height: 50px;
 	padding: 0px;
+	font-weight: 600;
+	font-size: 1.1em;
 }
 #new_comment_btn {
 	text-align: left;
@@ -416,7 +423,7 @@ input[type=text], input[type=password], select, textarea {
 	height: 33px;
 }
 
-/* 12 colonnes */
+/* 12 colonnes 
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -429,7 +436,7 @@ input[type=text], input[type=password], select, textarea {
 .col-10 {width: 83.34%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
-/* 24 colonnes */
+/* 24 colonnes 
 .col--1 {width: 4.16%;}
 .col--2 {width: 8%;}
 .col--3 {width: 12.5%;}
@@ -453,4 +460,4 @@ input[type=text], input[type=password], select, textarea {
 .col--21 {width: 87.36%;}
 .col--22 {width: 91.52%;}
 .col--23 {width: 95.68%;}
-.col--24 {width: 100%;}
+.col--24 {width: 100%;} */
