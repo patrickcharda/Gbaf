@@ -21,9 +21,41 @@ if (!ok_login() && !is_admin())
 echo 'PAGE ADMINISTRATEUR';
 echo '<br /><hr />';
 
+if (isset($_GET['message']))
+{
+	switch ($_GET['message']) {
+		case '0':
+			echo '- accès non autorisé';
+			break;
+		case '15':
+			echo '- insertion effectuée';
+			break;
+		case '2':
+			echo '- problème de format de fichier : soit l\'extension est incorrecte (doit être .png), soit il ne s\'agit pas d\'un fichier image' ;
+			break;
+		case '3':
+			echo '- vérifier la taille du fichier';
+			break;
+		case '4':
+			echo '- problème de chargement du fichier';
+			break;
+		case '6':
+			echo '- problème d\'accès à la base de données';
+			break;
+		default:
+			# code...
+			break;
+	}
+}
+
+//echo '<br />'.$_SESSION['show'];
+
 ?>
 
-<form action="add_acteur.php" method="post">
+
+
+
+<form action="add_acteur.php" method="post" enctype="multipart/form-data">
 	<h5>INSERER UN NOUVEL ACTEUR</h5>
 	<p>
 		<label for="acteur"> Nom de l'acteur* : </label><input type="text" name="acteur" id="acteur" maxlength="75" />
@@ -35,8 +67,10 @@ echo '<br /><hr />';
 		</textarea>
 	</p>
 	<p>
-		<label for="logo"> Nom du fichier logo (png)* : </label><input type="text" name="logo" id="logo" />
-	</p>		
+		<label for="logo"> Sélectionner le fichier logo (.png) : </label><!--<input type="text" name="logo" id="logo" />-->
+		<input type="file" name="monfichier" /><br />
+	</p>
+
 	<input type="submit" value="Insérer">
 </form>
 <hr />

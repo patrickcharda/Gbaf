@@ -91,6 +91,7 @@ include('./../templates/colonnes_deco_gauche.php');
 
 				</div><!--div frm-->
 			</div><!--div contenu-->
+			
 <?php
 include('./../templates/colonnes_deco_droite.php');
 include('./../templates/footer.php');
