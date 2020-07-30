@@ -412,8 +412,8 @@ input[type=text], input[type=password], select, textarea {
 #new_comment_btn {
 	height: 50px;
 	padding: 0px;
-	font-weight: 600;
-	font-size: 1.1em;
+	font-weight: bold;
+
 }
 #new_comment_btn {
 	text-align: left;
