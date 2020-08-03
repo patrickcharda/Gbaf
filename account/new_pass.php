@@ -6,7 +6,6 @@ include('./../fonctions/fonctions_account.php');
 si le formulaire de maj du password est ok on update ds la bdd
 */
 	
-
 /* VERIFICATIONS VALIDITE CHAMPS */
 
 //premières vérifications
@@ -52,7 +51,6 @@ else
 	header('Location:mdp_oubli.php?verif='.$verif);
 
 }
-
 ?>
 
 

@@ -7,7 +7,6 @@ if (!ok_login())
 {
 	header('Location:./account/connexion.php?deconnexion=1'); //on déconnecte cet intrus!
 }
-
 if (isset($_POST['mise_a_jour']))
 {
 	$today = date("Y-m-d H:i:s"); 

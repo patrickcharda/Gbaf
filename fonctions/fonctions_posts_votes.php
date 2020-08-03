@@ -2,8 +2,7 @@
 include('session_start.php');
 
 function nombre_de($table,$nomChampId,$id)
-{
-	
+{	
 	include('connexion_bdd.php');
 	$reponse = $bdd->query('SELECT count(*) FROM '.$table.' WHERE '.$nomChampId.' = '.$id) or die(print_r($bdd->errorInfo()));
 
@@ -13,14 +12,12 @@ function nombre_de($table,$nomChampId,$id)
 		$reponse->closeCursor();
 		return $nb_de_qqch['count(*)'];
 	}
-	
 	return null;
 }
 
 function infos_likes($id_acteur)
 {
 	include('connexion_bdd.php');
-
 	$reponse = $bdd->query('SELECT count(*) FROM votes WHERE  vote=1 AND id_acteur= '.$id_acteur) or die(print_r($bdd->errorInfo()));
 	$data=$reponse->fetch();
 	$likes['positifs']=$data[0]; // nombre de likes positifs pour cet acteur
@@ -68,57 +65,56 @@ function vote($id_account,$id_acteur,$change,$id_vote = 0)
 	(int)$change;
 	(int)$id_vote;
 
-
 	include('connexion_bdd.php');
 
 	if ($change == 2) //suppression du vote
 	{
-	$req = $bdd->prepare('DELETE FROM votes WHERE  id_account= ? AND id_acteur= ?') or die(print_r($bdd->errorInfo()));
-	$req->execute(array(
+		$req = $bdd->prepare('DELETE FROM votes WHERE  id_account= ? AND id_acteur= ?') or die(print_r($bdd->errorInfo()));
+		$req->execute(array(
 		$id_account,
 		$id_acteur
-	));
-	$req->closeCursor();
+		));
+		$req->closeCursor();
 	}
 
 	if ($change == 3) // insert vote positif
 	{
-	$req = $bdd->prepare('INSERT INTO votes (id_account,id_acteur,vote) VALUES(:id_account, :id_acteur, :vote)') or die(print_r($bdd->errorInfo()));
-	$req->execute(array(
+		$req = $bdd->prepare('INSERT INTO votes (id_account,id_acteur,vote) VALUES(:id_account, :id_acteur, :vote)') or die(print_r($bdd->errorInfo()));
+		$req->execute(array(
 		'id_account'=>$id_account,
 		'id_acteur'=>$id_acteur,
 		'vote'=>1
-	));
-	$req->closeCursor();
+		));
+		$req->closeCursor();
 	}
 
 	if ($change == 4) // insert vote negatif
 	{
-	$req = $bdd->prepare('INSERT INTO votes (id_account,id_acteur,vote) VALUES(:id_account, :id_acteur, :vote)') or die(print_r($bdd->errorInfo()));
-	$req->execute(array(
+		$req = $bdd->prepare('INSERT INTO votes (id_account,id_acteur,vote) VALUES(:id_account, :id_acteur, :vote)') or die(print_r($bdd->errorInfo()));
+		$req->execute(array(
 		'id_account'=>$id_account,
 		'id_acteur'=>$id_acteur,
 		'vote'=>0
-	));
-	$req->closeCursor();
+		));
+		$req->closeCursor();
 	}
 
 	if (isset($id_vote) AND $change == 0) // change en vote negatif
 	{
-	$req = $bdd->prepare('UPDATE votes SET vote=? WHERE id=?') or die(print_r($bdd->errorInfo()));
-	$req->execute(array(
-	$change,$id_vote
-	));
-	$req->closeCursor();
+		$req = $bdd->prepare('UPDATE votes SET vote=? WHERE id=?') or die(print_r($bdd->errorInfo()));
+		$req->execute(array(
+		$change,$id_vote
+		));
+		$req->closeCursor();
 	}
 
 	if (isset($id_vote) AND $change == 1) // change en vote positif
 	{
-	$req = $bdd->prepare('UPDATE votes SET vote=? WHERE id=?') or die(print_r($bdd->errorInfo()));
-	$req->execute(array(
-	$change,$id_vote
-	));
-	$req->closeCursor();
+		$req = $bdd->prepare('UPDATE votes SET vote=? WHERE id=?') or die(print_r($bdd->errorInfo()));
+		$req->execute(array(
+		$change,$id_vote
+		));
+		$req->closeCursor();
 	}
 }
 

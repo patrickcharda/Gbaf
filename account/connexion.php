@@ -58,7 +58,6 @@ else
 	{
 		header("Location:./../sas.php?connex=777");
 	}
-
 	//verif captcha
 	if ($_POST['code'] == $_SESSION['code'])
 	{

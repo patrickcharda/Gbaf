@@ -35,49 +35,40 @@ if (isset($_POST['pseudooumail']) AND !is_null($_POST['pseudooumail']) AND isset
 			$req = $bdd->prepare('SELECT id, username, question, reponse FROM account WHERE username= ? or mail = ?') or die(print_r($bdd->errorInfo()));
 			$req->execute(array($_SESSION['pseudooumail'],$_SESSION['pseudooumail']));	
 			$donnees = $req->fetch();
-
 			if (!empty($donnees)) // on affiche le formulaire de modification du mot de passe
 			{
 				$_SESSION['joker']=$donnees['id'];
 				$_SESSION['question']=$donnees['question'];
 				$_SESSION['reponse']=$donnees['reponse'];
 				$req->closeCursor();
-
+				include('./../templates/colonnes_deco_gauche.php');
 				?>
-
-<?php
-include('./../templates/colonnes_deco_gauche.php');
-?>
-			<div class="col-contenu" >
-				<div class="frm radius">
-
-				<form action="new_pass.php" method="post">
-				<h5>Réinitialisation du mot de passe</h5>
-				<p>
-				<label for="question"> Question * : </label><input type="text" name="question" id="question" maxlength="30" <?php
-					if (isset($_SESSION['question']))
-					{
-						echo 'value="'.$_SESSION['question'].'"';
-					}
-					?>
-				readonly>
-				</p>	
-				<p>
-				<label for="reponse"> * Réponse </label><input type="text" name="reponse" id="reponse" maxlength="30"/>
-				</p>
-				<p>
-				<label for="pass"> * Nouveau mot de passe </label><input type="password" name="pass" id="pass" />
-				</p>
-				<input type="submit" value="Envoyer">
-				</form>
-
-
-				</div><!--div frm-->
-			</div><!--div contenu-->
-<?php
-include('./../templates/colonnes_deco_droite.php');
-?>
-
+				<div class="col-contenu" >
+					<div class="frm radius">
+						<form action="new_pass.php" method="post">
+							<h5>Réinitialisation du mot de passe</h5>
+							<p>
+								<label for="question"> Question * : </label><input type="text" name="question" id="question" maxlength="30" <?php
+								if (isset($_SESSION['question']))
+								{
+									echo 'value="'.$_SESSION['question'].'"';
+								}
+								?>
+								readonly>
+							</p>	
+							<p>
+								<label for="reponse"> * Réponse </label><input type="text" name="reponse" id="reponse" maxlength="30"/>
+							</p>
+							<p>
+								<label for="pass"> * Nouveau mot de passe </label><input type="password" name="pass" id="pass" />
+							</p>
+							<input type="submit" value="Envoyer">
+						</form>
+					</div><!--div frm-->
+				</div><!--div contenu-->
+			<?php
+			include('./../templates/colonnes_deco_droite.php');
+			?>
 			<?php
 			} 
 			else

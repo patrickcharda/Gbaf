@@ -1,8 +1,14 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
+
 body {
 	min-height: 100vh;
+}
+
+.wrap_logout {
+	display: flex;
+	justify-content: flex-end;
 }
 
 .header,
@@ -25,45 +31,32 @@ body {
 main {
 	display: grid;
 	grid-template-columns: 7% 3% 80% 3% 7%;
-	/*text-align: center;
-	background-color: white;*/
-	/*border-radius: 4px;
-	border-color: transparent;*/
-	/*background-color: #EBE8E0; /* ivoire */
-}
-
-
 }
 
 .footer a{
-		color: #aa2323;
-		text-decoration: none;
-
+	color: #aa2323;
+	text-decoration: none;
 }
 .footer a:hover {
-			font-size: 1.2em;
-			
-		}
+	font-size: 1.2em;
+}
 .main_content {
-	/*background-color: #EBE8E0; /* ivoire */
 	background-color: #ffffff; 
 }
-
 
 .contenu_liens a{
 	color: black;
 }
 
-
 input[type=text], input[type=password], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
 }
 
 #code {
@@ -104,29 +97,18 @@ input[type=text], input[type=password], select, textarea {
 	margin-top: 15px;
 	padding: 15px;
 	text-align: center;
-	background-color: #E0DDD5; /*ivoire foncé*/
-	/*background-color: #EBE8E0; /*ivoire clair*/
-	/*background-color: #A8BBB0; /*celadon*/
+	background-color: #E0DDD5; 
 }
 
 .radius {
-
 	border-radius: 4px;	
 	border-color: transparent;
 }
 
-
 .red {
-	/*background-color: red;*/
 	background-image: linear-gradient(to right, rgba(239,76,76,45), rgba(156,27,27,0.6));
 }
 
-/*
-.row::after {
-  clear: both;
-  display: block;
-}
-*/
 .white {
 	background-color: #ffffff;
 }
@@ -139,14 +121,12 @@ input[type=text], input[type=password], select, textarea {
 	border-spacing: 3px;
 	border-radius: 4px;
 	margin-bottom: 5px;
-
 }
 
 .reda {
 	color: red;
 	text-decoration: none;
 }
-
 
 .logolink {
 	width: 80px;
@@ -163,9 +143,6 @@ input[type=text], input[type=password], select, textarea {
 }
 
 .accountlink {
-	/*position: absolute;
-	right: 20px;
-	top: 50px;*/
 	width: 26px;
 	height: 26px;
 	background-image: url("./account25x25.png"), url("./logos/account25x25.png");
@@ -204,7 +181,6 @@ input[type=text], input[type=password], select, textarea {
 	max-width: 221px;
 }
 
-
 .resume_acteur {
 	display: flex;
 	flex-direction: column;
@@ -231,8 +207,7 @@ input[type=text], input[type=password], select, textarea {
 	justify-content: flex-start;
 }
 
-#readmore, button, input[type=submit]  {
-	/*min-width: 90px;*/
+.readmore, button, input[type=submit]  {
 	font-size: 0.8em;
 	border-radius: 10px;
 	background-color: red;
@@ -244,7 +219,6 @@ input[type=text], input[type=password], select, textarea {
 	text-align: left;
     font-family: Arial, Helvetica, "sans-serif";
     padding-left: 16px;
-    /*border-left: 10px solid #00c8d7;*/
     border-left: 8px solid #000000;
     font-size: 0.8em;
 }
@@ -276,7 +250,6 @@ input[type=text], input[type=password], select, textarea {
 
 #idprez {
 	font-family: Arial, Helvetica, "sans-serif";
-	font-color: #000000;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	font-size: 16px;
@@ -285,11 +258,8 @@ input[type=text], input[type=password], select, textarea {
 }
 
 #tous_les_commentaires {
-	/*border: solid 1px;*/
-	/*background-color: #F56D4B;*/
 	font-family: Arial, Helvetica, "sans-serif";
 	color: black;
-
 }
 
 #ajout_commentaire {
@@ -304,7 +274,7 @@ input[type=text], input[type=password], select, textarea {
 	border-color: #797761;
 	border-spacing: 3px;
 	border-radius: 4px;
-	margin-top: : 3px;
+	margin-top: 3px;
 	margin-bottom: 3px;
 	text-align: left;
 	padding: 15px;
@@ -315,8 +285,7 @@ input[type=text], input[type=password], select, textarea {
 }
 
 .alignright {
-	text-align: right;
-	
+	text-align: right;	
 }
 
 .fontarial {
@@ -328,18 +297,6 @@ input[type=text], input[type=password], select, textarea {
 	text-decoration: none;
 }
 
-/*[class*="col-"] {
-  float: left;
-  padding: 15px;
-}*/
-/*gbaf*/
-/*[class*="col-deco"] {
-	min-width: 7.5%;
-	background-image: linear-gradient(to right, rgba(239,76,76,45), rgba(156,27,27,0.6));
-}
-[class*="col-gouttiere"] {
-	min-width: 2.5%;
-}*/
 .col-contenu {
 	min-width: 80%;
 	grid-row: 1;
@@ -406,14 +363,12 @@ input[type=text], input[type=password], select, textarea {
 .nb_votes {
 	display: flex;
 	justify-content: stretch;
-	/*min-width: 250px;*/
 }
 #new_vote_btn,
 #new_comment_btn {
 	height: 50px;
 	padding: 0px;
 	font-weight: bold;
-
 }
 #new_comment_btn {
 	text-align: left;
@@ -423,41 +378,3 @@ input[type=text], input[type=password], select, textarea {
 	height: 33px;
 }
 
-/* 12 colonnes 
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.34%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
-/* 24 colonnes 
-.col--1 {width: 4.16%;}
-.col--2 {width: 8%;}
-.col--3 {width: 12.5%;}
-.col--4 {width: 16.64%;}
-.col--5 {width: 20.80%;}
-.col--6 {width: 24.96%;}
-.col--7 {width: 29.12%;}
-.col--8 {width: 33.28%;}
-.col--9 {width: 37.44%;}
-.col--10 {width: 41.60%;}
-.col--11 {width: 45.76%;}
-.col--12 {width: 49.92%;}
-.col--13 {width: 54.08%;}
-.col--14 {width: 58.24%;}
-.col--15 {width: 62.4%;}
-.col--16 {width: 66.56%;}
-.col--17 {width: 70.72%;}
-.col--18 {width: 75%;}
-.col--19 {width: 79.04%;}
-.col--20 {width: 84%;}
-.col--21 {width: 87.36%;}
-.col--22 {width: 91.52%;}
-.col--23 {width: 95.68%;}
-.col--24 {width: 100%;} */

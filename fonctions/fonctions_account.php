@@ -51,10 +51,10 @@ function createImageCaptcha($captcha,$redirection)
 	else
 	{
 		if (chmod($_SESSION['chemin_vers_fic_image'], 0700))
-			{
-				imagepng($image,$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image']);
-				header('Location:'.$redirection);
-			}
+		{
+			imagepng($image,$_SESSION['chemin_vers_fic_image'].$_SESSION['fic_image']);
+			header('Location:'.$redirection);
+		}
 	}
 }
 
@@ -93,23 +93,23 @@ function supprFichiersCaptcha()
 		}
 		$reponse->closeCursor();
 	}
-		if (isset($imagefiles_a_supprimer))
+	if (isset($imagefiles_a_supprimer))
+	{
+		foreach ($imagefiles_a_supprimer as $element) //supprimer les fichiers physiques
 		{
-			foreach ($imagefiles_a_supprimer as $element) //supprimer les fichiers physiques
-			{
 			unlink($element);	
-			}
-			unset($imagefiles_a_supprimer);
 		}
-		if (isset($ids_a_supprimer))
+		unset($imagefiles_a_supprimer);
+	}
+	if (isset($ids_a_supprimer))
+	{
+		foreach ($ids_a_supprimer as $element) //supprimer les entrees ds la table
 		{
-			foreach ($ids_a_supprimer as $element) //supprimer les entrees ds la table
-			{
-				$reponse = $bdd->query("DELETE FROM imagefiles WHERE id=$element") or die(print_r($bdd->errorInfo()));
-				$reponse->closeCursor();
-			}
-			unset($ids_a_supprimer);
+			$reponse = $bdd->query("DELETE FROM imagefiles WHERE id=$element") or die(print_r($bdd->errorInfo()));
+			$reponse->closeCursor();
 		}
+		unset($ids_a_supprimer);
+	}
 }
 
 function save_form_field($field_name,$field_content)

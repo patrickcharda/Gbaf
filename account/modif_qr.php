@@ -9,8 +9,6 @@ if (!ok_login())
 {
 	header('Location:./connexion.php?deconnexion=1'); //on déconnecte cet intrus!
 }
-
-
 if (!isset($_POST['question']) || !isset($_POST['reponse']) || !isset($_POST['pseudooumail']) || !isset($_POST['nom']) || !isset($_POST['prenom']) || !isset($_POST['pass']) OR $_POST['question']=='' OR $_POST['reponse']=='' OR $_POST['pseudooumail']=='' OR $_POST['nom']=='' OR $_POST['prenom']=='' OR $_POST['pass']=='')
 {
 	header('Location:./mon_compte.php?verif=00');
@@ -36,8 +34,6 @@ else
 		$_SESSION['prenom']=htmlspecialchars($_POST['prenom']);
 		$_SESSION['question']=htmlspecialchars($_POST['question']);
 		$_SESSION['reponse']=htmlspecialchars($_POST['reponse']);
-
-
 		header('Location:./mon_compte.php?verif=11');
 	}
 	else
@@ -45,7 +41,6 @@ else
 		header('Location:./mon_compte.php?verif=22');
 	}
 }
-
 include('./../templates/footer.php');
 ?>
 

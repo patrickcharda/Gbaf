@@ -11,30 +11,30 @@ alors on enregistre l'utilisateur ds la bdd et on le ramène sur la page de logi
 
 /* sauvegarde des champs du formulaire pour éviter ressaisie si erreurs*/
 
-	if (isset($_POST['pseudooumail']))
-	{
-		save_form_field('username',$_POST['pseudooumail']);
-	}
-	if (isset($_POST['mail']))
-	{
-		save_form_field('mail',$_POST['mail']);
-	}
-	if (isset($_POST['nom']))
-	{
-		save_form_field('nom',$_POST['nom']);
-	}
-	if (isset($_POST['prenom']))
-	{
-		save_form_field('prenom',$_POST['prenom']);
-	}
-	if (isset($_POST['question']))
-	{
-		save_form_field('question',$_POST['question']);
-	}
-	if (isset($_POST['reponse']))
-	{
-		save_form_field('reponse',$_POST['reponse']);
-	}	
+if (isset($_POST['pseudooumail']))
+{
+	save_form_field('username',$_POST['pseudooumail']);
+}
+if (isset($_POST['mail']))
+{
+	save_form_field('mail',$_POST['mail']);
+}
+if (isset($_POST['nom']))
+{
+	save_form_field('nom',$_POST['nom']);
+}
+if (isset($_POST['prenom']))
+{
+	save_form_field('prenom',$_POST['prenom']);
+}
+if (isset($_POST['question']))
+{
+	save_form_field('question',$_POST['question']);
+}
+if (isset($_POST['reponse']))
+{
+	save_form_field('reponse',$_POST['reponse']);
+}	
 
 /* VERIFICATIONS VALIDITE CHAMPS */
 
@@ -80,19 +80,16 @@ if (isset($_POST['pseudooumail']) AND isset($_POST['question']) AND isset($_POST
 		$verif .='reponse';
 	}
 	//verif mail
-
 	if (!preg_match('#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', $_POST['mail']) OR preg_match('#\.\.|__|--|\.-|-\.|\._|_\.|-_|_-|\.@|@\.|-@|@-|_@|@_#', $_POST['mail']))
 	{
 		$verif .='mail';
-
 	}
+	//s'il y a des erreurs ds le formulaire
 	if (!is_null($verif))
 	{
 		header('Location:./../sas.php?nouveaumembre=1&verif='.$verif); // s'il y a des choses à corriger on réaffiche le formulaire
 	}
-
-// pas d erreur ds formumaire donc vérifier user non déjà existant avant insertion bdd :
-
+	// pas d erreur ds formumaire donc vérifier user non déjà existant avant insertion bdd :
 	else
 	{
 		include('./../fonctions/connexion_bdd.php');

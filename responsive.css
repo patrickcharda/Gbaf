@@ -1,12 +1,3 @@
-
-/*
-@media only screen and (max-width: 768px) {
-  * For mobile phones: *
-  [class*="col-"] {
-    width: 100%;
-  }
-*/  
-
 @media only screen and (max-width: 820px)  {
 
 .presentation_gbaf {
@@ -16,27 +7,26 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid #A8BBB0;
-    border-radius: 2px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 1px;
+  border-radius: 2px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 1px;
 }
 
 .logo_acteur100x50 {
-    display: inherit;
-    max-width: 122px;
-    max-height: 75px;
-    min-height: 75px;
-    min-width: 122px;
-    padding: 10px;
-  }
+  display: inherit;
+  max-width: 122px;
+  max-height: 75px;
+  min-height: 75px;
+  min-width: 122px;
+  padding: 10px;
+}
 
 .logo_acteur200x100 {
-    display: none;
-    clip: rect(0,0,0,0);
-  }
-
+  display: none;
+  clip: rect(0,0,0,0);
+}
 
 .lirelasuite {
   display: flex;
@@ -44,7 +34,6 @@
   justify-content: flex-start;
   padding-bottom: 0px;
 }
-
 
 .resume_acteur {
   display: flex;
@@ -72,16 +61,14 @@
   max-height: 110px;
 }
 
-#readmore, button, input[type=submit]  {
+.readmore, button, input[type=submit]  {
   /*min-width: 70px;*/
   border-color: red;
   font-size: 0.6em;
 }
-
+}
 /*smartphone*/
 @media only screen and (max-width: 600px) {
-
-
 
 .presentation_gbaf {
   font-size: 0.7em;
@@ -94,35 +81,32 @@
   align-content: center;
   flex-wrap: wrap;
   border: 1px solid #A8BBB0;
-    border-radius: 2px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 1px;
+  border-radius: 2px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 1px;
 }
 
 .logo_acteur100x50 {
-    display: inherit;
-    max-width: 122px;
-    max-height: 75px;
-    min-height: 75px;
-    min-width: 122px;
-    padding: 10px;
-  }
+  display: inherit;
+  max-width: 122px;
+  max-height: 75px;
+  min-height: 75px;
+  min-width: 122px;
+  padding: 10px;
+}
 
 .logo_acteur200x100 {
-    display: none;
-    clip: rect(0,0,0,0);
-  }
+  display: none;
+  clip: rect(0,0,0,0);
+}
 
 
 .liresuite {
-/*position: relative;
-margin: auto;*/
-margin-top: 40px;
-margin-left: 350px;
-padding: 0px;
-/*border: 1px solid green;*/
+  margin-top: 40px;
+  margin-left: 350px;
+  padding: 0px;
 }
 
 .un_commentaire {
@@ -143,56 +127,58 @@ padding: 0px;
   max-height: 400px;
 }
 
-.resume_acteur p{
+.resume_acteur p {
   font-size: 0.7em;
 }
 
-.resume_acteur h3{
+.resume_acteur h3 {
   font-size: 0.8em;
 }
 
 .logoresume {
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-#readmore, button, input[type=submit]  {
+.readmore, button, input[type=submit]  {
   min-width: 70px;
   border-color: red;
   font-size: 0.6em;
 }
 
-  .logolink {
-    width: 33px;
-    height: 33px;
-    background-image: url("./logo32x32.png"), url("./logos/logo32x32.png");
-  }
-  .col-3.gouttiere {
-    width: 5%;
-  }
-  .col-6.gouttiere {
+.logolink {
+  width: 33px;
+  height: 33px;
+  background-image: url("./logo32x32.png"), url("./logos/logo32x32.png");
+}
+
+.col-3.gouttiere {
+  width: 5%;
+}
+.col-6.gouttiere {
     width: 90%;
-  }
-  .col--3 {
-    width: 5%;
-  }
-  .col--18 {
-    width: 90%;
-  }
-  .logoutlink {
-    width: 16px;
-    height: 18px;
-    background-image: url("./logout15x15.png"), url("./logos/logout15x15.png");
-    background-repeat: no-repeat, no-repeat;
-  }
-  .accountlink {
-    width: 16px;
-    height: 18px;
-    background-image: url("./account15x15.png"), url("./logos/account15x15.png");
-    background-repeat: no-repeat, no-repeat;
-  }
+}
+.col--3 {
+  width: 5%;
+}
+.col--18 {
+  width: 90%;
+}
+
+.logoutlink {
+  width: 16px;
+  height: 18px;
+  background-image: url("./logout15x15.png"), url("./logos/logout15x15.png");
+  background-repeat: no-repeat, no-repeat;
+}
+.accountlink {
+  width: 16px;
+  height: 18px;
+  background-image: url("./account15x15.png"), url("./logos/account15x15.png");
+  background-repeat: no-repeat, no-repeat;
+}
 
 .header {
   display: flex;
@@ -211,7 +197,7 @@ align-items: center;
   display: flex;
   flex-direction: row-reverse;
 }
-
+}
 @media only screen and (max-width: 560px) {
 
 .evaluation_acteur {
@@ -238,49 +224,33 @@ align-items: center;
 }
 
 .liresuite {
-/*position: relative;
-margin: auto;*/
 margin-top: 40px;
 margin-left: 290px;
 padding: 0px;
-/*border: 1px solid green;*/
 }
-
 }
 
 @media only screen and (max-width: 440px) {
-
 .liresuite {
-/*position: relative;
-margin: auto;*/
-margin-top: 40px;
-margin-left: 170px;
-padding: 0px;
-/*border: 1px solid green;*/
+  margin-top: 40px;
+  margin-left: 170px;
+  padding: 0px;
 }
 }
 
 @media only screen and (max-width: 360px) {
-
 .liresuite {
-/*position: relative;
-margin: auto;*/
-margin-top: 60px;
-margin-left: 90px;
-padding: 0px;
-/*border: 1px solid green;*/
+  margin-top: 60px;
+  margin-left: 90px;
+  padding: 0px;
 }
 }
 
 @media only screen and (max-width: 280px) {
-
 .liresuite {
-/*position: relative;
-margin: auto;*/
 margin-top: 90px;
 margin-left: 35px;
 padding: 0px;
-/*border: 1px solid green;*/
 }
 }
 
