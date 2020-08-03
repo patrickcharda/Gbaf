@@ -112,9 +112,10 @@ include('./../templates/colonnes_deco_gauche.php');
 						}
 						$tous_les_commentaires .= '</div>';
 					}
-					$tous_les_commentaires .= '</div>';
+					//$tous_les_commentaires .= '</div>';
 					$reponse->closeCursor();
 				}
+				$tous_les_commentaires .= '</div>';
 			}
 			$btn_ajout_commentaire='0';
 			if (is_null($infos_user_comment))
