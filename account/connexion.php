@@ -45,13 +45,13 @@ else
 		{
 			$critere = 'mail';
 			$valeur = $_COOKIE['pseudooumail'];
-			$pass = $_COOKIE['pass'];
+			$pass = $_COOKIE['pass']; //normalement on ne stocke pas de mot de passe ds un cookie
 		}
 		else
 		{
 			$critere = 'username';
 			$valeur = $_COOKIE['pseudooumail'];
-			$pass = $_COOKIE['pass'];
+			$pass = $_COOKIE['pass']; //normalement on ne stocke pas de mot de passe ds un cookie
 		}
 	}
 	else 
@@ -88,6 +88,7 @@ else
 						if (isset($_POST['auto']) AND $_POST['auto']=='on')
 						{
 							setcookie('pseudooumail',$_POST['pseudooumail'],time()+365*24*3600,null,null,false,true);
+							//normalement on ne stocke pas de mot de passe ds un cookie
 							setcookie('pass',$_POST['pass'],time()+365*24*3600,null,null,false,true);
 						}
 						if ($_SESSION['groupe'] == 2)
